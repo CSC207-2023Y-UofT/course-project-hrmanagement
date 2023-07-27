@@ -16,7 +16,7 @@ public class GUIEmployee {
         employeePanel.setLayout(null);
 
         JLabel welcomeEmployee = new JLabel("Hr Management system: Employee");
-        welcomeEmployee.setBounds(20, 20, 80, 25);
+        welcomeEmployee.setBounds(20, 20, 200, 25);
         employeePanel.add(welcomeEmployee);
 
         systemFrame.setVisible(true);

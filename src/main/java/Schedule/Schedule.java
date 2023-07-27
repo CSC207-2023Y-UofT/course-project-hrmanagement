@@ -3,6 +3,7 @@ package Schedule;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashMap;
+import TeamStructure.*;
 
 public class Schedule {
 

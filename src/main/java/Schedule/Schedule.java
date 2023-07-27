@@ -13,7 +13,7 @@ public class Schedule {
     public Schedule(Date date) {
         this.day = date;
         this.schedule = new HashMap<Employee, LocalTime>();
-        // TODO: add working hours / days off for each employee
+        // TODO: add working hours and/or days off for each employee
     }
 
     // Prints text of schedule
@@ -21,7 +21,7 @@ public class Schedule {
     public String toString() {
         String scheduleText = "Schedule for " + this.day + ":\n";
         for (Employee employee : this.schedule){
-        // TODO: add working hours / days off for each employee
+        // TODO: add working hours and/or days off for each employee
 
         }
         return scheduleText;

@@ -116,7 +116,7 @@ public class EmployeeForm extends JFrame {
                     String query = "insert INTO Employees(EMPLOYEEID, LASTNAME, FIRSTNAME, ADDRESS, PHONENUMBER)  VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement preparedStatement = conn.prepareStatement(query);
                     preparedStatement.setInt(1, employeeID);
-                    preparedStatement.setString(2, lastName); src/main/java/GUILogin/EmployeeForm.jav
+                    preparedStatement.setString(2, lastName);
                     preparedStatement.setString(3, firstName);
                     preparedStatement.setString(4, address);
                     preparedStatement.setString(5, phoneNumber);

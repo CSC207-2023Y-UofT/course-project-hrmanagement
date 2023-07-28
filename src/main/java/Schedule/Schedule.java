@@ -21,10 +21,12 @@ public class Schedule {
     @Override
     public String toString() {
         String scheduleText = "Schedule for " + this.day + ":\n";
+        /*
         for (Employee employee : this.schedule){
         // TODO: add working hours / days off for each employee
 
         }
+         */
         return scheduleText;
     }
 

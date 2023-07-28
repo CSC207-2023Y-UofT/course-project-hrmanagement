@@ -1,4 +1,4 @@
-package GUILogin;
+import GUILogin.GUILogin;
 
 
 
@@ -6,7 +6,7 @@ package GUILogin;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        GUITest.loginTest();
+        GUILogin.loginTest();
     }
 }
 

@@ -4,7 +4,7 @@ import java.util.Date;
 
 // Entity
 
-public class ContractTimeSheet {
+public class TimeSheet {
     private Date startDate;
     private Date endDate;
     private double hoursPerDay;
@@ -15,7 +15,7 @@ public class ContractTimeSheet {
      * @param endDate
      * @param hoursPerDay
      */
-    public ContractTimeSheet(Date startDate, Date endDate, double hoursPerDay) {
+    public TimeSheet(Date startDate, Date endDate, double hoursPerDay) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.hoursPerDay = hoursPerDay;

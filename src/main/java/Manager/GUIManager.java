@@ -1,8 +1,9 @@
-package GUILogin;
+package Manager;
+
+import Manager.GUIPasswordManagement;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GUIManager {
 

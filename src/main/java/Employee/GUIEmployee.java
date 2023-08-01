@@ -1,4 +1,4 @@
-package GUILogin;
+package Employee;
 
 import javax.swing.*;
 

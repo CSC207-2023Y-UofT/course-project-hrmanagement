@@ -1,4 +1,4 @@
-package GUILogin;
+package Manager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

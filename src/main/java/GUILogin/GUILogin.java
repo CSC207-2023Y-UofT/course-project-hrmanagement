@@ -1,8 +1,10 @@
 package GUILogin;
 
+import Employee.GUIEmployee;
+import Manager.GUIManager;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -10,7 +12,7 @@ public class GUILogin {
 
     // frame and panel
     public static JFrame loginFrame;
-    public  static JPanel loginPanel;
+    public static JPanel loginPanel;
     public static JFrame frame;
 
     // user
@@ -29,8 +31,9 @@ public class GUILogin {
 
         // Panel and Frame
         loginPanel = new JPanel();
+
         loginFrame = new JFrame();
-        loginFrame.setSize(350, 200);
+        loginFrame.setSize(500, 400);
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
         loginFrame.add(loginPanel);
@@ -55,20 +58,23 @@ public class GUILogin {
         passwordText.setBounds(100, 50, 165, 25);
         loginPanel.add(passwordText);
 
+        // Button functions
+        buttonLogin();
+        buttonChangePassword();
+
+        loginFrame.setVisible(true);
+    }
+
+    public static void buttonLogin() {
+
         // Login Button
         loginButton = new JButton(new AbstractAction("Login") {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String username = userText.getText();
-                String password = passwordText.getText();
+                String password = passwordText.getText(); // although getText is deprecated, in this event Password pass
 
-        /*
-        This area of the code is to be fixed, passwords should not be managed by the programmer.
-        This will not be used by a hash map.
-         */
-
-                // user password (should be under password management for manager)
                 HashMap<String, String> employee = new HashMap<String, String>();
                 employee.put("Employee", "Password"); // (user, password)
 
@@ -103,8 +109,12 @@ public class GUILogin {
                 }
             }
         });
+
         loginButton.setBounds(185, 80, 80, 25);
         loginPanel.add(loginButton);
+    }
+
+    private static void buttonChangePassword() {
 
         // Change Password Button
         changePasswordButton = new JButton(new AbstractAction("Change Password") {
@@ -114,9 +124,9 @@ public class GUILogin {
                 loginFrame.dispose();
             }
         });
+
         changePasswordButton.setBounds(100, 80, 80, 25);
         loginPanel.add(changePasswordButton);
-
-        loginFrame.setVisible(true);
     }
+
 }

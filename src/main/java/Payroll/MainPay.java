@@ -1,13 +1,14 @@
 package Payroll;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import javax.swing.*;
 
 public class MainPay {
 
-    public static void main(String[] args) throws ParseException {
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new PayrollGUI();
+            }
+        });
     }
 }

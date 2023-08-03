@@ -1,7 +1,6 @@
 package GUILogin;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,11 +14,6 @@ public class EmployeeSignIn extends JFrame {
 
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HEIGHT =250;
-
-    // connect database
-    private final String url = "jdbc:mysql://localhost:3306/employees";
-    private final String username = "root";
-    private final String password = "password";
 
     public EmployeeSignIn(){
         initializeComponents();
@@ -91,12 +85,15 @@ public class EmployeeSignIn extends JFrame {
                 String passText = new String(pass.getPassword());
 
                 // Save the employee information to the database
-                try (Connection conn = DriverManager.getConnection(url, username, password)) {
+                Connection connection = null;
+                try
+                {
+                    connection = SQLConnection.getConnection();
 
                     String query = "SELECT * FROM Employees where EMPLOYEEID=? and PASSWORD=?";
 
                     // Set values using preparedStatement
-                    PreparedStatement preparedStatement = conn.prepareStatement(query);
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setInt(1, employeeID);
                     preparedStatement.setString(2, passText);
 

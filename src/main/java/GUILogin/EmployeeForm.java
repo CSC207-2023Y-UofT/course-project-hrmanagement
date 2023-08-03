@@ -5,11 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.Arrays;
 
 public class EmployeeForm extends JFrame {
     private JTextField employeeID;
-//    private JTextField userName;
     private JTextField lastName;
     private JTextField firstName;
     private JTextField address;
@@ -19,12 +17,6 @@ public class EmployeeForm extends JFrame {
     private JButton buttonOk;
     private JPasswordField pass;
 
-
-
-    // connect database
-    private final String url = "jdbc:mysql://localhost:3306/employees";
-    private final String username = "root";
-    private final String password = "password";
 
     // setup form
     public EmployeeForm() {
@@ -125,9 +117,12 @@ public class EmployeeForm extends JFrame {
                 String passText = new String(pass.getPassword());
 
                 // Save the employee information to the database
-                try (Connection conn = DriverManager.getConnection(url, username, password)) {
+                Connection connection = null;
+                try
+                {
+                    connection = SQLConnection.getConnection();
                     String query = "insert INTO Employees(EMPLOYEEID, LASTNAME, FIRSTNAME, ADDRESS, PHONENUMBER, PASSWORD)  VALUES (?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preparedStatement = conn.prepareStatement(query);
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setInt(1, employeeID);
                     preparedStatement.setString(2, lastName);
                     preparedStatement.setString(3, firstName);
@@ -137,7 +132,6 @@ public class EmployeeForm extends JFrame {
 
                     int result = preparedStatement.executeUpdate();
 
-//                    int rowsAffected = preparedStatement.executeUpdate();
                     if(result > 0) {
                         JOptionPane.showMessageDialog(null, "SignUp Successful!");
 

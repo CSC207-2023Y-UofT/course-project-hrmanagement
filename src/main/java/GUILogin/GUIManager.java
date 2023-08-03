@@ -1,6 +1,7 @@
 package GUILogin;
 
 import Schedule.ScheduleGenerator;
+import Schedule.Schedule;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -56,12 +57,12 @@ public class GUIManager {
                 String scheduleDateStr = ScheduleDateEntry.getText();
                 try {
                     Date scheduleDate = new SimpleDateFormat("dd/MM/yyyy").parse(scheduleDateStr);
-//                    ScheduleGenerator.generateSchedule(scheduleDate);
-//                    String scheduleStr = Schedule.Schedule.toString();
-//                    JOptionPane.showMessageDialog(frame,
-//                            scheduleStr,
-//                            "Schedule for" + scheduleDateStr,
-//                            JOptionPane.INFORMATION_MESSAGE);
+                    Schedule newSchedule = ScheduleGenerator.generateSchedule(scheduleDate);
+                    String scheduleStr = newSchedule.toString();
+                    JOptionPane.showMessageDialog(frame,
+                            scheduleStr,
+                            "Schedule for" + scheduleDateStr,
+                            JOptionPane.INFORMATION_MESSAGE);
 
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(frame,

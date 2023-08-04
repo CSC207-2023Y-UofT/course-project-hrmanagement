@@ -10,4 +10,12 @@ public class Team {
     public Team(Manager manager) {
         this.manager = manager;
     }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
 }

@@ -7,4 +7,8 @@ public class Employee extends User {
         super(username, password);
         this.wage = wage;
     }
+  
+  public double getWage() {
+    return wage;
+  }
 }

@@ -1,9 +1,9 @@
 package TeamStructure;
 
 public abstract class User {
-    private String username;
-    private String password;
+    private String Username;
+    private String Password;
 
-    public User(String username, String password)
-    {}
+    public User(String Username, String Password) {
+    }
 }

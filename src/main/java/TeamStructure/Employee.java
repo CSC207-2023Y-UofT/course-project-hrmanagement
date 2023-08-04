@@ -1,15 +1,11 @@
 package TeamStructure;
 
 public class Employee extends User{
-    private double wage;
+    private double Wage;
 
-    public Employee(String username, String password, double wage)
+    public Employee(String Username, String Password, double wage)
     {
-        super(username, password);
-        this.wage = wage;
+        super(Username, Password);
+        this.Wage = wage;
     };
-
-    public double getWage() {
-        return wage;
-    }
 }

@@ -2,8 +2,16 @@ package UI;
 
 import GUILogin.EmployeeForm;
 import GUILogin.EmployeeSignIn;
+import Schedule.Schedule;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static GUILogin.GUILogin.frame;
 
 /**
  * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
@@ -42,7 +50,7 @@ public class ManagerPortalBox {
         viewSchedule.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeForm().setVisible(true);
+
             }
         });
 

@@ -2,10 +2,8 @@ package TeamStructure;
 
 public class Manager extends User {
 
-    public Manager(String Username, String Password)
+    public Manager(String username, String password)
     {
-        super(Username, Password);
+        super(username, password);
     }
-
-
 }

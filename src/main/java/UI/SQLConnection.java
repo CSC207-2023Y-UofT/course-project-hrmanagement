@@ -1,4 +1,4 @@
-package GUILogin;
+package UI;
 
 import java.sql.*;
 

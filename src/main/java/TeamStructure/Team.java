@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-    private static List<Employee> Employees = new ArrayList<Employee>();
-    private Manager Manager;
+    private List<Employee> employees = new ArrayList<Employee>();
+    private Manager manager;
 
     public Team(Manager manager) {
         this.manager = manager;
@@ -18,9 +18,4 @@ public class Team {
     public Manager getManager() {
         return manager;
     }
-
-    public static List<Employee> getTeam(){
-        return Employees;
-    }
-
 }

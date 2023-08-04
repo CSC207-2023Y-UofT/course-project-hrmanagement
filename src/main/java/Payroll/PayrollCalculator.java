@@ -2,38 +2,51 @@ package Payroll;
 
 // Use Case layer
 
-import java.util.concurrent.TimeUnit;
-import TeamStructure.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Use Case, the payroll calculation for contract workers
  */
 public class PayrollCalculator {
 
-    public long getTotalDays(TimeSheet timeSheet) {
-        long daysInMillis = Math.abs(timeSheet.getEndDate().getTime() - timeSheet.getStartDate().getTime());
-        long days = TimeUnit.DAYS.convert(daysInMillis, TimeUnit.MILLISECONDS);
-        return days;
+    protected double calculateSalary(String role, String[] timesheetData) {
+        // Implement the salary calculation logic based on the role and additional data
+        // For simplicity, we'll use some fixed values for demonstration purposes.
+        double baseSalary = 0;         // Because it is hourly based salary.
+        double hoursPerDay = Double.parseDouble(timesheetData[2]);
+        double bonus = Double.parseDouble(timesheetData[3]);
+        double totalDays = calculateTotalDays(timesheetData[0], timesheetData[1]);
+
+        // Determine the hourly rate by role.
+        double hourlyRate = calculateHourlyRate(role);
+        return baseSalary + (hoursPerDay * totalDays * hourlyRate) + bonus;
     }
 
-    /**
-     * Return total hours worked
-     * @param timeSheet
-     * @return total hours worked for one employee within the timeframe
-     */
-    public double getTotalHoursWorked(TimeSheet timeSheet) {
-        return timeSheet.getHoursPerDay() * getTotalDays(timeSheet);
+    private double calculateHourlyRate(String role)
+    {
+        double hourlyRate = 0;
+        if (role.equalsIgnoreCase(PayrollConstant.ROLE_MANAGER))
+            hourlyRate = PayrollConstant.MANAGER_HOURLY_RATE;
+        else if (role.equalsIgnoreCase(PayrollConstant.ROLE_EMPLOYEE))
+            hourlyRate = PayrollConstant.EMPLOYEE_HOURLY_RATE;
+        else
+            hourlyRate = PayrollConstant.MINIMUM_HOURLY_RATE;
+
+        return hourlyRate;
     }
 
-    /**
-     * Return total pay given employee and timesheet
-     * @param employee
-     * @param timeSheet
-     * @return total pay amount
-     */
-    public double calculateTotalPay(Employee employee, TimeSheet timeSheet) {
-        return getTotalHoursWorked(timeSheet) * employee.getWage();
+    private double calculateTotalDays(String startDateStr, String endDateStr) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date startDate = dateFormat.parse(startDateStr);
+            Date endDate = dateFormat.parse(endDateStr);
+            long diff = endDate.getTime() - startDate.getTime();
+            return (double) (diff / (1000 * 60 * 60 * 24)) + 1; // Adding 1 day to include both start and end days
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
-
-    // possible method for extension: tax calculation
 }

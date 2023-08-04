@@ -1,0 +1,5 @@
+EMPLOYEEID,LASTNAME,FIRSTNAME, ADDRESS,PHONENUMBER,ROLE
+1,Johnson,Bob,333 University Ave.,416-1234567,Manager
+2,Smith,John,123 Main St,647-5551234,Employee,
+3,Williams,Jane,456 Park Ave,519-5555678,Employee,
+4,Hill,Sandra,789 Broadway,212-5559876,Employee

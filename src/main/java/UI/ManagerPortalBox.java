@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static GUILogin.GUILogin.frame;
 
 /**
  * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.

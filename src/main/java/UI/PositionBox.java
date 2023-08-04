@@ -40,6 +40,7 @@ public class PositionBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ManagerBox().createManagerBox();
+                frame.getJFrame().dispose();
             }
         });
 
@@ -48,6 +49,7 @@ public class PositionBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new EmployeeBox().createEmployeeBox();
+                frame.getJFrame().dispose();
             }
         });
 

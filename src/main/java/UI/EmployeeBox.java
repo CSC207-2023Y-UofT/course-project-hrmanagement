@@ -43,6 +43,7 @@ public class EmployeeBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new EmployeeForm().setVisible(true);
+                frame.getJFrame().dispose();
             }
         });
 
@@ -52,7 +53,7 @@ public class EmployeeBox {
             public void actionPerformed(ActionEvent e) {
 //                new EmployeeSignIn().setVisible(true);
                 new EmployeeSignInBox().createEmployeeBox();
-
+                frame.getJFrame().dispose();
             }
         });
 

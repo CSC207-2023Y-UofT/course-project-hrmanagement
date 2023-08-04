@@ -48,6 +48,7 @@ public class ManagerBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ManagerPortalBox().createManagerPortalBox();
+                frame.getJFrame().dispose();
             }
         });
 

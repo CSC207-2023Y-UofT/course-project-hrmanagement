@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-    private List<Employee> employees = new ArrayList<Employee>();
+    private static List<Employee> employees = new ArrayList<Employee>();
     private Manager manager;
 
     public Team(Manager manager) {
         this.manager = manager;
     }
 
-    public List<Employee> getEmployees() {
+    public static List<Employee> getEmployees() {
         return employees;
     }
 

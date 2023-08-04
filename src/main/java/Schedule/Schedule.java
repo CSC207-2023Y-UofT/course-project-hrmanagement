@@ -16,7 +16,7 @@ public class Schedule {
     public Schedule(Date date) {
         this.day = date;
         this.schedule = new HashMap<Employee, List<Date>>();
-        for (Employee employee : Team.getTeam()){
+        for (Employee employee : Team.getEmployees()){
             List<Date> workingHours = new ArrayList<>();
 //            workingHours.add(startDate)
 //            workingHours.add(endDate)

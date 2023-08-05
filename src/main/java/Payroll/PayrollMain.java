@@ -1,6 +1,6 @@
 package Payroll;
 
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 import Payroll.dao.*;
 import Payroll.ui.PayrollGUI;
 import Payroll.usecase.PayrollCalculator;
@@ -40,7 +40,7 @@ public class PayrollMain
 
         // Load employee data from CSV file or DB.
         Object[][]  employees = loadEmployeeData();
-        Map<String, TimesheetBO> timesheetMap = loadTimesheetData();
+        Map<String, TimesheetEntity> timesheetMap = loadTimesheetData();
 
         gui.setEmployees(employees);
         gui.setTimesheetMap(timesheetMap);
@@ -57,7 +57,7 @@ public class PayrollMain
             employees = employeeDAO.loadEmployeesTo2DArray();
         }
         else {
-            //Map<String, EmployeeBO> employeeMap = CSVDataReader.loadEmployeesFromCSV(PayrollConstant.strPathToEmployeeFile);
+            //Map<String, EmployeeEntity> employeeMap = CSVDataReader.loadEmployeesFromCSV(PayrollConstant.strPathToEmployeeFile);
             //employees = CSVDataReader.convertEmployeeMapTo2DArray(employeeMap);
 
             EmployeeDAO employeeDAO = new CSVEmployeeDAO(csv_employee_filepath);
@@ -67,8 +67,8 @@ public class PayrollMain
     }
 
     // Load timesheet data from CSV file or DB.
-    private static Map<String, TimesheetBO> loadTimesheetData() {
-        Map<String, TimesheetBO> timesheetMap = null;
+    private static Map<String, TimesheetEntity> loadTimesheetData() {
+        Map<String, TimesheetEntity> timesheetMap = null;
         if (PayrollConstant.READ_DATA_FROM_DB)
         {
             //timesheetMap = DBDataReader.loadTimesheetsToMap();

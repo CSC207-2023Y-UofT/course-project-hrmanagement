@@ -1,9 +1,7 @@
 package Payroll.ui;
 
-import Payroll.usecase.DataValidator;
 import Payroll.usecase.PayrollCalculator;
-import Payroll.PayrollConstant;
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -13,9 +11,6 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class PayrollGUI extends JFrame {
@@ -26,7 +21,7 @@ public class PayrollGUI extends JFrame {
 
     PayrollCalculator payrollCalculator;
     Object[][] employees;
-    Map<String, TimesheetBO> timesheetMap;
+    Map<String, TimesheetEntity> timesheetMap;
 
     public void setPayrollCalculator(PayrollCalculator payrollCalculator) {
         this.payrollCalculator = payrollCalculator;
@@ -36,7 +31,7 @@ public class PayrollGUI extends JFrame {
         this.employees = employees;
     }
 
-    public void setTimesheetMap(Map<String, TimesheetBO> timesheetMap) {
+    public void setTimesheetMap(Map<String, TimesheetEntity> timesheetMap) {
         this.timesheetMap = timesheetMap;
     }
 
@@ -112,9 +107,7 @@ public class PayrollGUI extends JFrame {
 
                 return checkBox;
             }
-
         });
-
 
         // Indent the content of each column
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
@@ -141,6 +134,9 @@ public class PayrollGUI extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
+        /**
+         * load employee data when employee's row is selected
+         */
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -154,10 +150,9 @@ public class PayrollGUI extends JFrame {
                     String employName = firstName + " " + lastName;
 
                     TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
-                    String worksheetData[] = timesheetWindow.showInputDialog(employName);
-                    //String worksheetData[] = showInputDialog(employName);
+                    String[] worksheetData = timesheetWindow.showInputDialog(employName);
 
-                    // Cancel button is clicked.
+                    // if cancel button is clicked.
                     if (worksheetData == null)
                         return;
 
@@ -173,7 +168,6 @@ public class PayrollGUI extends JFrame {
                                     + "End Date: " + worksheetData[1] + "\n"
                                     + "Salary: " + "$" + salary + "\n"
                                     + "\n";
-
 
                     // Display the salary calculation result in a message dialog
                     JOptionPane.showMessageDialog(PayrollGUI.this,

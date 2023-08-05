@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Validate user input data in timesheet
+ */
 public class DataValidator {
     public static boolean isValidDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");

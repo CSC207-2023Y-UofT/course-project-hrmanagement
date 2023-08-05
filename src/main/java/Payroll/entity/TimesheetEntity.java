@@ -1,17 +1,17 @@
-package Payroll.bo;
+package Payroll.entity;
 
 /**
- * This is the business object for Timesheet.
+ * This is the Timesheet business object.
  * It is used to construct a map of Timesheet objects for Payroll calculation.
  */
-public class TimesheetBO {
+public class TimesheetEntity {
     private String employeeId;
     private String firstName;
     private String lastName;
     private String startDate;
     private String endDate;
 
-    // Constructors, getters, and setters for EmployeeBO attributes
+    // Constructors, getters, and setters for EmployeeEntity attributes
     public String getEmployeeId() {
         return employeeId;
     }

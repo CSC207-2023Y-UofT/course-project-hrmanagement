@@ -1,6 +1,6 @@
 package Payroll.dao;
 
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         this.dbPassword = dbPassword;
     }
 
-    public  Map<String, TimesheetBO> loadTimesheetToMap() {
+    public  Map<String, TimesheetEntity> loadTimesheetToMap() {
 
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword)) {
             // Step 1: Create the JDBC connection
@@ -30,7 +30,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
 
-                Map<String, TimesheetBO> timesheetMap = new HashMap<>();
+                Map<String, TimesheetEntity> timesheetMap = new HashMap<>();
 
                 // Step 3: Store the data in an ArrayList
                 List<Object[]> dataList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
                     String startDate = resultSet.getString("STARTDATE");
                     String endDate = resultSet.getString("ENDDATE");
 
-                    TimesheetBO timesheet = new TimesheetBO();
+                    TimesheetEntity timesheet = new TimesheetEntity();
                     timesheet.setEmployeeId(employeeId);
                     timesheet.setFirstName(firstName);
                     timesheet.setLastName(lastName);

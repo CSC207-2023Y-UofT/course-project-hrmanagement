@@ -30,21 +30,31 @@ public class PayrollCalculator {
         return instance;
     }
 
+    /**
+     * Salary calculation, (hoursPerDay * days * rate) + bonus
+     * @param role employee or manager
+     * @param timesheetData array of timesheet data
+     * @return total salary
+     */
     public double calculateSalary(String role, String[] timesheetData) {
         // Implement the salary calculation logic based on the role and additional data
         // For simplicity, we'll use some fixed values for demonstration purposes.
         double baseSalary = 0;         // Because it is hourly based salary.
-        double hoursPerDay = Double.parseDouble(timesheetData[2]);
-        double bonus = Double.parseDouble(timesheetData[3]);
-        double totalDays = calculateTotalDays(timesheetData[0], timesheetData[1]);
+        double hoursPerDay = Double.parseDouble(timesheetData[2]); // hours per day
+        double bonus = Double.parseDouble(timesheetData[3]); // bonus
+        double totalDays = calculateTotalDays(timesheetData[0], timesheetData[1]); // start end, end date
 
         // Determine the hourly rate by role.
         double hourlyRate = calculateHourlyRate(role);
-        return baseSalary + (hoursPerDay * totalDays * hourlyRate) + bonus;
+        return baseSalary + (hoursPerDay * totalDays * hourlyRate) + bonus; // calculation
     }
 
-    private double calculateHourlyRate(String role)
-    {
+    /**
+     * Returns hourly rate based on role
+     * @param role person's role: manager or employee
+     * @return hourly rate double
+     */
+    private double calculateHourlyRate(String role) {
         double hourlyRate = 0;
         if (role.equalsIgnoreCase(PayrollConstant.ROLE_MANAGER))
             hourlyRate = PayrollConstant.MANAGER_HOURLY_RATE;
@@ -56,6 +66,12 @@ public class PayrollCalculator {
         return hourlyRate;
     }
 
+    /**
+     * Calculate total days between start date and end date
+     * @param startDateStr start date
+     * @param endDateStr end date
+     * @return number of days
+     */
     private double calculateTotalDays(String startDateStr, String endDateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         try {

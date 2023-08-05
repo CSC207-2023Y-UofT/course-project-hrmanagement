@@ -1,6 +1,6 @@
 package Payroll.dao;
 
-import Payroll.bo.EmployeeBO;
+import Payroll.entity.EmployeeEntity;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,14 +19,14 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeBO getEmployeeById(int id) {
-        EmployeeBO employee = null;
+    public EmployeeEntity getEmployeeById(int id) {
+        EmployeeEntity employee = null;
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM employees WHERE id = ?")) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    employee = new EmployeeBO(
+                    employee = new EmployeeEntity(
                             new Integer(resultSet.getInt("EMPLOYEEID")).toString(),
                             resultSet.getString("LASTNAME"),
                             resultSet.getString("FIRSTNAME"),
@@ -45,13 +45,13 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public List<EmployeeBO> getAllEmployees() {
-        List<EmployeeBO> employees = new ArrayList<>();
+    public List<EmployeeEntity> getAllEmployees() {
+        List<EmployeeEntity> employees = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM employees")) {
             while (resultSet.next()) {
-                EmployeeBO employee = new EmployeeBO(
+                EmployeeEntity employee = new EmployeeEntity(
                         new Integer(resultSet.getInt("EMPLOYEEID")).toString(),
                         resultSet.getString("LASTNAME"),
                         resultSet.getString("FIRSTNAME"),
@@ -108,7 +108,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void addEmployee(EmployeeBO employee) {
+    public void addEmployee(EmployeeEntity employee) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement statement = connection.prepareStatement("INSERT INTO employees (id, name, email) VALUES (?, ?, ?)")) {
             statement.setInt(1, new Integer(employee.getEmployeeId()));
@@ -124,7 +124,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(EmployeeBO employee) {
+    public void updateEmployee(EmployeeEntity employee) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement statement = connection.prepareStatement(
                      "UPDATE employees SET LASTNAME = ?, " +

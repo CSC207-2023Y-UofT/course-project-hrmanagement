@@ -1,6 +1,6 @@
 package Payroll.dao;
 
-import Payroll.bo.EmployeeBO;
+import Payroll.entity.EmployeeEntity;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,14 +19,14 @@ public class CSVEmployeeDAO implements EmployeeDAO {
     @Override
     public Object[][] loadEmployeesTo2DArray()
     {
-        Map<String, EmployeeBO> employeeMap = loadEmployeeToMap();
+        Map<String, EmployeeEntity> employeeMap = loadEmployeeToMap();
 
         // Convert Map to Object[][];
         Object[][] result = new Object[employeeMap.size()][7];
         int rowIndex = 0;
 
-        for (Map.Entry<String, EmployeeBO> entry : employeeMap.entrySet()) {
-            EmployeeBO employee = entry.getValue();
+        for (Map.Entry<String, EmployeeEntity> entry : employeeMap.entrySet()) {
+            EmployeeEntity employee = entry.getValue();
 
             result[rowIndex][0] = false;     // The is for the Select column.
             result[rowIndex][1] = employee.getEmployeeId();
@@ -43,8 +43,8 @@ public class CSVEmployeeDAO implements EmployeeDAO {
 
     }
 
-    private Map<String, EmployeeBO> loadEmployeeToMap() {
-        Map<String, EmployeeBO> employeeMap = new HashMap<>();
+    private Map<String, EmployeeEntity> loadEmployeeToMap() {
+        Map<String, EmployeeEntity> employeeMap = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(this.filepath))) {
             // Read the header line to skip it
@@ -61,7 +61,7 @@ public class CSVEmployeeDAO implements EmployeeDAO {
                     String phoneNumber = parts[4].trim();
                     String role = parts[5].trim();
 
-                    EmployeeBO employee = new EmployeeBO();
+                    EmployeeEntity employee = new EmployeeEntity();
                     employee.setEmployeeId(employeeId);
                     employee.setLastName(lastName);
                     employee.setFirstName(firstName);
@@ -83,21 +83,21 @@ public class CSVEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeBO getEmployeeById(int id) {
+    public EmployeeEntity getEmployeeById(int id) {
         return null;
     }
 
     @Override
-    public List<EmployeeBO> getAllEmployees() {
+    public List<EmployeeEntity> getAllEmployees() {
         return null;
     }
 
     @Override
-    public void addEmployee(EmployeeBO employee) {
+    public void addEmployee(EmployeeEntity employee) {
     }
 
     @Override
-    public void updateEmployee(EmployeeBO employee) {
+    public void updateEmployee(EmployeeEntity employee) {
     }
 
     @Override

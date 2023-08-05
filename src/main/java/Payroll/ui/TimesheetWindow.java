@@ -1,7 +1,7 @@
 package Payroll.ui;
 
 import Payroll.PayrollConstant;
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 import Payroll.usecase.DataValidator;
 
 import javax.swing.*;
@@ -11,15 +11,23 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * Timesheet related UI components
+ */
 public class TimesheetWindow {
     private Component parentComponent;
-    private Map<String, TimesheetBO> timesheetMap;
+    private Map<String, TimesheetEntity> timesheetMap;
 
-    public TimesheetWindow(Component parentComponent, Map<String, TimesheetBO> timesheetMap) {
+    public TimesheetWindow(Component parentComponent, Map<String, TimesheetEntity> timesheetMap) {
         this.parentComponent = parentComponent;
         this.timesheetMap = timesheetMap;
     }
 
+    /**
+     * Create time sheet window
+     * @param employeeName employee's name
+     * @return an array containing start date, end date, hours per day, bonus
+     */
     public String[] showInputDialog(String employeeName) {
         JPanel panel = new JPanel(new GridLayout(6, 2));
 
@@ -80,17 +88,6 @@ public class TimesheetWindow {
         bonusField.setText(String.valueOf(PayrollConstant.DefaultBonus));
 
         JLabel blankLabel = new JLabel("");
-
-        // Use empty borders to add gaps around each component
-        /*
-        startDateLabel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        startDateSpinner.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        endDateLabel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        endDateSpinner.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        hoursPerDayLabel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        hoursPerDayField.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        bonusField.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        */
 
         panel.add(employeeNameLabel);
         panel.add(employeeNameValueLabel);

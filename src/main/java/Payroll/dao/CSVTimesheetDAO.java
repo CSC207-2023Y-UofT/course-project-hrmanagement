@@ -1,6 +1,6 @@
 package Payroll.dao;
 
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,8 +15,8 @@ public class CSVTimesheetDAO implements TimesheetDAO {
         this.filepath = filepath;
     }
 
-    public Map<String, TimesheetBO> loadTimesheetToMap() {
-        Map<String, TimesheetBO> timesheetMap = new HashMap<>();
+    public Map<String, TimesheetEntity> loadTimesheetToMap() {
+        Map<String, TimesheetEntity> timesheetMap = new HashMap<>();
 
         //String filePath = PayrollConstant.strPathToTimesheetFile;
         try (BufferedReader br = new BufferedReader(new FileReader(this.filepath))) {
@@ -33,7 +33,7 @@ public class CSVTimesheetDAO implements TimesheetDAO {
                     String startDate = parts[3].trim();
                     String endDate = parts[4].trim();
 
-                    TimesheetBO timesheet = new TimesheetBO();
+                    TimesheetEntity timesheet = new TimesheetEntity();
                     timesheet.setEmployeeId(employeeId);
                     timesheet.setFirstName(firstName);
                     timesheet.setLastName(lastName);

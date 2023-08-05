@@ -1,5 +1,8 @@
 package Payroll;
 
+/**
+ * Constants used in payroll feature
+ */
 public interface PayrollConstant {
 
     public static String db_jdbcUrl = "jdbc:mysql://localhost:3306/employees";

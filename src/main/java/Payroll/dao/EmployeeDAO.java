@@ -1,6 +1,6 @@
 package Payroll.dao;
 
-import Payroll.bo.EmployeeBO;
+import Payroll.entity.EmployeeEntity;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ public interface EmployeeDAO
 {
     Object[][] loadEmployeesTo2DArray();
 
-    EmployeeBO getEmployeeById(int id);
-    List<EmployeeBO> getAllEmployees();
-    void addEmployee(EmployeeBO employee);
-    void updateEmployee(EmployeeBO employee);
+    EmployeeEntity getEmployeeById(int id);
+    List<EmployeeEntity> getAllEmployees();
+    void addEmployee(EmployeeEntity employee);
+    void updateEmployee(EmployeeEntity employee);
     void deleteEmployee(int id);
 }

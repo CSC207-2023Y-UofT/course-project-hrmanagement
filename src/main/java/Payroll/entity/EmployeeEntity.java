@@ -1,10 +1,10 @@
-package Payroll.bo;
+package Payroll.entity;
 
 /**
- * This is the business object for Employee.
+ * This is an Employee business object.
  * It is used to construct a map of Employee objects for Payroll GUI.
  */
-public class EmployeeBO {
+public class EmployeeEntity {
     private String employeeId;
     private String lastName;
     private String firstName;
@@ -12,10 +12,10 @@ public class EmployeeBO {
     private String phoneNumber;
     private String role;
 
-    // Constructors, getters, and setters for EmployeeBO attributes
-    public EmployeeBO() {}
+    // Constructors, getters, and setters for EmployeeEntity attributes
+    public EmployeeEntity() {}
 
-    public EmployeeBO(String employeeId, String lastName, String firstName, String address, String phoneNumber, String role) {
+    public EmployeeEntity(String employeeId, String lastName, String firstName, String address, String phoneNumber, String role) {
         this.employeeId = employeeId;
         this.lastName = lastName;
         this.firstName = firstName;

@@ -1,10 +1,10 @@
 package Payroll.dao;
 
-import Payroll.bo.TimesheetBO;
+import Payroll.entity.TimesheetEntity;
 
 import java.util.Map;
 
 public interface TimesheetDAO
 {
-    Map<String, TimesheetBO> loadTimesheetToMap();
+    Map<String, TimesheetEntity> loadTimesheetToMap();
 }

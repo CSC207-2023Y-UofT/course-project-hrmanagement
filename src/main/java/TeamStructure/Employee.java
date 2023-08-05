@@ -1,8 +1,5 @@
 package TeamStructure;
 
-
-public class Employee extends User {
-
 /**
  * An employee of the team. Has a wage. Can create availability or create time off requests.
  */

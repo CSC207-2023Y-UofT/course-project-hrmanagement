@@ -1,10 +1,10 @@
-package Payroll;
+package Payroll.bo;
 
 /**
  * This is the business object for Timesheet.
  * It is used to construct a map of Timesheet objects for Payroll calculation.
  */
-public class TimesheetEntity {
+public class TimesheetBO {
     private String employeeId;
     private String firstName;
     private String lastName;

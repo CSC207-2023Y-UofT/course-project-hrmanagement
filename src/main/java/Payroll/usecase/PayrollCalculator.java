@@ -1,6 +1,8 @@
-package Payroll;
+package Payroll.usecase;
 
 // Use Case layer
+
+import Payroll.PayrollConstant;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,10 +10,27 @@ import java.util.Date;
 
 /**
  * Use Case, the payroll calculation for contract workers
+ * Implemented Singleton design pattern
  */
 public class PayrollCalculator {
+    private static PayrollCalculator instance;
+    // Private constructor to prevent instantiation from other classes
+    private PayrollCalculator() {}
 
-    protected double calculateSalary(String role, String[] timesheetData) {
+    // Public method to get the PayrollCalculator instance
+    public static PayrollCalculator getInstance() {
+        // Lazy initialization - create the instance only when needed
+        if (instance == null) {
+            synchronized (PayrollCalculator.class) {
+                if (instance == null) {
+                    instance = new PayrollCalculator();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public double calculateSalary(String role, String[] timesheetData) {
         // Implement the salary calculation logic based on the role and additional data
         // For simplicity, we'll use some fixed values for demonstration purposes.
         double baseSalary = 0;         // Because it is hourly based salary.
@@ -49,4 +68,5 @@ public class PayrollCalculator {
             return 0;
         }
     }
+
 }

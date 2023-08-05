@@ -2,7 +2,7 @@ package UI;
 
 import GUILogin.EmployeeForm;
 import GUILogin.EmployeeSignIn;
-import Schedule.Schedule;
+import Schedule.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -49,6 +49,17 @@ public class ManagerPortalBox {
         viewSchedule.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //generate schedule
+                Schedule schedule = ScheduleGenerator.generateSchedule();
+                String scheduleStr = schedule.toString();
+
+                //call information box with schedule text
+                frame = new MyJFrame();
+                JOptionPane.showMessageDialog(frame.getJFrame(),
+                        scheduleStr,
+                        "Schedule",
+                        JOptionPane.INFORMATION_MESSAGE);
 
             }
         });

@@ -41,7 +41,7 @@ public class PayrollGUI extends JFrame {
     public void run() {
 
         // Set Frame properties
-        setTitle("Payroll Calculator");
+        setTitle("Employee Salary Calculator");
         setSize(800, 500); // Set the width and height of the frame
         setPreferredSize(new Dimension(800, 500)); // Set the preferred size of the frame
         setLayout(new BorderLayout());
@@ -351,4 +351,3 @@ public class PayrollGUI extends JFrame {
     }
 
 }
-

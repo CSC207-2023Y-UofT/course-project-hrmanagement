@@ -157,13 +157,13 @@ public class PayrollGUI extends JFrame {
                     double salary = payrollCalculator.calculateSalary(role, worksheetData);
 
                     String salaryMessage =
-                              "Employee ID: " + employeeId + "\n"
-                            + "Name: " + firstName + " " + lastName + "\n"
-                            + "Role: " + role + "\n"
-                            + "Start Date: " + worksheetData[0] + "\n"
-                            + "End Date: " + worksheetData[1] + "\n"
-                            + "Salary: " + "$" + salary + "\n"
-                            + "\n";
+                            "Employee ID: " + employeeId + "\n"
+                                    + "Name: " + firstName + " " + lastName + "\n"
+                                    + "Role: " + role + "\n"
+                                    + "Start Date: " + worksheetData[0] + "\n"
+                                    + "End Date: " + worksheetData[1] + "\n"
+                                    + "Salary: " + "$" + salary + "\n"
+                                    + "\n";
 
 
                     // Display the salary calculation result in a message dialog
@@ -351,3 +351,4 @@ public class PayrollGUI extends JFrame {
     }
 
 }
+

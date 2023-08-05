@@ -52,7 +52,6 @@ public class EmployeePortalBox {
             public void actionPerformed(ActionEvent e) {
 //                new EmployeeSignIn().setVisible(true);
                 new EmployeeTimeOff().CreateEmployeeTimeOff();
-                frame.getJFrame().dispose();
             }
         });
 

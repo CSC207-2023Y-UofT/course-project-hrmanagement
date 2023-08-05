@@ -121,6 +121,7 @@ public class CSVDataReader {
             System.out.println("Address: " + employee.getAddress());
             System.out.println("Phone Number: " + employee.getPhoneNumber());
             System.out.println("Role: " + employee.getRole());
+
             System.out.println();
         }
     }

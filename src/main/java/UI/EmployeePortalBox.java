@@ -1,7 +1,5 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,6 +49,7 @@ public class EmployeePortalBox {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                new EmployeeSignIn().setVisible(true);
+                new EmployeeTimeOff().CreateEmployeeTimeOff();
             }
         });
 

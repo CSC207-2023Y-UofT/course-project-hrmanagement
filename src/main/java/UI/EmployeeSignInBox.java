@@ -50,6 +50,7 @@ public class EmployeeSignInBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new EmployeePortalBox().createEmployeePortalBox();
+                frame.getJFrame().dispose();
             }
         });
 

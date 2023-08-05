@@ -7,7 +7,7 @@ import java.util.List;
  * A team of employees and a manager. Contains a list of employees, and a single manager.
  */
 public class Team {
-    private List<Employee> employees = new ArrayList<Employee>();
+    private static List<Employee> employees = new ArrayList<Employee>();
     private Manager manager;
 
     public Team(Manager manager) {
@@ -18,7 +18,7 @@ public class Team {
      * Returns the list of all employees in the team.
      * @return
      */
-    public List<Employee> getEmployees() {
+    public static List<Employee> getEmployees() {
         return employees;
     }
 

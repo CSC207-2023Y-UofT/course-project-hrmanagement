@@ -51,6 +51,7 @@ public class EmployeePortalBox {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                new EmployeeSignIn().setVisible(true);
+                new EmployeeTimeOff().CreateEmployeeTimeOff();
             }
         });
 

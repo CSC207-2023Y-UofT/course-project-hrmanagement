@@ -8,4 +8,5 @@ The application is launched from the HRManagement.java class. The application la
 ## Design Patterns
 Singleton Design Pattern: The singleton design pattern was used in the payroll calculations. Because the payrollCalculator has access to a database and uses this to perform the calculations, the singleton design pattern allows us to make only one instance of the payrollCalculator, thus there is only one point of access. There is a private constructor, so more instances cannot be created, and then a public method allows for the instance to be retrieved.
 
+
 ## Java Version: openjdk-18.0.2.1

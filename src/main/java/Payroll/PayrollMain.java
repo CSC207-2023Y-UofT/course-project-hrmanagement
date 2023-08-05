@@ -31,24 +31,20 @@ public class PayrollMain {
         gui.setEmployees(employees);
         gui.setTimesheetMap(timesheetMap);
         gui.setPayrollCalculator(payrollCalculator);
-
     }
 
     // Load employee data from CSV file or DB.
     private static Object[][] loadEmployeeData()
     {
         Object[][]  employees = null;
-        if (PayrollConstant.READ_DATA_FROM_DB)
-        {
+        if (PayrollConstant.READ_DATA_FROM_DB) {
             employees = DBDataReader.loadEmployeesTo2DArray();
         }
-        else
-        {
+        else {
             Map<String, EmployeeEntity> employeeMap = CSVDataReader.loadEmployeesFromCSV(PayrollConstant.strPathToEmployeeFile);
             employees = CSVDataReader.convertEmployeeMapTo2DArray(employeeMap);
 
         }
-
         return employees;
     }
 
@@ -56,16 +52,12 @@ public class PayrollMain {
     private static Map<String, TimesheetEntity> loadTimesheetData()
     {
         Map<String, TimesheetEntity> timesheetMap = null;
-        if (PayrollConstant.READ_DATA_FROM_DB)
-        {
+        if (PayrollConstant.READ_DATA_FROM_DB) {
             timesheetMap = DBDataReader.loadTimesheetsTo2DArray();
         }
-        else
-        {
+        else {
             timesheetMap = CSVDataReader.loadTimesheetsFromCSV(PayrollConstant.strPathToTimesheetFile);
         }
-
         return timesheetMap;
     }
-
 }

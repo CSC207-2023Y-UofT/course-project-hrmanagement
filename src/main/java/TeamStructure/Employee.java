@@ -4,10 +4,10 @@ package TeamStructure;
  * An employee of the team. Has a wage. Can create availability or create time off requests.
  */
 public class Employee extends User{
-
     private double wage;
 
-    public Employee(String username, String password, double wage) {
+    public Employee(String username, String password, double wage)
+    {
         super(username, password);
         this.wage = wage;
     };

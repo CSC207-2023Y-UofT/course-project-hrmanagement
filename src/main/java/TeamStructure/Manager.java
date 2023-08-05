@@ -9,4 +9,6 @@ public class Manager extends User {
     {
         super(username, password);
     }
+
+
 }

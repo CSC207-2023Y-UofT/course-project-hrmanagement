@@ -1,10 +1,12 @@
 package Schedule;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class ScheduleGenerator {
 
-    public Schedule generateSchedule(Date date) {
-        return new Schedule(date);
+    public static Schedule generateSchedule() throws ParseException {
+        return new Schedule();
     }
+
 }

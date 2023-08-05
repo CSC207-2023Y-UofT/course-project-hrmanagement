@@ -19,6 +19,7 @@ public class ManagerTimeOff {
     Label end;
     Label name;
     Label id;
+    Label dateFormat;
     TextField nametext;
     TextField idtext;
     TextField starting;
@@ -38,6 +39,10 @@ public class ManagerTimeOff {
 
         deny = new Button();
         deny.createButtonWithIcon(frame.getJFrame(), "Deny", 150, 225, 100, 20);
+
+        dateFormat = new Label();
+        dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
+                "Date in dd/mm/yyyy:");
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");
@@ -64,7 +69,7 @@ public class ManagerTimeOff {
         ending.createTextField(frame.getJFrame(), 175,200,90,20);
 
         hist = new Label();
-        File data = new File("src/main/java/UI/Database.txt");
+        File data = new File("data/Database.txt");
         StringBuilder s = new StringBuilder("<html>");
         try {
             BufferedReader in = new BufferedReader(new FileReader(data));
@@ -119,10 +124,10 @@ public class ManagerTimeOff {
                         counter++;
                     }
                     in.close();
-                    FileWriter out = new FileWriter("src/main/java/UI/Database.txt");
+                    FileWriter out = new FileWriter("data/Database.txt");
                     out.write("");
                     out.close();
-                    out = new FileWriter("src/main/java/UI/Database.txt", true);
+                    out = new FileWriter("data/Database.txt", true);
                     int var = 0;
                     while (var < counter){
                         out.write(database[var][0] + "," + database[var][1] + "," + database[var][2]
@@ -165,10 +170,10 @@ public class ManagerTimeOff {
                         counter++;
                     }
                     in.close();
-                    FileWriter out = new FileWriter("src/main/java/UI/Database.txt");
+                    FileWriter out = new FileWriter("data/Database.txt");
                     out.write("");
                     out.close();
-                    out = new FileWriter("src/main/java/UI/Database.txt", true);
+                    out = new FileWriter("data/Database.txt", true);
                     int var = 0;
                     while (var < counter){
                         out.write(database[var][0] + "," + database[var][1] + "," + database[var][2]

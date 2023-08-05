@@ -13,8 +13,6 @@ public class Employee extends User{
     public Employee(String username, String password, double wage) {
         super(username, password);
         this.wage = wage;
-
-
     };
 
     /**
@@ -23,10 +21,4 @@ public class Employee extends User{
      */
     public double getWage() {
         return wage;
-
     }
-  
-  public double getWage() {
-    return wage;
-  }
-}

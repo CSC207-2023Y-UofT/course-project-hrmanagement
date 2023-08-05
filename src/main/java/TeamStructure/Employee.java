@@ -1,5 +1,8 @@
 package TeamStructure;
 
+/**
+ * An employee of the team. Has a wage. Can create availability or create time off requests.
+ */
 public class Employee extends User{
     private double wage;
 
@@ -9,6 +12,10 @@ public class Employee extends User{
         this.wage = wage;
     };
 
+    /**
+     * Returns the Employee's Wage rate.
+     * @return wage
+     */
     public double getWage() {
         return wage;
     }

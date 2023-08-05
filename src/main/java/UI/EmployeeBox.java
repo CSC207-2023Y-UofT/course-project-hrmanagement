@@ -43,7 +43,6 @@ public class EmployeeBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new EmployeeForm().setVisible(true);
-                frame.getJFrame().dispose();
             }
         });
 

@@ -22,6 +22,6 @@ public interface PayrollConstant {
     public static final double EMPLOYEE_HOURLY_RATE = 40;
     public static final double MINIMUM_HOURLY_RATE = 15;
 
-    public static boolean READ_DATA_FROM_DB = false;  // true means reading from mysql
+    public static boolean READ_DATA_FROM_DB = true;  // true means reading from mysql
 
 }

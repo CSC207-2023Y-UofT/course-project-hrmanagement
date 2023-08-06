@@ -1,9 +1,13 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import Schedule.*;
 
 /**
  * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
@@ -38,11 +42,32 @@ public class ManagerPortalBox {
         viewTimeOffRequests = new Button();
         viewTimeOffRequests.createButtonWithIcon(frame.getJFrame(), "View TimeOff Requests", 50, 120, 200, 50);
 
-        // action when signUp button is clicked
+        // action when view schedule button is clicked
         viewSchedule.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeForm().setVisible(true);
+
+                //generate schedule
+                Schedule schedule = null;
+                try {
+                    schedule = ScheduleGenerator.generateSchedule();
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(frame.getJFrame(),
+                            "Invalid date format in database. Please try again.",
+                            "Date Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+                assert schedule != null;
+                String scheduleStr = schedule.toString();
+
+                //call information box with schedule text
+                frame = new MyJFrame();
+                JOptionPane.showMessageDialog(frame.getJFrame(),
+                        scheduleStr,
+                        "Schedule",
+                        JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
 

@@ -19,6 +19,7 @@ public class EmployeeTimeOff {
     Label end;
     Label name;
     Label id;
+    Label dateFormat;
     TextField nametext;
     TextField idtext;
     TextField starting;
@@ -33,6 +34,10 @@ public class EmployeeTimeOff {
 
         request = new Button();
         request.createButtonWithIcon(frame.getJFrame(), "Request", 50, 225, 200, 20);
+
+        dateFormat = new Label();
+        dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
+                "Date in dd/MM/yyyy:");
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");
@@ -59,7 +64,7 @@ public class EmployeeTimeOff {
         ending.createTextField(frame.getJFrame(), 175,200,90,20);
 
         hist = new Label();
-        File data = new File("src/main/java/UI/Database.txt");
+        File data = new File("data/Database.txt");
         StringBuilder s = new StringBuilder("<html>");
         try {
             BufferedReader in = new BufferedReader(new FileReader(data));
@@ -90,7 +95,7 @@ public class EmployeeTimeOff {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileWriter out = new FileWriter("src/main/java/UI/Database.txt", true);
+                    FileWriter out = new FileWriter("data/Database.txt", true);
                     out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
                             + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");
                     out.close();

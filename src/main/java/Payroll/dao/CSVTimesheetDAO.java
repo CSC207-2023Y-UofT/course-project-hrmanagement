@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Concrete implementation for reading and loading from timesheet csv file
+ */
 public class CSVTimesheetDAO implements TimesheetDAO {
     private final String filepath;
 
@@ -15,6 +18,12 @@ public class CSVTimesheetDAO implements TimesheetDAO {
         this.filepath = filepath;
     }
 
+    /**
+     * Loads timesheet information to hashmap
+     * reads csv file and create TimesheetEntity object for each row
+     * return hasmap with employee's full name as key and TimesheetEntity object as value
+     * @return timesheetMap hashmap
+     */
     public Map<String, TimesheetEntity> loadTimesheetToMap() {
         Map<String, TimesheetEntity> timesheetMap = new HashMap<>();
 

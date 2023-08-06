@@ -14,12 +14,22 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
     private final String dbUser;
     private final String dbPassword;
 
+    /**
+     * constructor, takes information required to connect to mysql database
+     * @param dbUrl database url
+     * @param dbUser user
+     * @param dbPassword password
+     */
     public MySQLTimesheetDAO(String dbUrl, String dbUser, String dbPassword) {
         this.dbUrl = dbUrl;
         this.dbUser = dbUser;
         this.dbPassword = dbPassword;
     }
 
+    /**
+     * Retrieves all timesheet records, stores in hashmap
+     * @return Hashmap of timesheet information mapping employee name to TimeSheetEntity object
+     */
     public  Map<String, TimesheetEntity> loadTimesheetToMap() {
 
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword)) {
@@ -41,6 +51,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
                     String startDate = resultSet.getString("STARTDATE");
                     String endDate = resultSet.getString("ENDDATE");
 
+                    // create new timesheet entity
                     TimesheetEntity timesheet = new TimesheetEntity();
                     timesheet.setEmployeeId(employeeId);
                     timesheet.setFirstName(firstName);

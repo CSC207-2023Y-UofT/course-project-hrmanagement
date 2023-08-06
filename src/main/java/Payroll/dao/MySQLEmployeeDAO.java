@@ -6,18 +6,34 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * concrete implementation of employeeDAO
+ * Access and manage employee data from MYSQL database
+ * Uses JDBC to connect to MYSQL database
+ */
 public class MySQLEmployeeDAO implements EmployeeDAO {
     // JDBC connection parameters
     private final String dbUrl;
     private final String dbUser;
     private final String dbPassword;
 
+    /**
+     * constructor, takes information required to connect to mysql database
+     * @param dbUrl database url
+     * @param dbUser user
+     * @param dbPassword password
+     */
     public MySQLEmployeeDAO(String dbUrl, String dbUser, String dbPassword) {
         this.dbUrl = dbUrl;
         this.dbUser = dbUser;
         this.dbPassword = dbPassword;
     }
 
+    /**
+     * retrieves employee information from database based on id
+     * @param id employee's id
+     * @return EmployeeEntity object
+     */
     @Override
     public EmployeeEntity getEmployeeById(int id) {
         EmployeeEntity employee = null;
@@ -44,6 +60,10 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         return employee;
     }
 
+    /**
+     * Retrieves all employee records from database
+     * @return List of EmployeeEntity objects
+     */
     @Override
     public List<EmployeeEntity> getAllEmployees() {
         List<EmployeeEntity> employees = new ArrayList<>();
@@ -69,6 +89,11 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         return employees;
     }
 
+    /**
+     * Retrieves all employee records and stores them in 2D array
+     * 2D array format used for GUI components
+     * @return 2D array of employee information
+     */
     @Override
     public Object[][] loadEmployeesTo2DArray() {
 
@@ -107,6 +132,10 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         return null;
     }
 
+    /**
+     * Adds new employee record to databased based on EmployeeEntity object
+     * @param employee EmployeeEntity object
+     */
     @Override
     public void addEmployee(EmployeeEntity employee) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -123,6 +152,10 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
         }
     }
 
+    /**
+     * Updates existing employee record
+     * @param employee EmployeeEntity object
+     */
     @Override
     public void updateEmployee(EmployeeEntity employee) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);

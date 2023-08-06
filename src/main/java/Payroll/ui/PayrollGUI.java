@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
+/**
+ * Swing-based GUI for payroll feature
+ */
 public class PayrollGUI extends JFrame {
     private JTable employeeTable;
     private JButton calculateButton;
@@ -208,6 +211,10 @@ public class PayrollGUI extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Determines which row (which employee) is currently selected in table
+     * @return row index
+     */
     private int getSelectedEmployeeRow() {
         for (int i = 0; i < employeeTable.getRowCount(); i++) {
             boolean isSelected = (boolean) employeeTable.getValueAt(i, 0);

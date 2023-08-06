@@ -1,5 +1,8 @@
 package UI;
 
+import GUILogin.EmployeeForm;
+import GUILogin.EmployeeSignIn;
+import Payroll.PayrollMain;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +21,7 @@ import Schedule.*;
 public class ManagerPortalBox {
     Button viewSchedule;
     Button viewTimeOffRequests;
+    Button viewPayrollCalculator;
     MyJFrame frame;
     Panel panel;
 
@@ -36,13 +40,19 @@ public class ManagerPortalBox {
 
         // create button for signup
         viewSchedule = new Button();
-        viewSchedule.createButtonWithIcon(frame.getJFrame(), "View Scehdule", 50, 50, 200, 50);
+        viewSchedule.createButtonWithIcon(frame.getJFrame(), "View Schedule", 50, 50, 200, 50);
 
         // create button for login
         viewTimeOffRequests = new Button();
         viewTimeOffRequests.createButtonWithIcon(frame.getJFrame(), "View TimeOff Requests", 50, 120, 200, 50);
 
+
+        // create button for payroll calculator
+        viewPayrollCalculator = new Button();
+        viewPayrollCalculator.createButtonWithIcon(frame.getJFrame(), "View Payroll Calculator", 50, 190, 200, 50);
+
         // action when view schedule button is clicked
+
         viewSchedule.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,6 +87,16 @@ public class ManagerPortalBox {
             public void actionPerformed(ActionEvent e) {
 //                new EmployeeSignIn().setVisible(true);
                 new ManagerTimeOff().CreateManagerTimeOff();
+            }
+        });
+
+        // Action when "View Payroll Calculator" button is clicked
+        viewPayrollCalculator.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Open the Payroll Calculator GUI
+                PayrollMain payrollMain = new PayrollMain();
+                payrollMain.main(new String[0]);
             }
         });
 

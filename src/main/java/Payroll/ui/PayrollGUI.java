@@ -1,4 +1,7 @@
-package Payroll;
+package Payroll.ui;
+
+import Payroll.usecase.PayrollCalculator;
+import Payroll.entity.TimesheetEntity;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -8,9 +11,6 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class PayrollGUI extends JFrame {
@@ -41,7 +41,7 @@ public class PayrollGUI extends JFrame {
     public void run() {
 
         // Set Frame properties
-        setTitle("Employee Salary Calculator");
+        setTitle("Payroll Calculator");
         setSize(800, 500); // Set the width and height of the frame
         setPreferredSize(new Dimension(800, 500)); // Set the preferred size of the frame
         setLayout(new BorderLayout());
@@ -107,7 +107,6 @@ public class PayrollGUI extends JFrame {
 
                 return checkBox;
             }
-
         });
 
         // Indent the content of each column
@@ -135,6 +134,9 @@ public class PayrollGUI extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
+        /**
+         * load employee data when employee's row is selected
+         */
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -146,9 +148,11 @@ public class PayrollGUI extends JFrame {
                     String firstName = (String) employeeTable.getValueAt(selectedRow, 3);
                     String role = (String) employeeTable.getValueAt(selectedRow, 6);
                     String employName = firstName + " " + lastName;
-                    String worksheetData[] = showInputDialog(employName);
 
-                    // Cancel button is clicked.
+                    TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
+                    String[] worksheetData = timesheetWindow.showInputDialog(employName);
+
+                    // if cancel button is clicked.
                     if (worksheetData == null)
                         return;
 
@@ -157,14 +161,13 @@ public class PayrollGUI extends JFrame {
                     double salary = payrollCalculator.calculateSalary(role, worksheetData);
 
                     String salaryMessage =
-                              "Employee ID: " + employeeId + "\n"
-                            + "Name: " + firstName + " " + lastName + "\n"
-                            + "Role: " + role + "\n"
-                            + "Start Date: " + worksheetData[0] + "\n"
-                            + "End Date: " + worksheetData[1] + "\n"
-                            + "Salary: " + "$" + salary + "\n"
-                            + "\n";
-
+                            "Employee ID: " + employeeId + "\n"
+                                    + "Name: " + firstName + " " + lastName + "\n"
+                                    + "Role: " + role + "\n"
+                                    + "Start Date: " + worksheetData[0] + "\n"
+                                    + "End Date: " + worksheetData[1] + "\n"
+                                    + "Salary: " + "$" + salary + "\n"
+                                    + "\n";
 
                     // Display the salary calculation result in a message dialog
                     JOptionPane.showMessageDialog(PayrollGUI.this,
@@ -214,141 +217,4 @@ public class PayrollGUI extends JFrame {
         }
         return -1;
     }
-
-    // Method to show the input dialog
-    private String[] showInputDialog(String employeeName) {
-        JPanel panel = new JPanel(new GridLayout(6, 2));
-
-        // Set start date.
-        String strStartDate = timesheetMap.get(employeeName).getStartDate();
-        SpinnerDateModel startDateSpinnerDateModel = null;
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date startDate = dateFormat.parse(strStartDate);
-            // Create a new SpinnerDateModel with the parsed date
-            startDateSpinnerDateModel = new SpinnerDateModel(startDate, null, null, java.util.Calendar.DAY_OF_MONTH);
-
-        } catch (ParseException e) {
-            System.err.println("Error parsing date: " + e.getMessage());
-            startDateSpinnerDateModel = new SpinnerDateModel();
-        }
-
-        // Set end date.
-        String strEndDate = timesheetMap.get(employeeName).getEndDate();
-        SpinnerDateModel endDateSpinnerDateModel = null;
-        try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date endDate = dateFormat.parse(strEndDate);
-            // Create a new SpinnerDateModel with the parsed date
-            endDateSpinnerDateModel = new SpinnerDateModel(endDate, null, null, java.util.Calendar.DAY_OF_MONTH);
-
-        } catch (ParseException e) {
-            System.err.println("Error parsing date: " + e.getMessage());
-            endDateSpinnerDateModel = new SpinnerDateModel();
-        }
-
-
-
-        JLabel employeeNameLabel = new JLabel("Employee Name:");
-        employeeNameLabel.setFont(employeeNameLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JLabel employeeNameValueLabel = new JLabel(employeeName);;
-
-        JLabel startDateLabel = new JLabel("Start Date:");
-        startDateLabel.setFont(startDateLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JSpinner startDateSpinner = new JSpinner(startDateSpinnerDateModel);
-        JSpinner.DateEditor startDateEditor = new JSpinner.DateEditor(startDateSpinner, "MM/dd/yyyy");
-        startDateSpinner.setEditor(startDateEditor);
-
-        JLabel endDateLabel = new JLabel("End Date:");
-        endDateLabel.setFont(endDateLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JSpinner endDateSpinner = new JSpinner(endDateSpinnerDateModel);
-        JSpinner.DateEditor endDateEditor = new JSpinner.DateEditor(endDateSpinner, "MM/dd/yyyy");
-        endDateSpinner.setEditor(endDateEditor);
-
-        JLabel hoursPerDayLabel = new JLabel("Hours Per Day:");
-        hoursPerDayLabel.setFont(hoursPerDayLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JTextField hoursPerDayField = new JTextField(10);
-        hoursPerDayField.setFont(hoursPerDayLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        hoursPerDayField.setText(String.valueOf(PayrollConstant.HoursPerDay));
-
-        JLabel bonusLabel = new JLabel("Bonus:");
-        bonusLabel.setFont(bonusLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JTextField bonusField = new JTextField(10);
-        bonusField.setFont(bonusLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        bonusField.setText(String.valueOf(PayrollConstant.DefaultBonus));
-
-        JLabel blankLabel = new JLabel("");
-
-        panel.add(employeeNameLabel);
-        panel.add(employeeNameValueLabel);
-
-        panel.add(startDateLabel);
-        panel.add(startDateSpinner);
-        panel.add(endDateLabel);
-        panel.add(endDateSpinner);
-        panel.add(hoursPerDayLabel);
-        panel.add(hoursPerDayField);
-        panel.add(bonusLabel);
-        panel.add(bonusField);
-        panel.add(blankLabel);
-
-        // Set the preferred width and height for the input dialog
-        panel.setPreferredSize(new Dimension(200, 100));
-
-        while (true) {
-            Object[] options = {"Calculate", "Cancel"};
-            int result = JOptionPane.showOptionDialog(PayrollGUI.this, panel,
-                    "Timesheet", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-
-            if (result == JOptionPane.OK_OPTION) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                String startDateStr = dateFormat.format(startDateSpinner.getValue());
-                String endDateStr = dateFormat.format(endDateSpinner.getValue());
-                String hoursPerDay = hoursPerDayField.getText();
-                String bonus = bonusField.getText();
-
-                // Perform date validation
-                if (!DataValidator.isValidDate(startDateStr) || !DataValidator.isValidDate(endDateStr)) {
-                    JOptionPane.showMessageDialog(PayrollGUI.this,
-                            "Invalid date format. Please use the format MM/dd/yyyy.",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                else if (!DataValidator.isValidDouble(hoursPerDay))
-                {
-                    JOptionPane.showMessageDialog(PayrollGUI.this,
-                            "Invalid number.  A sample of hours per day is: 7.5",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                else if (!DataValidator.isValidDouble(bonus))
-                {
-                    JOptionPane.showMessageDialog(PayrollGUI.this,
-                            "Invalid bonus value. ",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                else {
-                    // Convert dates to Date objects for comparison
-                    Date startDate = DataValidator.parseDate(startDateStr);
-                    Date endDate = DataValidator.parseDate(endDateStr);
-
-                    // Check if the End Date is after the Start Date
-                    if (endDate.before(startDate)) {
-                        JOptionPane.showMessageDialog(PayrollGUI.this,
-                                "End Date must be after Start Date.",
-                                "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        return new String[]{startDateStr, endDateStr, hoursPerDay, bonus};
-                    }
-                }
-            } else {
-                // Return null if the user cancels the input
-                return null;
-            }
-        }
-    }
-
 }
-

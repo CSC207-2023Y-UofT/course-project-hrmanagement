@@ -1,6 +1,10 @@
 package Schedule;
 
 import Payroll.*;
+import Payroll.dao.CSVEmployeeDAO;
+import Payroll.dao.CSVTimesheetDAO;
+import Payroll.dao.TimesheetDAO;
+import Payroll.entity.TimesheetEntity;
 import TeamStructure.*;
 
 import java.io.BufferedReader;
@@ -146,7 +150,8 @@ public class Schedule {
         Map<List<String>, List<LocalDate>> employeeDates = new HashMap<>();
 
         String filePath = "./data/Timesheets.csv";
-        Map<String, TimesheetEntity> timesheetMap = CSVDataReader.loadTimesheetsFromCSV(filePath);
+        TimesheetDAO timesheetDAO = new CSVTimesheetDAO(filePath);
+        Map<String, TimesheetEntity> timesheetMap = timesheetDAO.loadTimesheetToMap();
 
         for (HashMap.Entry<String, TimesheetEntity> set : timesheetMap.entrySet()){
             String employeeId  = set.getValue().getEmployeeId();

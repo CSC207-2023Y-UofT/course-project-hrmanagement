@@ -4,10 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Payroll.PayrollConstant;
-import Payroll.PayrollCalculator;
+import Payroll.usecase.PayrollCalculator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.ParseException;
 
 public class PayrollCalculatorTest {
 
@@ -15,7 +14,7 @@ public class PayrollCalculatorTest {
 
     @BeforeEach
     public void setUp() {
-        payrollCalculator = new PayrollCalculator();
+        payrollCalculator = PayrollCalculator.getInstance();
     }
 
     @Test

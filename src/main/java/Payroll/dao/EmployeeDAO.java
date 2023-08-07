@@ -4,6 +4,9 @@ import Payroll.entity.EmployeeEntity;
 
 import java.util.List;
 
+/**
+ * Interface to define methods to interact with datasource for timesheet data
+ */
 public interface EmployeeDAO
 {
     Object[][] loadEmployeesTo2DArray();

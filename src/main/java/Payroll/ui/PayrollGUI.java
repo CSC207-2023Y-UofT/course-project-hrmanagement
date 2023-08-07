@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * Swing-based GUI for payroll feature
+ * Interacts with PayrollCalculator and DAO classes to display employee & timesheet data
  */
 public class PayrollGUI extends JFrame {
     private JTable employeeTable;
@@ -41,6 +42,9 @@ public class PayrollGUI extends JFrame {
     public PayrollGUI() {
     }
 
+    /**
+     * Initialize and configure the JFrame with all of its components
+     */
     public void run() {
 
         // Set Frame properties
@@ -53,6 +57,7 @@ public class PayrollGUI extends JFrame {
 
         String[] columnNames = {"Select", "Employee Id", "Last Name", "First Name", "Address", "Phone Number", "Role"};
 
+        // TableModel customizes appearance of employee table in payroll
         DefaultTableModel tableModel = new DefaultTableModel(employees, columnNames) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -137,9 +142,8 @@ public class PayrollGUI extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
-        /**
-         * load employee data when employee's row is selected
-         */
+
+        // load employee data when employee's row is selected
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

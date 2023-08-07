@@ -12,12 +12,18 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Timesheet related UI components
+ * Timesheet related GUI components
+ * Displays a dialogue window to display / gather time-sheet related information from the user
  */
 public class TimesheetWindow {
     private Component parentComponent;
     private Map<String, TimesheetEntity> timesheetMap;
 
+    /**
+     * Constructor
+     * @param parentComponent jframe component
+     * @param timesheetMap map of timesheet data
+     */
     public TimesheetWindow(Component parentComponent, Map<String, TimesheetEntity> timesheetMap) {
         this.parentComponent = parentComponent;
         this.timesheetMap = timesheetMap;

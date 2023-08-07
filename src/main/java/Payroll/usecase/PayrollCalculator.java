@@ -10,14 +10,17 @@ import java.util.Date;
 
 /**
  * Use Case, the payroll calculation for contract workers
- * Implemented Singleton design pattern
+ * Implemented Singleton design pattern to provide single instance of payroll calculator
  */
 public class PayrollCalculator {
     private static PayrollCalculator instance;
     // Private constructor to prevent instantiation from other classes
     private PayrollCalculator() {}
 
-    // Public method to get the PayrollCalculator instance
+    /**
+     * public method to return a PayrollCalculator instance
+     * @return instance of PayrollCalculator
+     */
     public static PayrollCalculator getInstance() {
         // Lazy initialization - create the instance only when needed
         if (instance == null) {

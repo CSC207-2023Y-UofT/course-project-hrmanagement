@@ -24,17 +24,13 @@ public class PayrollMain
 
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run()
-            {
-                PayrollGUI payrollGUI = new PayrollGUI();
-                init(payrollGUI);
+        SwingUtilities.invokeLater(() -> {
+            PayrollGUI payrollGUI = new PayrollGUI();
+            init(payrollGUI);
 
-                // Display the payroll GUI.
-                payrollGUI.run();
-                payrollGUI.setVisible(true);
-            }
+            // Display the payroll GUI.
+            payrollGUI.run();
+            payrollGUI.setVisible(true);
         });
     }
 
@@ -60,20 +56,15 @@ public class PayrollMain
      * @return A 2D array containing the loaded employee data
      */
     private static Object[][] loadEmployeeData() {
-        Object[][]  employees = null;
+        Object[][]  employees;
+        EmployeeDAO employeeDAO;
         if (PayrollConstant.READ_DATA_FROM_DB) {
-            EmployeeDAO employeeDAO = new MySQLEmployeeDAO(jdbcUrl, username, password);
-
-            //employees = DBDataReader.loadEmployeesTo2DArray();
-            employees = employeeDAO.loadEmployeesTo2DArray();
+            employeeDAO = new MySQLEmployeeDAO(jdbcUrl, username, password);
         }
         else {
-            //Map<String, EmployeeEntity> employeeMap = CSVDataReader.loadEmployeesFromCSV(PayrollConstant.strPathToEmployeeFile);
-            //employees = CSVDataReader.convertEmployeeMapTo2DArray(employeeMap);
-
-            EmployeeDAO employeeDAO = new CSVEmployeeDAO(csv_employee_filepath);
-            employees = employeeDAO.loadEmployeesTo2DArray();
+            employeeDAO = new CSVEmployeeDAO(csv_employee_filepath);
         }
+        employees = employeeDAO.loadEmployeesTo2DArray();
         return employees;
     }
 
@@ -82,18 +73,18 @@ public class PayrollMain
      * @return A map of employee names to TimesheetEntity objects representing timesheet data.
      */
     private static Map<String, TimesheetEntity> loadTimesheetData() {
-        Map<String, TimesheetEntity> timesheetMap = null;
+        Map<String, TimesheetEntity> timesheetMap;
+        TimesheetDAO timesheetDAO;
         if (PayrollConstant.READ_DATA_FROM_DB)
         {
             //timesheetMap = DBDataReader.loadTimesheetsToMap();
-            TimesheetDAO timesheetDAO = new MySQLTimesheetDAO(jdbcUrl, username, password);
-            timesheetMap = timesheetDAO.loadTimesheetToMap();
+            timesheetDAO = new MySQLTimesheetDAO(jdbcUrl, username, password);
         }
         else {
             //timesheetMap = CSVDataReader.loadTimesheetsFromCSV(PayrollConstant.strPathToTimesheetFile);
-            TimesheetDAO timesheetDAO = new CSVTimesheetDAO(csv_timesheet_filepath);
-            timesheetMap = timesheetDAO.loadTimesheetToMap();
+            timesheetDAO = new CSVTimesheetDAO(csv_timesheet_filepath);
         }
+        timesheetMap = timesheetDAO.loadTimesheetToMap();
         return timesheetMap;
     }
 

@@ -19,11 +19,8 @@ public class DataValidator {
         dateFormat.setLenient(false);
         try {
             dateFormat.parse(dateStr);
+            return dateStr.length() == 10;
 
-            if (dateStr.length() != 10)
-                return false;
-
-            return true;
         } catch (ParseException e) {
             return false;
         }

@@ -21,7 +21,7 @@ public class CSVEmployeeDAO implements EmployeeDAO {
 
     /**
      * Takes employee hashmap
-     * convert to 2D array of employee information
+     * Convert to 2D array of employee information
      * @return 2D array of employee
      */
     @Override
@@ -53,8 +53,8 @@ public class CSVEmployeeDAO implements EmployeeDAO {
 
     /**
      * Reads CSV file and parses to extract employee attributes
-     * employee's full name is key in map
-     * employeeEntity object is the value in map
+     * Employee's full name is key in map
+     * EmployeeEntity object is the value in map
      * @return hashmap of employee information
      */
     private Map<String, EmployeeEntity> loadEmployeeToMap() {
@@ -62,7 +62,7 @@ public class CSVEmployeeDAO implements EmployeeDAO {
 
         try (BufferedReader br = new BufferedReader(new FileReader(this.filepath))) {
             // Read the header line to skip it
-            String headerLine = br.readLine();
+            br.readLine();
 
             String line;
             while ((line = br.readLine()) != null) {

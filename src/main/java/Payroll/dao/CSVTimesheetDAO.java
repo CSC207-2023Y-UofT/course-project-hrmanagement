@@ -20,8 +20,8 @@ public class CSVTimesheetDAO implements TimesheetDAO {
 
     /**
      * Loads timesheet information to hashmap
-     * reads csv file and create TimesheetEntity object for each row
-     * return hasmap with employee's full name as key and TimesheetEntity object as value
+     * Reads csv file and create TimesheetEntity object for each row
+     * Return hashmap with employee's full name as key and TimesheetEntity object as value
      * @return timesheetMap hashmap
      */
     public Map<String, TimesheetEntity> loadTimesheetToMap() {
@@ -30,7 +30,7 @@ public class CSVTimesheetDAO implements TimesheetDAO {
         //String filePath = PayrollConstant.strPathToTimesheetFile;
         try (BufferedReader br = new BufferedReader(new FileReader(this.filepath))) {
             // Read the header line to skip it
-            String headerLine = br.readLine();
+            br.readLine();
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -42,16 +42,7 @@ public class CSVTimesheetDAO implements TimesheetDAO {
                     String startDate = parts[3].trim();
                     String endDate = parts[4].trim();
 
-                    TimesheetEntity timesheet = new TimesheetEntity();
-                    timesheet.setEmployeeId(employeeId);
-                    timesheet.setFirstName(firstName);
-                    timesheet.setLastName(lastName);
-
-                    timesheet.setStartDate(startDate);
-                    timesheet.setEndDate(endDate);
-
-                    String employeeName = firstName + " " + lastName;
-                    timesheetMap.put(employeeName, timesheet);
+                    MySQLTimesheetDAO.createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate);
                 } else {
                     System.err.println("Invalid CSV format: " + line);
                 }

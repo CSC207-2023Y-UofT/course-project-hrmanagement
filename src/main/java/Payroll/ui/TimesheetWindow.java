@@ -16,12 +16,12 @@ import java.util.Map;
  * Displays a dialogue window to display / gather time-sheet related information from the user
  */
 public class TimesheetWindow {
-    private Component parentComponent;
-    private Map<String, TimesheetEntity> timesheetMap;
+    private final Component parentComponent;
+    private final Map<String, TimesheetEntity> timesheetMap;
 
     /**
      * Constructor
-     * @param parentComponent jframe component
+     * @param parentComponent JFrame component
      * @param timesheetMap map of timesheet data
      */
     public TimesheetWindow(Component parentComponent, Map<String, TimesheetEntity> timesheetMap) {
@@ -39,7 +39,7 @@ public class TimesheetWindow {
 
         // Set start date.
         String strStartDate = timesheetMap.get(employeeName).getStartDate();
-        SpinnerDateModel startDateSpinnerDateModel = null;
+        SpinnerDateModel startDateSpinnerDateModel;
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date startDate = dateFormat.parse(strStartDate);
@@ -53,7 +53,7 @@ public class TimesheetWindow {
 
         // Set end date.
         String strEndDate = timesheetMap.get(employeeName).getEndDate();
-        SpinnerDateModel endDateSpinnerDateModel = null;
+        SpinnerDateModel endDateSpinnerDateModel;
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date endDate = dateFormat.parse(strEndDate);
@@ -67,7 +67,7 @@ public class TimesheetWindow {
 
         JLabel employeeNameLabel = new JLabel("Employee Name:");
         employeeNameLabel.setFont(employeeNameLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JLabel employeeNameValueLabel = new JLabel(employeeName);;
+        JLabel employeeNameValueLabel = new JLabel(employeeName);
 
         JLabel startDateLabel = new JLabel("Start Date:");
         startDateLabel.setFont(startDateLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
@@ -150,6 +150,7 @@ public class TimesheetWindow {
                     Date endDate = DataValidator.parseDate(endDateStr);
 
                     // Check if the End Date is after the Start Date
+                    assert endDate != null;
                     if (endDate.before(startDate)) {
                         JOptionPane.showMessageDialog(parentComponent,
                                 "End Date must be after Start Date.",

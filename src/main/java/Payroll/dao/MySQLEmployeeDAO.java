@@ -18,7 +18,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     private final String dbPassword;
 
     /**
-     * constructor, takes information required to connect to mysql database
+     * Constructor, takes information required to connect to mysql database
      * @param dbUrl database url
      * @param dbUser user
      * @param dbPassword password
@@ -30,7 +30,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     }
 
     /**
-     * retrieves employee information from database based on id
+     * Retrieves employee information from database based on id
      * @param id employee's id
      * @return EmployeeEntity object
      */
@@ -43,7 +43,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     employee = new EmployeeEntity(
-                            new Integer(resultSet.getInt("EMPLOYEEID")).toString(),
+                            Integer.valueOf(resultSet.getInt("EMPLOYEEID")).toString(),
                             resultSet.getString("LASTNAME"),
                             resultSet.getString("FIRSTNAME"),
                             resultSet.getString("ADDRESS"),
@@ -72,7 +72,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
              ResultSet resultSet = statement.executeQuery("SELECT * FROM employees")) {
             while (resultSet.next()) {
                 EmployeeEntity employee = new EmployeeEntity(
-                        new Integer(resultSet.getInt("EMPLOYEEID")).toString(),
+                        Integer.valueOf(resultSet.getInt("EMPLOYEEID")).toString(),
                         resultSet.getString("LASTNAME"),
                         resultSet.getString("FIRSTNAME"),
                         resultSet.getString("ADDRESS"),
@@ -110,7 +110,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
                 while (resultSet.next()) {
                     Object[] row = new Object[7]; // Assuming 6 columns in the table
                     row[0] = false;     // The is for the Select column.
-                    row[1] = new Integer(resultSet.getInt("EMPLOYEEID")).toString();
+                    row[1] = Integer.valueOf(resultSet.getInt("EMPLOYEEID")).toString();
                     row[2] = resultSet.getString("LASTNAME");
                     row[3] = resultSet.getString("FIRSTNAME");
                     row[4] = resultSet.getString("ADDRESS");
@@ -140,7 +140,7 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
     public void addEmployee(EmployeeEntity employee) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement statement = connection.prepareStatement("INSERT INTO employees (id, name, email) VALUES (?, ?, ?)")) {
-            statement.setInt(1, new Integer(employee.getEmployeeId()));
+            statement.setInt(1, Integer.parseInt(employee.getEmployeeId()));
             statement.setString(2, employee.getLastName());
             statement.setString(3, employee.getFirstName());
             statement.setString(4, employee.getFirstName());
@@ -182,16 +182,5 @@ public class MySQLEmployeeDAO implements EmployeeDAO {
 
     @Override
     public void deleteEmployee(int id) {
-        /*
-        try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM employees WHERE id = ?")) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
-        */
     }
 }

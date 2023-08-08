@@ -135,6 +135,7 @@ public class ManagerTimeOff {
                         var++;
                     }
                     out.close();
+                    frame.getJFrame().dispose();
 
                 } catch (IOException exception) {
                     exception.printStackTrace();
@@ -181,6 +182,7 @@ public class ManagerTimeOff {
                         var++;
                     }
                     out.close();
+                    frame.getJFrame().dispose();
 
                 } catch (IOException exception) {
                     exception.printStackTrace();

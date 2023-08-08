@@ -85,7 +85,6 @@ public class ManagerPortalBox {
         viewTimeOffRequests.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeSignIn().setVisible(true);
                 new ManagerTimeOff().CreateManagerTimeOff();
             }
         });

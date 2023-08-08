@@ -40,7 +40,6 @@ public class EmployeePortalBox {
         chooseAvailibility.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeForm().setVisible(true);
             }
         });
 
@@ -48,7 +47,6 @@ public class EmployeePortalBox {
         requestTimeOff.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeSignIn().setVisible(true);
                 new EmployeeTimeOff().CreateEmployeeTimeOff();
             }
         });

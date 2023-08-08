@@ -14,6 +14,7 @@ public class EmployeeTimeOff {
     MyJFrame frame;
     Panel panel;
     Button request;
+    Button back;
     Label hist;
     Label start;
     Label end;
@@ -34,6 +35,9 @@ public class EmployeeTimeOff {
 
         request = new Button();
         request.createButtonWithIcon(frame.getJFrame(), "Request", 50, 225, 200, 20);
+
+        back = new Button();
+        back.createButtonWithIcon(frame.getJFrame(), "< Back to Employee Portal", 1, 1, 200, 20);
 
         dateFormat = new Label();
         dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
@@ -99,9 +103,17 @@ public class EmployeeTimeOff {
                     out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
                             + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");
                     out.close();
+                    frame.getJFrame().dispose();
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
+
+        back.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getJFrame().dispose();
             }
         });
 

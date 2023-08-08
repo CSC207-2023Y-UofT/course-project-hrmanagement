@@ -32,8 +32,8 @@ The HR Management System project is a java software solution designed to streaml
 ## Usage
 1. Launch the application.
 2. Select user role: either manager or employee
-3. In manager portal, can approve time-off requests, calculate salaries, and view schedules.
-4. In employee portal, can log in and request time-off. 
+3. In manager portal, managers can approve time-off requests, calculate salaries, and view schedules.
+4. In employee portal, employees can log in and request time-off. 
 
 
 # Features

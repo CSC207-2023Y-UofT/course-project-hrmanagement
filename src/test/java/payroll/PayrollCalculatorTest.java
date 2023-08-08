@@ -1,4 +1,4 @@
-package tutorial;
+package payroll;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,15 +8,26 @@ import Payroll.usecase.PayrollCalculator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * Test class for the PayrollCalculator class.
+ * This class contains unit tests for various scenarios related to salary calculation
+ * and date calculations using the PayrollCalculator class.
+ */
 public class PayrollCalculatorTest {
 
     private PayrollCalculator payrollCalculator;
 
+    /**
+     * Initialize the PayrollCalculator instance before each test.
+     */
     @BeforeEach
     public void setUp() {
         payrollCalculator = PayrollCalculator.getInstance();
     }
 
+    /**
+     * Test the calculateSalary method for a Manager role.
+     */
     @Test
     public void testCalculateSalaryForManager() {
         String role = "Manager";
@@ -26,6 +37,9 @@ public class PayrollCalculatorTest {
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
+    /**
+     * Test the calculateSalary method for an Employee role.
+     */
     @Test
     public void testCalculateSalaryForEmployee() {
         String role = "Employee";
@@ -35,6 +49,9 @@ public class PayrollCalculatorTest {
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
+    /**
+     * Test the calculateSalary method for an unknown role using default salary
+     */
     @Test
     public void testCalculateSalaryForUnknownRole() {
         String role = "UnknownRole";
@@ -44,6 +61,9 @@ public class PayrollCalculatorTest {
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
+    /**
+     * Test salary for no bonus
+     */
     @Test
     public void testCalculateSalaryForZeroBonus() {
         String role = "Employee";
@@ -53,6 +73,9 @@ public class PayrollCalculatorTest {
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
+    /**
+     * Test calculateTotalDays method
+     */
     @Test
     public void testCalculateTotalDays() {
         String startDateStr = "07/01/2023";
@@ -62,7 +85,12 @@ public class PayrollCalculatorTest {
         assertEquals(expectedTotalDays, actualTotalDays, 0.001);
     }
 
-    // Helper method to invoke the protected calculateSalary method using reflection
+    /**
+     * Helper method to invoke the protected calculateSalary method using reflection.
+     * @param role The employee's role.
+     * @param timesheetData The timesheet data.
+     * @return The calculated salary.
+     */
     private double invokeCalculateSalary(String role, String[] timesheetData) {
         try {
             Method method = PayrollCalculator.class.getDeclaredMethod("calculateSalary", String.class, String[].class);
@@ -74,7 +102,14 @@ public class PayrollCalculatorTest {
         }
     }
 
-    // Helper method to invoke the private calculateTotalDays method using reflection
+    /**
+     * Helper method to invoke the private calculateTotalDays method using reflection.
+     * This method is used to test the private calculateTotalDays method within the PayrollCalculator class.
+     *
+     * @param startDateStr The start date in the format "MM/dd/yyyy".
+     * @param endDateStr The end date in the format "MM/dd/yyyy".
+     * @return The calculated total days between the start and end dates.
+     */
     private double invokeCalculateTotalDays(String startDateStr, String endDateStr) {
         try {
             Method method = PayrollCalculator.class.getDeclaredMethod("calculateTotalDays", String.class, String.class);

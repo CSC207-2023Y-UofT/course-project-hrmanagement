@@ -15,7 +15,7 @@ A User of the system may be a manager or an employee. An employee can set their 
 
 
 ## Project Overview
-The application is launched from the HRManagement.java class. The application launches into a portal (positionBox.java) that allows the user to select their position in the team. From here, they may either select employee or manager using the buttons. If they select manager, it takes them to a sign-up page directly (ManagerBox.java). Here they log in with an existing username and password, and this takes them to the manager portal where they have access to the manager functionalities. If, in the selection box, they choose employee, this takes them to another selection page which allows for either signup or login. From here, they may either select sign-up which takes them to an employee form, allowing them to enter personal information and create an employee account. Otherwise, they can select login, and log in to their employee account, leading to the employee portal which gives access to the employee functionalities.
+The HR Management System project is a java software solution designed to streamline and automate various human resources processes within an organization. This project aims to simplify HR operations, improve efficiency, and enhance communication between HR personnel, employees, and management. The project provides a user-friendly interface for managing HR-related tasks and information.
 
 ## Overall Design
 
@@ -32,8 +32,8 @@ The application is launched from the HRManagement.java class. The application la
 ## Usage
 1. Launch the application.
 2. Select user role: either manager or employee
-3. In manager portal, can approve time-off requests, calculate salaries, and view schedules.
-4. In employee portal, can log in and request time-off. 
+3. In manager portal, managers can approve time-off requests, calculate salaries, and view schedules.
+4. In employee portal, employees can log in and request time-off. 
 
 
 # Features
@@ -49,7 +49,7 @@ The Login Feature is designed to allow a manager or employee login to their resp
 
 ### Payroll Feature
 
-The Payroll Feature is a comprehensive tool designed to streamline salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and accurate computation of salaries for both employees and managers. 
+The Payroll Feature is a feature within the application designed to streamline salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and accurate computation of salaries for both employees and managers. 
 
 #### Key Functionalities
 
@@ -60,10 +60,10 @@ The core functionality of payroll is to calculate salaries for employees and man
 It uses role-specific hourly rates and includes an option for adding bonuses. 
 
 ##### Employee Data Management
-The Payroll Feature seamlessly integrates with the employee database. It efficiently extracts essential employee information, including roles and other relevant data, essential for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
+The Payroll Feature integrates with the employee database. It extracts employee information, including roles and other relevant data, that are essential for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
 
 ##### Timesheet Integration
-Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. These customizable timesheets enable precise salary computations that reflect real-world work schedules.
+Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enable precise salary computations.
 
 ##### Data Validation
 To maintain the integrity of calculations and prevent erroneous inputs, the Payroll Feature incorporates robust data validation mechanisms. These mechanisms verify the correctness of input data, including date formats, numeric values, and more. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
@@ -72,13 +72,13 @@ To maintain the integrity of calculations and prevent erroneous inputs, the Payr
 The Payroll Feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
 
 ##### Graphical User Interface
-The Payroll Feature offers an intuitive and visually appealing GUI. This GUI facilitates effortless interaction with the salary calculation process. Users can easily input timesheet adjustments, select employees, and initiate salary calculations, all through a streamlined and user-friendly interface.
+The Payroll Feature offers an intuitive and visually appealing GUI. This GUI facilitates effortless interaction with the salary calculation process. Users can easily select employees, adjust timesheet information, and initiate salary calculations, all through a streamlined and user-friendly interface.
 
 #### GUI Functionality
-The graphical interface (GUI) of the Payroll Feature provides an array of functionalities that enhance user experience and streamline salary calculations:
+The graphical interface (GUI) of the Payroll Feature provides an array of functionalities that enhance user experience and streamline salary calculations. It is accessed through the manager portal.
 
-**Employee List**: The GUI displays a list of employees, presenting their names and key information.
-**Employee Selection**: Users can select individual employees from the list for whom they want to calculate salaries.
+**Employee List**: The GUI displays a list of employees, presenting their id, names and key information.
+**Employee Selection**: Manager can select individual employees from the list for whom they want to calculate salaries.
 
 ![Payroll Calculator Menu](./images/payroll_gui.png)
 
@@ -97,9 +97,9 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 ![Invalid bonus gui](./images/invalid_bonus_gui.png)
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
-This combination of functionalities empowers users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
+This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
 
-The Payroll Feature embodies an array of functionalities and database options, which collectively result in a robust and user-friendly payroll management solution.
+The Payroll Feature has a variety of functionalities and database options, which collectively result in a robust and user-friendly payroll management solution.
 
 
 ### Schedule Feature

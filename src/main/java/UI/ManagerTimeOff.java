@@ -183,7 +183,6 @@ public class ManagerTimeOff {
                     }
                     out.close();
                     frame.getJFrame().dispose();
-
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }

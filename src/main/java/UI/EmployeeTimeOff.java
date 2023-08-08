@@ -113,7 +113,7 @@ public class EmployeeTimeOff {
         back.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.getJFrame().dispose();
+                frame.getJFrame().dispose(); // although it just closes, send back since terminal is still open
             }
         });
 

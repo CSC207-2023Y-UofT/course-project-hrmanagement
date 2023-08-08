@@ -50,7 +50,6 @@ public class EmployeeBox {
         login.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new EmployeeSignIn().setVisible(true);
                 new EmployeeSignInBox().createEmployeeBox();
                 frame.getJFrame().dispose();
             }

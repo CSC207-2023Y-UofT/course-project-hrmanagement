@@ -40,6 +40,11 @@ The application is launched from the HRManagement.java class. The application la
 
 ### User Login Feature
 
+The Login Feature is designed to allow a manager or employee login to their respective portals.
+
+#### Key Functionalities
+
+
 ### Time-Off Feature
 
 ### Payroll Feature

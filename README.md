@@ -50,7 +50,7 @@ The graphical interface (GUI) of the Payroll Feature provides an array of functi
 ![Payroll Calculator Menu](./images/payroll_gui.png)
 
 **Timesheet Adjustment**: Once an employee is selected, the interface allows adjustments to timesheet details such as start date, end date, hours per day, and bonus amount.
-**Calculate Button**: Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
+Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
 
 ![Timesheet GUI](./images/timesheetgui.png)
 
@@ -60,9 +60,9 @@ The graphical interface (GUI) of the Payroll Feature provides an array of functi
 
 **Data Validation Error Messages**: Error messages display if users input invalid data, which guides them towards correcting the inputs.
 
-![Date error](./images/date_error_gui.png)
-![Invalid bonus](./images/invalid_bonus_gui.png)
-![Invalid hours](./images/invalid_hours_gui.png)
+![Date error gui](./images/date_error_gui.png)
+![Invalid bonus gui](./images/invalid_bonus_gui.png)
+![Invalid hours gui](./images/invalid_hours_gui.png)
 
 This combination of functionalities empowers users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
 

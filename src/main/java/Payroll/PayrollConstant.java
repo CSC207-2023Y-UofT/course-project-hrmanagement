@@ -1,27 +1,31 @@
 package Payroll;
 
 /**
- * Constants used in payroll feature
+ * Interface defining constants used in payroll feature
  */
 public interface PayrollConstant {
 
-    public static String db_jdbcUrl = "jdbc:mysql://localhost:3306/employees";
-    public static String db_username = "root";
-    public static String db_password = "password";
+    // mysql database connection details, used in main class
+    String db_jdbcUrl = "jdbc:mysql://localhost:3306/employees";
+    String db_username = "root";
+    String db_password = "password";
 
-    public static final String strPathToEmployeeFile = "./data/Employees.csv";
-    public static final String strPathToTimesheetFile = "./data/Timesheets.csv";
+    // csv database details, used in main
+    String strPathToEmployeeFile = "./data/Employees.csv";
+    String strPathToTimesheetFile = "./data/Timesheets.csv";
 
-    public static final double HoursPerDay = 7.5;
-    public static final double DefaultBonus = 100.00;
+    // default values for hours per day and bonus
+    double HoursPerDay = 7.5;
+    double DefaultBonus = 100.00;
 
-    public static final String ROLE_MANAGER = "Manager";
-    public static final String ROLE_EMPLOYEE = "Employee";
+    // Roles
+    String ROLE_MANAGER = "Manager";
+    String ROLE_EMPLOYEE = "Employee";
 
-    public static final double MANAGER_HOURLY_RATE = 50;
-    public static final double EMPLOYEE_HOURLY_RATE = 40;
-    public static final double MINIMUM_HOURLY_RATE = 15;
+    double MANAGER_HOURLY_RATE = 50;
+    double EMPLOYEE_HOURLY_RATE = 40;
+    double MINIMUM_HOURLY_RATE = 15;
 
-    public static boolean READ_DATA_FROM_DB = true;  // true means reading from mysql
+    boolean READ_DATA_FROM_DB = true;  // true means reading from mysql
 
 }

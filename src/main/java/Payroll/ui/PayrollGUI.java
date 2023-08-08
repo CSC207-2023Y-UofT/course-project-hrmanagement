@@ -1,7 +1,7 @@
 package Payroll.ui;
 
-import Payroll.usecase.PayrollCalculator;
 import Payroll.entity.TimesheetEntity;
+import Payroll.usecase.PayrollCalculator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -9,15 +9,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Map;
 
+/**
+ * Swing-based GUI for payroll feature
+ * Interacts with PayrollCalculator and DAO classes to display employee & timesheet data
+ */
 public class PayrollGUI extends JFrame {
     private JTable employeeTable;
-    private JButton calculateButton;
-    private JButton closeButton;
-    private JMenuItem exitMenuItem;
 
     PayrollCalculator payrollCalculator;
     Object[][] employees;
@@ -38,6 +37,9 @@ public class PayrollGUI extends JFrame {
     public PayrollGUI() {
     }
 
+    /**
+     * Initialize and configure the JFrame with all of its components
+     */
     public void run() {
 
         // Set Frame properties
@@ -50,6 +52,7 @@ public class PayrollGUI extends JFrame {
 
         String[] columnNames = {"Select", "Employee Id", "Last Name", "First Name", "Address", "Phone Number", "Role"};
 
+        // TableModel customizes appearance of employee table in payroll
         DefaultTableModel tableModel = new DefaultTableModel(employees, columnNames) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -127,87 +130,77 @@ public class PayrollGUI extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        calculateButton = new JButton("Calculate Salary");
-        closeButton = new JButton("Close");
+        JButton calculateButton = new JButton("Calculate Salary"); // calculate salary button
+        JButton closeButton = new JButton("Close"); // close button
         buttonPanel.add(calculateButton);
         buttonPanel.add(closeButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
 
-        /**
-         * load employee data when employee's row is selected
-         */
-        calculateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = getSelectedEmployeeRow();
-                if (selectedRow != -1) {
-                    // Show an input dialog to get additional data from the user
-                    String employeeId = (String) employeeTable.getValueAt(selectedRow, 1);
-                    String lastName = (String) employeeTable.getValueAt(selectedRow, 2);
-                    String firstName = (String) employeeTable.getValueAt(selectedRow, 3);
-                    String role = (String) employeeTable.getValueAt(selectedRow, 6);
-                    String employName = firstName + " " + lastName;
 
-                    TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
-                    String[] worksheetData = timesheetWindow.showInputDialog(employName);
+        // load employee data when employee's row is selected
+        calculateButton.addActionListener(e -> {
+            int selectedRow = getSelectedEmployeeRow();
+            if (selectedRow != -1) {
+                // Show an input dialog to get additional data from the user
+                String employeeId = (String) employeeTable.getValueAt(selectedRow, 1);
+                String lastName = (String) employeeTable.getValueAt(selectedRow, 2);
+                String firstName = (String) employeeTable.getValueAt(selectedRow, 3);
+                String role = (String) employeeTable.getValueAt(selectedRow, 6);
+                String employName = firstName + " " + lastName;
 
-                    // if cancel button is clicked.
-                    if (worksheetData == null)
-                        return;
+                TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
+                String[] worksheetData = timesheetWindow.showInputDialog(employName);
 
-                    // Perform the salary calculation based on the additional data
-                    //String role = (String) employeeTable.getValueAt(selectedRow, 6);
-                    double salary = payrollCalculator.calculateSalary(role, worksheetData);
+                // if cancel button is clicked.
+                if (worksheetData == null)
+                    return;
 
-                    String salaryMessage =
-                            "Employee ID: " + employeeId + "\n"
-                                    + "Name: " + firstName + " " + lastName + "\n"
-                                    + "Role: " + role + "\n"
-                                    + "Start Date: " + worksheetData[0] + "\n"
-                                    + "End Date: " + worksheetData[1] + "\n"
-                                    + "Salary: " + "$" + salary + "\n"
-                                    + "\n";
+                // Perform the salary calculation based on the additional data
+                //String role = (String) employeeTable.getValueAt(selectedRow, 6);
+                double salary = payrollCalculator.calculateSalary(role, worksheetData);
 
-                    // Display the salary calculation result in a message dialog
-                    JOptionPane.showMessageDialog(PayrollGUI.this,
-                            salaryMessage,
-                            "Salary Calculation Result",
-                            JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(PayrollGUI.this,
-                            "Please select an employee first.",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                String salaryMessage =
+                        "Employee ID: " + employeeId + "\n"
+                                + "Name: " + firstName + " " + lastName + "\n"
+                                + "Role: " + role + "\n"
+                                + "Start Date: " + worksheetData[0] + "\n"
+                                + "End Date: " + worksheetData[1] + "\n"
+                                + "Salary: " + "$" + salary + "\n"
+                                + "\n";
+
+                // Display the salary calculation result in a message dialog
+                JOptionPane.showMessageDialog(PayrollGUI.this,
+                        salaryMessage,
+                        "Salary Calculation Result",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(PayrollGUI.this,
+                        "Please select an employee first.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        closeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        closeButton.addActionListener(e -> dispose());
 
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
-        exitMenuItem = new JMenuItem("Exit");
+        JMenuItem exitMenuItem = new JMenuItem("Exit"); // exit menu button
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);
         setJMenuBar(menuBar);
 
-        exitMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        exitMenuItem.addActionListener(e -> dispose());
 
         pack();
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Determines which row (which employee) is currently selected in table
+     * @return row index
+     */
     private int getSelectedEmployeeRow() {
         for (int i = 0; i < employeeTable.getRowCount(); i++) {
             boolean isSelected = (boolean) employeeTable.getValueAt(i, 0);

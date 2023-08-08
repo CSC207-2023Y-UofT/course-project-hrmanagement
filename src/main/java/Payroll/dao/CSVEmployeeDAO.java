@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class responsible for reading and loading employee csv file
+ */
 public class CSVEmployeeDAO implements EmployeeDAO {
     private final String filepath;
 
@@ -16,6 +19,11 @@ public class CSVEmployeeDAO implements EmployeeDAO {
         this.filepath = filepath;
     }
 
+    /**
+     * Takes employee hashmap
+     * Convert to 2D array of employee information
+     * @return 2D array of employee
+     */
     @Override
     public Object[][] loadEmployeesTo2DArray()
     {
@@ -43,17 +51,24 @@ public class CSVEmployeeDAO implements EmployeeDAO {
 
     }
 
+    /**
+     * Reads CSV file and parses to extract employee attributes
+     * Employee's full name is key in map
+     * EmployeeEntity object is the value in map
+     * @return hashmap of employee information
+     */
     private Map<String, EmployeeEntity> loadEmployeeToMap() {
         Map<String, EmployeeEntity> employeeMap = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(this.filepath))) {
             // Read the header line to skip it
-            String headerLine = br.readLine();
+            br.readLine();
 
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 6) {
+                if (parts.length == 6) { // if csv format valid
+                    // create EmployeeEntity object
                     String employeeId = parts[0].trim();
                     String lastName = parts[1].trim();
                     String firstName = parts[2].trim();

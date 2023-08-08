@@ -1,8 +1,8 @@
 package Payroll.entity;
 
 /**
- * This is an Employee business object.
- * It is used to construct a map of Employee objects for Payroll GUI.
+ * Employee business object
+ * Used to construct a map of Employee objects for Payroll GUI.
  */
 public class EmployeeEntity {
     private String employeeId;

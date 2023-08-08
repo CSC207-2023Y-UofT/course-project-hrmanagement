@@ -1,0 +1,43 @@
+MySQL Port: 3306
+Root Password: password
+
+CREATE DATABASE employees;
+use employees;
+
+create table employees
+(
+	EMPLOYEEID int auto_increment
+		primary key,
+	LASTNAME varchar(50) null,
+	FIRSTNAME varchar(50) null,
+	ADDRESS varchar(100) null,
+	PHONENUMBER varchar(15) null,
+	ROLE varchar(15) default 'Employee' null
+);
+
+create table timesheets
+(
+	EMPLOYEEID int auto_increment
+		primary key,
+	LASTNAME varchar(50) null,
+	FIRSTNAME varchar(50) null,
+	STARTDATE varchar(10) null,
+	ENDDATE varchar(10) null
+);
+
+
+-- Inserting records into the employee table
+INSERT INTO employee (LASTNAME, FIRSTNAME, ADDRESS, PHONENUMBER) VALUES
+    ('Doe', 'William', '123 King St', '333-1234', 'Employee'),
+    ('Smith', 'John', '123 Main St', '555-1234', 'Employee'),
+    ('Johnson', 'Jane', '456 Maple Ave', '555-5678', 'Employee'),
+    ('Williams', 'Robert', '789 Oak Rd', '555-9876', 'Employee');
+
+Write a Java program with the following features:
+1) Display a list or employee records containing Employee Id, Last Name, First Name, Address, Phone Number, Role;
+2) Be able to select one of the employee by clicking a check box;
+3) Be able to calculate its salary;
+4) Display the calculation results  in a pop-up windows with a Close button.
+5) After the employee is selected, please add a cross in the check box.
+6) Only one employee can be select at a time. Another selected employee needs to be unselected once a new employee is selected.
+7) Add Exit menu item.

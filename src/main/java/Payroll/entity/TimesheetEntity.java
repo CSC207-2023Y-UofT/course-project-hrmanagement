@@ -1,8 +1,8 @@
 package Payroll.entity;
 
 /**
- * This is the Timesheet business object.
- * It is used to construct a map of Timesheet objects for Payroll calculation.
+ * Timesheet business object.
+ * Used to construct a map of Timesheet objects for Payroll calculation.
  */
 public class TimesheetEntity {
     private String employeeId;

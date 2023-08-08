@@ -10,24 +10,26 @@ import java.util.Date;
 
 /**
  * Use Case, the payroll calculation for contract workers
- * Implemented Singleton design pattern
+ * Implemented Singleton design pattern to provide single instance of payroll calculator
  */
 public class PayrollCalculator {
-    private static PayrollCalculator instance;
     // Private constructor to prevent instantiation from other classes
     private PayrollCalculator() {}
 
-    // Public method to get the PayrollCalculator instance
+    /**
+     * A holder class for lazy initialization of the PayrollCalculator singleton instance.
+     */
+    private static final class PayrollCalculatorHolder {
+        private static final PayrollCalculator instance = new PayrollCalculator();
+    }
+
+    /**
+     * Public method to return a PayrollCalculator instance
+     * @return instance of PayrollCalculator
+     */
     public static PayrollCalculator getInstance() {
         // Lazy initialization - create the instance only when needed
-        if (instance == null) {
-            synchronized (PayrollCalculator.class) {
-                if (instance == null) {
-                    instance = new PayrollCalculator();
-                }
-            }
-        }
-        return instance;
+        return PayrollCalculatorHolder.instance;
     }
 
     /**
@@ -55,7 +57,7 @@ public class PayrollCalculator {
      * @return hourly rate double
      */
     private double calculateHourlyRate(String role) {
-        double hourlyRate = 0;
+        double hourlyRate;
         if (role.equalsIgnoreCase(PayrollConstant.ROLE_MANAGER))
             hourlyRate = PayrollConstant.MANAGER_HOURLY_RATE;
         else if (role.equalsIgnoreCase(PayrollConstant.ROLE_EMPLOYEE))

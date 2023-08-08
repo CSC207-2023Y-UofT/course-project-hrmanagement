@@ -3,9 +3,7 @@ package Payroll.dao;
 import Payroll.entity.TimesheetEntity;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MySQLTimesheetDAO implements TimesheetDAO {
@@ -14,12 +12,22 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
     private final String dbUser;
     private final String dbPassword;
 
+    /**
+     * Constructor, takes information required to connect to mysql database
+     * @param dbUrl database url
+     * @param dbUser user
+     * @param dbPassword password
+     */
     public MySQLTimesheetDAO(String dbUrl, String dbUser, String dbPassword) {
         this.dbUrl = dbUrl;
         this.dbUser = dbUser;
         this.dbPassword = dbPassword;
     }
 
+    /**
+     * Retrieves all timesheet records, stores in hashmap
+     * @return Hashmap of timesheet information mapping employee name to TimeSheetEntity object
+     */
     public  Map<String, TimesheetEntity> loadTimesheetToMap() {
 
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword)) {
@@ -33,24 +41,15 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
                 Map<String, TimesheetEntity> timesheetMap = new HashMap<>();
 
                 // Step 3: Store the data in an ArrayList
-                List<Object[]> dataList = new ArrayList<>();
                 while (resultSet.next()) {
-                    String employeeId = new Integer(resultSet.getInt("EMPLOYEEID")).toString();
+                    String employeeId = Integer.toString(resultSet.getInt("EMPLOYEEID"));
                     String lastName = resultSet.getString("LASTNAME");
                     String firstName = resultSet.getString("FIRSTNAME");
                     String startDate = resultSet.getString("STARTDATE");
                     String endDate = resultSet.getString("ENDDATE");
 
-                    TimesheetEntity timesheet = new TimesheetEntity();
-                    timesheet.setEmployeeId(employeeId);
-                    timesheet.setFirstName(firstName);
-                    timesheet.setLastName(lastName);
-
-                    timesheet.setStartDate(startDate);
-                    timesheet.setEndDate(endDate);
-
-                    String employeeName = firstName + " " + lastName;
-                    timesheetMap.put(employeeName, timesheet);
+                    // create new timesheet entity
+                    createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate);
                 }
 
                 return timesheetMap;
@@ -59,6 +58,19 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
             e.printStackTrace();
         }
         return new HashMap<>();
+    }
+
+    static void createTimesheetEntity(Map<String, TimesheetEntity> timesheetMap, String employeeId, String lastName, String firstName, String startDate, String endDate) {
+        TimesheetEntity timesheet = new TimesheetEntity();
+        timesheet.setEmployeeId(employeeId);
+        timesheet.setFirstName(firstName);
+        timesheet.setLastName(lastName);
+
+        timesheet.setStartDate(startDate);
+        timesheet.setEndDate(endDate);
+
+        String employeeName = firstName + " " + lastName;
+        timesheetMap.put(employeeName, timesheet);
     }
 
 }

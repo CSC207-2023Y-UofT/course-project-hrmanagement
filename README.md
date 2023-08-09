@@ -44,13 +44,13 @@ The Login Feature is designed to allow a manager or employee login to their resp
 
 #### Key Functionalities
 
-The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password is valid, allowing them to pass onto the system.
+The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password are valid, allowing them to pass onto the system.
 
 ### Time-Off Feature
 
 ### Payroll Feature
 
-The Payroll Feature is a feature within the application designed to streamline salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and accurate computation of salaries for both employees and managers. 
+The Payroll Feature is designed to streamline salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. 
 
 #### Key Functionalities
 
@@ -72,11 +72,8 @@ To maintain the integrity of calculations and prevent erroneous inputs, the Payr
 ##### Database Flexibility
 The Payroll Feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
 
-##### Graphical User Interface
-The Payroll Feature offers an intuitive and visually appealing GUI. This GUI facilitates effortless interaction with the salary calculation process. Users can easily select employees, adjust timesheet information, and initiate salary calculations, all through a streamlined and user-friendly interface.
-
 #### GUI Functionality
-The graphical interface (GUI) of the Payroll Feature provides an array of functionalities that enhance user experience and streamline salary calculations. It is accessed through the manager portal.
+The graphical interface (GUI) of the Payroll Feature is accessed through the manager portal.
 
 **Employee List**: The GUI displays a list of employees, presenting their id, names and key information.
 **Employee Selection**: Manager can select individual employees from the list for whom they want to calculate salaries.
@@ -99,8 +96,6 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
 This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
-
-The Payroll Feature has a variety of functionalities and database options, which collectively result in a robust and user-friendly payroll management solution.
 
 
 ### Schedule Feature

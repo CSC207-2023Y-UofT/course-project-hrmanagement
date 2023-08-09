@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+/**
+ * The ManagerTimeOff class is a UI class which allows a manager to use the timeOff functionality.
+ * It allows the manager to view the available time requests, and buttons to approve or deny them.
+ */
 public class ManagerTimeOff {
     MyJFrame frame;
     Panel panel;

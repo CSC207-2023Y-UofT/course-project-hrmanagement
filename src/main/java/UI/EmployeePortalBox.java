@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
- * It creates a JFrame displaying two buttons - for 'signUp' and 'login'.
- * The user can click on the signUp button to open Employee signUp form or
- * the login button to open login frame.
+ * The EmployeePortalBox is a UI class which displays buttons that allow the user access to Employee
+ * functionalities once they have logged into an Employee account. This includes
+ * buttons for choosing availability and requesting time off.
  */
 public class EmployeePortalBox {
     Button chooseAvailibility;

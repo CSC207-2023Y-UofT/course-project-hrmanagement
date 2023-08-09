@@ -1,19 +1,16 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
 import Payroll.PayrollMain;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import Schedule.*;
+import Schedule.Entities.Schedule;
+import Schedule.UseCase.ScheduleGenerator;
 
 /**
- * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
+ * The ManagerPortalBox class allows a user to choose to 'signUp' or 'login'.
  * It creates a JFrame displaying two buttons - for 'signUp' and 'login'.
  * The user can click on the signUp button to open Employee signUp form or
  * the login button to open login frame.

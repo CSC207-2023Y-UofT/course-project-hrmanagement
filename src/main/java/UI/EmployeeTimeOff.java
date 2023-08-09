@@ -10,6 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+/**
+ * The EmployeeTimeOff class is a UI class that allows the use to use the Time off functionality.
+ * It allows the user to input the date and start and end time of their time off request, as well as
+ * see their previous time off requests.
+ */
 public class EmployeeTimeOff {
     MyJFrame frame;
     Panel panel;

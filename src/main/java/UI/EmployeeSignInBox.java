@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The EmployeeSignInBox class allows the user to Sign in to an Employee account. It includes
+ * a place to input a username and a password, and a Sign-in bbutton.
+ */
 public class EmployeeSignInBox {
     Label userNameLabel;
     TextField userNameText;

@@ -1,7 +1,8 @@
-package Schedule;
+package Schedule.UseCase;
+
+import Schedule.Entities.Schedule;
 
 import java.text.ParseException;
-import java.util.Date;
 
 /**
  * Creates a new schedule to be used.

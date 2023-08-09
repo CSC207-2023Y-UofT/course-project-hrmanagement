@@ -1,4 +1,4 @@
-package Schedule;
+package Schedule.Entities;
 
 import Payroll.*;
 import Payroll.dao.CSVEmployeeDAO;

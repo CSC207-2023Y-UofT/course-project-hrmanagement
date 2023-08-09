@@ -3,6 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The ManagerBox class is a UI class that allows the User to sign in to a manager account.
+ * It has a textbox to input a username and a passowrd as well as a log-in button.
+ */
 public class ManagerBox {
     Label userNameLabel;
     TextField userNameText;

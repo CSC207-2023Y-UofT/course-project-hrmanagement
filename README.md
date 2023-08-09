@@ -110,9 +110,7 @@ ___
 ## Design Patterns
 
 In payroll, several design patterns are implemented: 
-- **Strategy Design Pattern**: Two concrete strategies, MySQLDataAccess and CSVDataAccess, implement the DataAccessStrategy interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
+- **Strategy Design Pattern**: Two concrete classes, `MySQLDataAccess` and `CSVDataAccess`, implement the `DataAccessStrategy` interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
-- **Model-View-Controller (MVC) Pattern**: The GUI design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
-- **Data Access Object Pattern**: The DAO pattern centralizes the data access logic in a separate layer, isolating database interactions from higher-level application logic. The DAO pattern used in the payroll feature also facilitates the switch between different data sources of CSV files and MySQL databases with minimal code changes.
-
-
+- **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.
+- **Model-View-Controller (MVC) Pattern**: The `PayrollGUI` design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).

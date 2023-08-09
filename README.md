@@ -102,7 +102,7 @@ ___
 ___
 
 ### Schedule Feature
-The Schedule Feature allows managers to view a brief overview of the current week's schedule, detailing the names and ids of employees working on each day. This feature keeps tracks of each worker's start/end dates as well as any time offs that they have which are approved.
+The Schedule Feature allows managers to view a brief overview of the current week's schedule, detailing the names and ids of employees working on each day. This feature keeps track of each worker's start/end dates as well as any time offs that they have which are approved.
 
 ![Schedule GUI](./images/schedule_gui.png)
 ___
@@ -110,8 +110,9 @@ ___
 ## Design Patterns
 
 In payroll, several design patterns are implemented: 
+- **Strategy Design Pattern**: Two concrete strategies, MySQLDataAccess and CSVDataAccess, implement the DataAccessStrategy interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
 - **Model-View-Controller (MVC) Pattern**: The GUI design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
-- **Data Access Object Pattern**: The DAO pattern centralizes the data access logic in a separate layer, isolating database interactions from higher-level application logic. The DAO pattern used in payroll feature also facilitates the switch between different data sources of CSV files and MySQL databases with minimal code changes.
+- **Data Access Object Pattern**: The DAO pattern centralizes the data access logic in a separate layer, isolating database interactions from higher-level application logic. The DAO pattern used in the payroll feature also facilitates the switch between different data sources of CSV files and MySQL databases with minimal code changes.
 
 

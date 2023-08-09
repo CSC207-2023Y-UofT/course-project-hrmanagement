@@ -20,7 +20,6 @@ public class EmployeeTimeOff {
     Label end;
     Label name;
     Label id;
-    Label dateFormat;
     TextField nametext;
     TextField idtext;
     TextField starting;
@@ -38,10 +37,6 @@ public class EmployeeTimeOff {
 
         back = new Button();
         back.createButtonWithIcon(frame.getJFrame(), "< Back to Employee Portal", 1, 1, 200, 20);
-
-        dateFormat = new Label();
-        dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
-                "Date in dd/MM/yyyy:");
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");

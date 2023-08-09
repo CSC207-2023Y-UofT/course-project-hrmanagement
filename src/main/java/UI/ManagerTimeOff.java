@@ -19,7 +19,6 @@ public class ManagerTimeOff {
     Label end;
     Label name;
     Label id;
-    Label dateFormat;
     TextField nametext;
     TextField idtext;
     TextField starting;
@@ -39,10 +38,6 @@ public class ManagerTimeOff {
 
         deny = new Button();
         deny.createButtonWithIcon(frame.getJFrame(), "Deny", 150, 225, 100, 20);
-
-        dateFormat = new Label();
-        dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
-                "Date in dd/mm/yyyy:");
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");

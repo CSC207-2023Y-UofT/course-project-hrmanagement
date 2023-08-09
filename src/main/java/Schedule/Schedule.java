@@ -142,7 +142,11 @@ public class Schedule {
         return week;
     }
 
-    //get map of employee ids to work dates from payroll database
+    /**
+     * Gets a map of employee IDs mapped to work dates from payroll database.
+     * @return Map of Employee IDs, Workdays.
+     * @throws ParseException
+     */
     public Map<List<String>, List<LocalDate>> getEmployeeDates() throws ParseException {
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -178,7 +182,11 @@ public class Schedule {
         return employeeDates;
     }
 
-
+    /**
+     * Gets a map of time off days for employees from the timeOff database.
+     * @param filePath: the databse from which to get the information.
+     * @return Timeoffs for employees.
+     */
     public static Map<String, List<LocalDate>> loadTimeOffsFromTXT(String filePath) {
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");

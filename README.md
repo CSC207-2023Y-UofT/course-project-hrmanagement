@@ -98,6 +98,18 @@ This combination of functionalities allows users to efficiently manage payroll c
 ___
 
 ### Time-Off Feature
+The Time-Off Feature allows employees to make requests for time offs. Managers can then view these requests from their employees, and choose whether to accept of deny them. 
+
+
+Employee GUI:
+
+![Employee TimeOff GUI](./images/TimeOffEmployee.png)
+
+
+
+Manager GUI:
+
+![Manager TimeOff GUI](./images/TimeOffManager.png)
 
 ___
 

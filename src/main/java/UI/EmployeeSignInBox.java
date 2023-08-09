@@ -1,9 +1,13 @@
 package UI;
-import GUILogin.EmployeePortal;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+/**
+ * The EmployeeSignInBox class allows a user to choose to sign in with appropriate credentials.
+ * It creates a JFrame displaying a textfield for employee id entry and one for password entry.
+ * The user can click on the sign in button to open EmployeePortalBox
+ */
 
 public class EmployeeSignInBox {
     Label userNameLabel;
@@ -14,6 +18,9 @@ public class EmployeeSignInBox {
     MyJFrame frame;
     Panel panel;
 
+    /**
+     * This method creates all UI components of EmployeeSignInBox
+     */
 
     public void createEmployeeBox(){
 

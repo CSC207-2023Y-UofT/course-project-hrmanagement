@@ -13,11 +13,11 @@ import java.util.Date;
 import Schedule.*;
 
 /**
- * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
- * It creates a JFrame displaying two buttons - for 'signUp' and 'login'.
- * The user can click on the signUp button to open Employee signUp form or
- * the login button to open login frame.
+ * The ManagerPortalox class allows a user to choose to view schedules, timeoff requests or payroll.
+ * It creates a JFrame displaying buttons for each of the features.
+ * The user can click on each of the respective buttons to open a window to utilize the features.
  */
+
 public class ManagerPortalBox {
     Button viewSchedule;
     Button viewTimeOffRequests;
@@ -26,8 +26,9 @@ public class ManagerPortalBox {
     Panel panel;
 
     /**
-     * This method creates all UI components of EmployeeBox
+     * This method creates all UI components of ManagerPortalBox
      */
+
     public void createManagerPortalBox(){
 
         // creates JFrame

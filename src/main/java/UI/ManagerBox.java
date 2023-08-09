@@ -1,7 +1,13 @@
 package UI;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+/**
+ * The ManagerBox class allows a user to choose to sign in with appropriate credentials.
+ * It creates a JFrame displaying a textfield for manager id entry and one for password entry.
+ * The user can click on the sign in button to open ManagerPortalBox.
+ */
 
 public class ManagerBox {
     Label userNameLabel;
@@ -12,6 +18,9 @@ public class ManagerBox {
     MyJFrame frame;
     Panel panel;
 
+    /**
+     * This method creates all UI components of ManagerBox
+     */
 
     public void createManagerBox(){
 

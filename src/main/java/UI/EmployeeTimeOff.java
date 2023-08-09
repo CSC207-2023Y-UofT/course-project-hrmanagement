@@ -1,14 +1,15 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
-import org.w3c.dom.Text;
-
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
+/**
+ * The EmployeeTimeOff class allows a user to choose to request Time Off.
+ * It creates a JFrame displaying four text fields for their name, id and time off start and end dates.
+ * The user can click on the request button to submit the request.
+ * The JFrame displays a label showing the latest time off requests.
+ */
 
 public class EmployeeTimeOff {
     MyJFrame frame;
@@ -24,6 +25,10 @@ public class EmployeeTimeOff {
     TextField idtext;
     TextField starting;
     TextField ending;
+
+    /**
+     * This method creates all UI components of EmployeeTimeOff
+     */
 
     public void CreateEmployeeTimeOff(){
         frame = new MyJFrame();

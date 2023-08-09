@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The EmployeeBox class allows a user to choose to 'signUp' or 'login'.
- * It creates a JFrame displaying two buttons - for 'signUp' and 'login'.
- * The user can click on the signUp button to open Employee signUp form or
- * the login button to open login frame.
+ * The EmployeePortalBox class allows a user to choose to enter availability or request time off.
+ * It creates a JFrame displaying two buttons - one for each option.
+ * The user can click on the choose availability button to enter their availability or the
+ * request time off button to submit a request or view the latest time off history.
  */
+
 public class EmployeePortalBox {
     Button chooseAvailibility;
     Button requestTimeOff;
@@ -16,8 +17,9 @@ public class EmployeePortalBox {
     Panel panel;
 
     /**
-     * This method creates all UI components of EmployeeBox
+     * This method creates all UI components of EmployeePortalBox
      */
+
     public void createEmployeePortalBox(){
 
         // creates JFrame
@@ -36,14 +38,14 @@ public class EmployeePortalBox {
         requestTimeOff = new Button();
         requestTimeOff.createButtonWithIcon(frame.getJFrame(), "Request TimeOff", 50, 120, 200, 50);
 
-        // action when signUp button is clicked
+        // action when Choose Availability button is clicked
         chooseAvailibility.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             }
         });
 
-        // action when login button is clicked
+        // action when Request Time Off button is clicked
         requestTimeOff.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

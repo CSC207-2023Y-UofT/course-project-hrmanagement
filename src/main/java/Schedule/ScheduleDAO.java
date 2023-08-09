@@ -14,6 +14,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
+/**
+ * Class responsible for reading and loading employee data from timesheet and time off databases
+ */
 public class ScheduleDAO {
 
 

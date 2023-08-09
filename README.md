@@ -24,7 +24,7 @@ The HR Management System project is a java software solution designed to streaml
 
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/yourusername/hr-management-java.git`
+1. Clone the repository: `git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git`
 2. Import the project in your preferred Java IDE.
 3. Set up MySQL database and configure connection details.
 4. Run the program from your IDE.
@@ -36,7 +36,7 @@ The HR Management System project is a java software solution designed to streaml
 4. In employee portal, employees can log in and request time-off. 
 
 
-# Features
+## Features
 
 ### User Login Feature
 
@@ -104,6 +104,7 @@ The Payroll Feature has a variety of functionalities and database options, which
 
 In payroll, several design patterns are implemented: 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
-- **Dependency Inversion Principle (DIP)**: The feature adheres to the DIP through abstraction layers that decouple high-level components from low-level details, as seen in interfaces EmployeeDAO and TimesheetDAO the DAO layer that are implemented by CSV and MYSQL concrete classes, promoting code reusability and flexibility.
 - **Model-View-Controller (MVC) Pattern**: The GUI design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
+- **Data Access Object Pattern**: The DAO pattern centralizes the data access logic in a separate layer, isolating database interactions from higher-level application logic. The DAO pattern used in payroll feature also facilitates the switch between different data sources of CSV files and MySQL databases with minimal code changes.
+
 

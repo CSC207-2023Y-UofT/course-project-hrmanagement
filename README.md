@@ -40,10 +40,11 @@ The HR Management System project is a java software solution designed to streaml
 
 ### User Login Feature
 
-The Login Feature is designed to allow a manager or employee login to their respective portals.
+The Login Feature is designed to allow a manager or employee login to their respective portals. This is the initial portal that will send people to where they need to go.
 
 #### Key Functionalities
 
+The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password is valid, allowing them to pass onto the system.
 
 ### Time-Off Feature
 

@@ -104,7 +104,9 @@ The Payroll Feature has a variety of functionalities and database options, which
 
 
 ### Schedule Feature
+The Schedule Feature allows managers to view a brief overview of the current week's schedule, detailing the names and ids of employees working on each day. This feature keeps tracks of each worker's start/end dates as well as any time offs that they have which are approved.
 
+![Schedule GUI](./images/schedule_gui.png)
 
 ## Design Patterns
 

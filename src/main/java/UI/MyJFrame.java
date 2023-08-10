@@ -16,6 +16,7 @@ public class MyJFrame {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setSize(width, height);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

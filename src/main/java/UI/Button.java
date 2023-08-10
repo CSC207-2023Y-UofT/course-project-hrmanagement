@@ -14,7 +14,6 @@ public class Button {
 
     /**
      * Creates a JButton UI component with an image icon
-     * @param panel: panel to which JButton is added
      * @param buttonText: the text to be displayed on JButton
      * @param boundX: x-coordinate of JButton
      * @param boundY: y - coordinate of JButton

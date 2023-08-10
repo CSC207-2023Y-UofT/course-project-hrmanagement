@@ -1,7 +1,5 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

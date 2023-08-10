@@ -6,7 +6,6 @@ import Payroll.ui.PayrollGUI;
 import Payroll.usecase.PayrollCalculator;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.util.Map;
 
 /**
@@ -30,9 +29,9 @@ public class PayrollMain {
             DataAccessStrategy dataAccessStrategy;
 
             if (PayrollConstant.READ_DATA_FROM_DB) { // determines which data access strategy to use
-                dataAccessStrategy = new MySQLDataAccess(jdbcUrl, username, password);
+                dataAccessStrategy = new MySQLStrategy(jdbcUrl, username, password);
             } else {
-                dataAccessStrategy = new CSVDataAccess(csv_employee_filepath, csv_timesheet_filepath);
+                dataAccessStrategy = new CSVStrategy(csv_employee_filepath, csv_timesheet_filepath);
             }
 
             // load employee and timesheet data

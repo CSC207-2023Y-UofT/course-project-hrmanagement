@@ -7,19 +7,19 @@ import java.util.Map;
 /**
  * Implementation of DataAccessStrategy for loading data from a MySQL database.
  */
-public class MySQLDataAccess implements DataAccessStrategy {
+public class MySQLStrategy implements DataAccessStrategy {
 
     private String jdbcUrl;
     private String username;
     private String password;
 
     /**
-     * Constructs a MySQLDataAccess instance with the provided database connection details.
+     * Constructs a MySQLStrategy instance with the provided database connection details.
      * @param jdbcUrl  The JDBC URL of the MySQL database.
      * @param username The database username.
      * @param password The database password.
      */
-    public MySQLDataAccess(String jdbcUrl, String username, String password) {
+    public MySQLStrategy(String jdbcUrl, String username, String password) {
         this.jdbcUrl = jdbcUrl;
         this.username = username;
         this.password = password;

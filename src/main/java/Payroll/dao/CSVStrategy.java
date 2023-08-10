@@ -7,18 +7,18 @@ import java.util.Map;
 /**
  * Implementation of DataAccessStrategy for loading data from CSV files.
  */
-public class CSVDataAccess implements DataAccessStrategy {
+public class CSVStrategy implements DataAccessStrategy {
 
     private String csvEmployeePath;
     private String csvTimesheetPath;
 
 
     /**
-     * Constructs a CSVDataAccess instance with the provided CSV file paths.
+     * Constructs a CSVStrategy instance with the provided CSV file paths.
      * @param csvEmployeePath   The path to the CSV file containing employee data.
      * @param csvTimesheetPath  The path to the CSV file containing timesheet data.
      */
-    public CSVDataAccess(String csvEmployeePath, String csvTimesheetPath) {
+    public CSVStrategy(String csvEmployeePath, String csvTimesheetPath) {
         this.csvEmployeePath = csvEmployeePath;
         this.csvTimesheetPath = csvTimesheetPath;
     }

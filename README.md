@@ -2,84 +2,80 @@
 
 This project delivers a system that allows a company to manage its employee schedules and pay.
 A User of the system may be a manager or an employee. An employee can set their availability and can request time off using this system. The manager can generate their employees' schedules, have the system calculate their pay, and accept or reject time off requests.
+___
 
 ## Table of Contents
 
-- [Project Overview](#Project-Overview)
-- [Overall Design](#overall-design)
+- [Project Overview](#project-overview)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Design Patterns](#Design-Patterns)
-
+- [Design Patterns](#design-patterns)
+___
 
 ## Project Overview
-The HR Management System project is a java software solution designed to streamline and automate various human resources processes within an organization. This project aims to simplify HR operations, improve efficiency, and enhance communication between HR personnel, employees, and management. The project provides a user-friendly interface for managing HR-related tasks and information.
-
-## Overall Design
-
+The HR Management System project is a Java software solution designed to streamline and automate various human resources processes within an organization. This project aims to simplify HR operations, improve efficiency, and enhance communication between HR personnel, employees, and management. The project provides a user-friendly interface for managing HR-related tasks and information.
+___
 
 ## Technologies Used
 
+___
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git`
 2. Import the project in your preferred Java IDE.
 3. Set up MySQL database and configure connection details.
 4. Run the program from your IDE.
+___
 
 ## Usage
 1. Launch the application.
 2. Select user role: either manager or employee
-3. In manager portal, managers can approve time-off requests, calculate salaries, and view schedules.
-4. In employee portal, employees can log in and request time-off. 
-
+3. In the manager portal, managers can approve time-off requests, calculate salaries, and view schedules.
+4. In the employee portal, employees can log in and request time-off. 
+___
 
 ## Features
-
+___
 ### User Login Feature
 
-The Login Feature is designed to allow a manager or employee login to their respective portals. This is the initial portal that will send people to where they need to go.
+The Login Feature is designed to allow a manager or employee to log in to their respective portals. This is the initial portal that will send people to where they need to go.
 
 #### Key Functionalities
 
-The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password is valid, allowing them to pass onto the system.
-
-### Time-Off Feature
+The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password are valid, allowing them to pass onto the system.
+___
 
 ### Payroll Feature
 
-The Payroll Feature is a feature within the application designed to streamline salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and accurate computation of salaries for both employees and managers. 
+The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. 
 
 #### Key Functionalities
 
 The key functionalities of the payroll feature include:
 
 ##### Salary Calculation
-The core functionality of payroll is to calculate salaries for employees and managers. This feature calculates employee salary based on number on days and hours worked. 
+The core functionality of payroll is to calculate salaries for employees and managers. This feature calculates employee salary based on the number of days and hours worked. 
 It uses role-specific hourly rates and includes an option for adding bonuses. 
 
 ##### Employee Data Management
-The Payroll Feature integrates with the employee database. It extracts employee information, including roles and other relevant data, that are essential for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
+The Payroll Feature integrates with the employee database. It extracts employee information, including roles and other relevant data for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
 
 ##### Timesheet Integration
-Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enable precise salary computations.
+Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enables precise salary computations.
 
 ##### Data Validation
-To maintain the integrity of calculations and prevent erroneous inputs, the Payroll Feature incorporates robust data validation mechanisms. These mechanisms verify the correctness of input data, including date formats, numeric values, and more. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
+To maintain the integrity of calculations and prevent erroneous inputs, the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 
 ##### Database Flexibility
-The Payroll Feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
-
-##### Graphical User Interface
-The Payroll Feature offers an intuitive and visually appealing GUI. This GUI facilitates effortless interaction with the salary calculation process. Users can easily select employees, adjust timesheet information, and initiate salary calculations, all through a streamlined and user-friendly interface.
+The payroll feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
 
 #### GUI Functionality
-The graphical interface (GUI) of the Payroll Feature provides an array of functionalities that enhance user experience and streamline salary calculations. It is accessed through the manager portal.
+The graphical interface (GUI) of the Payroll Feature is accessed through the manager portal.
 
-**Employee List**: The GUI displays a list of employees, presenting their id, names and key information.
-**Employee Selection**: Manager can select individual employees from the list for whom they want to calculate salaries.
+**Employee List**: The GUI displays a list of employees, presenting their IDs, names and key information.
+**Employee Selection**: Managers can select individual employees from the list for whom they want to calculate salaries.
 
 ![Payroll Calculator Menu](./images/payroll_gui.png)
 
@@ -99,20 +95,22 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
 This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
+___
 
-The Payroll Feature has a variety of functionalities and database options, which collectively result in a robust and user-friendly payroll management solution.
+### Time-Off Feature
 
+___
 
 ### Schedule Feature
-The Schedule Feature allows managers to view a brief overview of the current week's schedule, detailing the names and ids of employees working on each day. This feature keeps tracks of each worker's start/end dates as well as any time offs that they have which are approved.
+The Schedule Feature allows managers to view a brief overview of the current week's schedule, detailing the names and ids of employees working on each day. This feature keeps track of each worker's start/end dates as well as any time offs that they have which are approved.
 
 ![Schedule GUI](./images/schedule_gui.png)
+___
 
 ## Design Patterns
 
 In payroll, several design patterns are implemented: 
+- **Strategy Design Pattern**: Two concrete classes, `MySQLDataAccess` and `CSVDataAccess`, implement the `DataAccessStrategy` interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
-- **Model-View-Controller (MVC) Pattern**: The GUI design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
-- **Data Access Object Pattern**: The DAO pattern centralizes the data access logic in a separate layer, isolating database interactions from higher-level application logic. The DAO pattern used in payroll feature also facilitates the switch between different data sources of CSV files and MySQL databases with minimal code changes.
-
-
+- **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.
+- **Model-View-Controller (MVC) Pattern**: The `PayrollGUI` design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).

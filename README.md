@@ -44,7 +44,20 @@ The Login Feature is designed to allow a manager or employee to log in to their 
 
 #### Key Functionalities
 
+The key functionalities include:
+
+##### Username/Password Validation
+
 The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password are valid, allowing them to pass onto the system.
+
+##### Employee Sign-Up
+
+In the employee portal, the user is once again given two choices; they can either sign in or sign-up. The employee user is then allowed to input all information required to begin as a new employee.
+
+##### GUI Function
+
+There are different portals in the GUI login. Selection between managers and employees, and selection between sign in and sign-up.
+
 ___
 
 ### Payroll Feature

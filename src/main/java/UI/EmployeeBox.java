@@ -16,6 +16,7 @@ public class EmployeeBox {
     Button login;
     MyJFrame frame;
     Panel panel;
+    Button back;
 
     /**
      * This method creates all UI components of EmployeeBox
@@ -39,6 +40,10 @@ public class EmployeeBox {
         login = new Button();
         login.createButtonWithIcon(frame.getJFrame(), "Login", 50, 120, 200, 50);
 
+        // Back button to return
+        back = new Button();
+        back.createButtonWithIcon(frame.getJFrame(), "< Back to Selection", 1, 200, 200, 20);
+
         // action when signUp button is clicked
         signUp.getButton().addActionListener(new ActionListener() {
             @Override
@@ -56,5 +61,12 @@ public class EmployeeBox {
             }
         });
 
+        back.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PositionBox().createChoosePositionBox();
+                frame.getJFrame().dispose();
+            }
+        });
     }
 }

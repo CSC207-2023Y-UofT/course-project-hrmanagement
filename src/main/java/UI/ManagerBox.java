@@ -17,6 +17,7 @@ public class ManagerBox {
     Button signIn;
     MyJFrame frame;
     Panel panel;
+    Button back;
 
     /**
      * This method creates all UI components of ManagerBox
@@ -52,6 +53,10 @@ public class ManagerBox {
         signIn = new Button();
         signIn.createButtonWithIcon(frame.getJFrame(), "SignIn", 90, 110, 100, 50);
 
+        // Back button to return
+        back = new Button();
+        back.createButtonWithIcon(frame.getJFrame(), "< Back to Selection", 1, 200, 200, 20);
+
         // action when signIn button is clicked
         signIn.getButton().addActionListener(new ActionListener() {
             @Override
@@ -61,5 +66,12 @@ public class ManagerBox {
             }
         });
 
+        back.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PositionBox().createChoosePositionBox();
+                frame.getJFrame().dispose();
+            }
+        });
     }
 }

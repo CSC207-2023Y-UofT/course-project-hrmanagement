@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * The EmployeeSignInBox class allows a user to choose to sign in with appropriate credentials.
  * It creates a JFrame displaying a textfield for employee id entry and one for password entry.
- * The user can click on the sign in button to open EmployeePortalBox
+ * The user can click on the sign-in button to open EmployeePortalBox
  */
 
 public class EmployeeSignInBox {
@@ -17,7 +17,7 @@ public class EmployeeSignInBox {
     Button signIn;
     MyJFrame frame;
     Panel panel;
-
+    Button back;
     /**
      * This method creates all UI components of EmployeeSignInBox
      */
@@ -48,6 +48,10 @@ public class EmployeeSignInBox {
         passwordText = new TextField();
         passwordText.createTextField(frame.getJFrame(), 50, 75, 193, 28);
 
+        // Back button to return
+        back = new Button();
+        back.createButtonWithIcon(frame.getJFrame(), "< Back to Employees", 1, 200, 200, 20);
+
         // create button for signIn
         signIn = new Button();
         signIn.createButtonWithIcon(frame.getJFrame(), "SignIn", 90, 110, 100, 50);
@@ -61,5 +65,12 @@ public class EmployeeSignInBox {
             }
         });
 
+        back.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new EmployeeBox().createEmployeeBox();
+                frame.getJFrame().dispose();
+            }
+        });
     }
 }

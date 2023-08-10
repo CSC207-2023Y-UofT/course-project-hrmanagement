@@ -1,7 +1,6 @@
 package UI;
 
 import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,7 @@ import java.awt.event.ActionListener;
  * The user can click on the signUp button to open Employee signUp form or
  * the login button to open login frame.
  */
+
 public class EmployeeBox {
     Button signUp;
     Button login;
@@ -20,6 +20,7 @@ public class EmployeeBox {
     /**
      * This method creates all UI components of EmployeeBox
      */
+
     public void createEmployeeBox(){
 
         // creates JFrame

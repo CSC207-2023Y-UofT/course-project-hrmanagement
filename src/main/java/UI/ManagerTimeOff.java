@@ -1,13 +1,15 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
-import org.w3c.dom.Text;
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
+/**
+ * The ManagerTimeOff class allows a user to choose to approve or deny Time Off requests.
+ * It creates a JFrame displaying four text fields for the name, id and time off start and end dates.
+ * The user can click enter the information and click the approve or button to update the request.
+ * The JFrame displays a label showing the latest time off requests.
+ */
 
 public class ManagerTimeOff {
     MyJFrame frame;
@@ -19,7 +21,6 @@ public class ManagerTimeOff {
     Label end;
     Label name;
     Label id;
-    Label dateFormat;
     TextField nametext;
     TextField idtext;
     TextField starting;
@@ -39,10 +40,6 @@ public class ManagerTimeOff {
 
         deny = new Button();
         deny.createButtonWithIcon(frame.getJFrame(), "Deny", 150, 225, 100, 20);
-
-        dateFormat = new Label();
-        dateFormat.createLabel(30,150,200,20, frame.getJFrame(),
-                "Date in dd/mm/yyyy:");
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");

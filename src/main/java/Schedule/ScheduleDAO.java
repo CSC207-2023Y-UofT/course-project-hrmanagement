@@ -102,7 +102,7 @@ public class ScheduleDAO {
      */
     public static Map<String, List<LocalDate>> loadTimeOffsFromTXT(String filePath) {
 
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yy");
         Map<String, List<LocalDate>> timeOffMap = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

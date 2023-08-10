@@ -103,6 +103,7 @@ public class EmployeeTimeOff {
                     out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
                             + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");
                     out.close();
+                    new EmployeeTimeOff().CreateEmployeeTimeOff();
                     frame.getJFrame().dispose();
                 } catch (IOException exception) {
                     exception.printStackTrace();

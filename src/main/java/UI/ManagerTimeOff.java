@@ -16,6 +16,7 @@ public class ManagerTimeOff {
     Panel panel;
     Button approve;
     Button deny;
+    Button back;
     Label hist;
     Label start;
     Label end;
@@ -40,6 +41,9 @@ public class ManagerTimeOff {
 
         deny = new Button();
         deny.createButtonWithIcon(frame.getJFrame(), "Deny", 150, 225, 100, 20);
+
+        back = new Button();
+        back.createButtonWithIcon(frame.getJFrame(), "< Back to Manager Portal", 1, 1, 200, 20);
 
         name = new Label();
         name.createLabel(30,180,100,20, frame.getJFrame(), "Name:");
@@ -132,8 +136,8 @@ public class ManagerTimeOff {
                         var++;
                     }
                     out.close();
+                    new ManagerTimeOff().CreateManagerTimeOff();
                     frame.getJFrame().dispose();
-
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
@@ -179,11 +183,18 @@ public class ManagerTimeOff {
                         var++;
                     }
                     out.close();
+                    new ManagerTimeOff().CreateManagerTimeOff();
                     frame.getJFrame().dispose();
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
 
+        back.getButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getJFrame().dispose(); // although it just closes, send back since terminal is still open
             }
         });
 

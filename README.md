@@ -19,11 +19,11 @@ The HR Management System project is a Java software solution designed to streaml
 ___
 
 ## Technologies Used
-User interface components: Java Swing - JFrame, JPanel, JButton, etc
-Layout Management: layout managers - FlowLayout, GridLayout, etc
-Event handling: Action Listener, Key Listener, MouseListener, etc
-Persistence and data storage: JDBC for MYSQL Database, File I/O for CSV and TXT Files
-Version control and collaboration: Github
+**User interface components:** Java Swing - JFrame, JPanel, JButton, etc <br> 
+**Layout Management:** layout managers - FlowLayout, GridLayout, etc <br> 
+**Event handling:** Action Listener, Key Listener, MouseListener, etc <br> 
+**Persistence and data storage:** JDBC for MYSQL Database, File I/O for CSV and TXT Files <br> 
+**Version control and collaboration:** Github
 ___
 
 ## Installation

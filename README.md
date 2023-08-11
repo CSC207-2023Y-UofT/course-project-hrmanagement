@@ -101,8 +101,9 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 
 ![Salary result](./images/salary_result_gui.png)
 
-**Data Validation Error Messages**: Error messages display if users input invalid data, which guides them towards correcting the inputs.
+**Data Validation Error Messages**: If the user selects or inputs invalid data, error message panels inform the user and guide them toward correcting the inputs.
 
+![Select employee error GUI](./images/select_error_message_gui.png)
 ![Date error gui](./images/date_error_gui.png)
 ![Invalid bonus gui](./images/invalid_bonus_gui.png)
 ![Invalid hours gui](./images/invalid_hours_gui.png)

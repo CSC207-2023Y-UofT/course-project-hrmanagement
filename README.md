@@ -49,14 +49,14 @@ ___
 
 ### Payroll Feature
 
-The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. 
+The tests feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. 
 
 #### Key Functionalities
 
-The key functionalities of the payroll feature include:
+The key functionalities of the tests feature include:
 
 ##### Salary Calculation
-The core functionality of payroll is to calculate salaries for employees and managers. This feature calculates employee salary based on the number of days and hours worked. 
+The core functionality of tests is to calculate salaries for employees and managers. This feature calculates employee salary based on the number of days and hours worked. 
 It uses role-specific hourly rates and includes an option for adding bonuses. 
 
 ##### Employee Data Management
@@ -66,10 +66,10 @@ The Payroll Feature integrates with the employee database. It extracts employee 
 Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enables precise salary computations.
 
 ##### Data Validation
-To maintain the integrity of calculations and prevent erroneous inputs, the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
+To maintain the integrity of calculations and prevent erroneous inputs, the tests feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 
 ##### Database Flexibility
-The payroll feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
+The tests feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
 
 #### GUI Functionality
 The graphical interface (GUI) of the Payroll Feature is accessed through the manager portal.
@@ -84,7 +84,7 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 
 ![Timesheet GUI](./images/timesheetgui.png)
 
-**Payroll Information**: After calculation, the GUI presents a comprehensive payroll information list for the selected employee. This information includes base salary, worked hours, bonus, and the final computed salary.
+**Payroll Information**: After calculation, the GUI presents a comprehensive tests information list for the selected employee. This information includes base salary, worked hours, bonus, and the final computed salary.
 
 ![Salary result](./images/salary_result_gui.png)
 
@@ -94,7 +94,7 @@ Upon making necessary adjustments, users can initiate salary calculations by cli
 ![Invalid bonus gui](./images/invalid_bonus_gui.png)
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
-This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
+This combination of functionalities allows users to efficiently manage tests calculations for employees and managers, backed by accurate data and an intuitive interface.
 ___
 
 ### Time-Off Feature
@@ -109,7 +109,7 @@ ___
 
 ## Design Patterns
 
-In payroll, several design patterns are implemented: 
+In tests, several design patterns are implemented: 
 - **Strategy Design Pattern**: Two concrete classes, `MySQLDataAccess` and `CSVDataAccess`, implement the `DataAccessStrategy` interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
 - **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.

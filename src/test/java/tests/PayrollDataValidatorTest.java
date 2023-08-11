@@ -1,4 +1,4 @@
-package payroll;
+package tests;
 
 import Payroll.usecase.DataValidator;
 import org.junit.jupiter.api.Test;

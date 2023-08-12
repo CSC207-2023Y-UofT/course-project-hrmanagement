@@ -23,7 +23,7 @@ ___
 **Layout Management:** layout managers - FlowLayout, GridLayout, etc <br> 
 **Event handling:** Action Listener, Key Listener, MouseListener, etc <br> 
 **Persistence and data storage:** JDBC for MYSQL Database, File I/O for CSV and TXT Files <br> 
-**Version control and collaboration:** Github
+**Version control and collaboration:** GitHub
 ___
 
 ## Installation
@@ -86,7 +86,9 @@ Users have the flexibility to fine-tune timesheet information to match the actua
 To maintain the integrity of calculations and prevent erroneous inputs, the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 
 ##### Database Flexibility
-The payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality. **Note:** MYSQL Database is regularly updated with the creation of new employees and employees' corresponding timesheets. CSV is designed as a backup database with information on existing employees and does not currently support update features. 
+The payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. 
+This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality. **Note:** MYSQL Database is designed as the main database and is regularly updated with the creation of new employees and employees' corresponding timesheets. 
+CSV is designed as a backup database with information on existing employees and does not currently support update features. All updates are done through MYSQL. 
 
 #### GUI Functionality
 The graphical interface (GUI) of the Payroll Feature is accessed through the manager portal.

@@ -1,14 +1,10 @@
 package UI;
 
-import GUILogin.EmployeeForm;
-import GUILogin.EmployeeSignIn;
-import Payroll.PayrollMain;
+import Payroll.PayrollApplication;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import Schedule.*;
 
@@ -50,7 +46,7 @@ public class ManagerPortalBox {
 
         // create button for payroll calculator
         viewPayrollCalculator = new Button();
-        viewPayrollCalculator.createButtonWithIcon(frame.getJFrame(), "View Payroll Calculator", 50, 190, 200, 50);
+        viewPayrollCalculator.createButtonWithIcon(frame.getJFrame(), "Calculate Payroll", 50, 190, 200, 50);
 
         // action when view schedule button is clicked
 
@@ -95,8 +91,8 @@ public class ManagerPortalBox {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Open the Payroll Calculator GUI
-                PayrollMain payrollMain = new PayrollMain();
-                payrollMain.main(new String[0]);
+                PayrollApplication payrollApplication = new PayrollApplication();
+                payrollApplication.start();
             }
         });
 

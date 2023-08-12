@@ -26,6 +26,8 @@ public interface PayrollConstant {
     double EMPLOYEE_HOURLY_RATE = 40;
     double MINIMUM_HOURLY_RATE = 15;
 
-    boolean READ_DATA_FROM_DB = true;  // true means reading from mysql
+    boolean READ_DATA_FROM_DB = true;  // default true means reading from mysql
+    // only MYSQL database supports data persistence
+    // CSV is designed as a backup database just to demonstrate the functionalities of payroll feature
 
 }

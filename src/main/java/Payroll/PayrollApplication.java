@@ -13,7 +13,7 @@ import java.util.Map;
  * This class initializes the graphical user interface (GUI), loads employee and timesheet data,
  * and displays the payroll calculator GUI for the user to interact with.
  */
-public class PayrollMain {
+public class PayrollApplication {
     public static String jdbcUrl = PayrollConstant.db_jdbcUrl;
     public static String username = PayrollConstant.db_username;
     public static String password = PayrollConstant.db_password;
@@ -21,7 +21,7 @@ public class PayrollMain {
     public static String csv_employee_filepath = PayrollConstant.strPathToEmployeeFile;
     public static String csv_timesheet_filepath = PayrollConstant.strPathToTimesheetFile;
 
-    public static void main(String[] args) {
+    public void start() {
         SwingUtilities.invokeLater(() -> {
             PayrollGUI payrollGUI = new PayrollGUI();
             PayrollCalculator payrollCalculator = PayrollCalculator.getInstance();

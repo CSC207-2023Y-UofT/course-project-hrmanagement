@@ -36,8 +36,8 @@ ___
 ## Usage
 1. Launch the application.
 2. Select user role: either manager or employee
-3. In the manager portal, managers can approve time-off requests, calculate salaries, and view schedules.
-4. In the employee portal, employees can log in and request time-off. 
+3. In the manager portal, managers can approve time-off requests, calculate payroll, and view schedules.
+4. In the employee portal, employees can log in, sign up, and request time-off. 
 ___
 
 ## Features
@@ -66,7 +66,7 @@ ___
 
 ### Payroll Feature
 
-The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. 
+The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. As well, the feature allows managers to save employees' salary calculations to their corresponding timesheets. 
 
 #### Key Functionalities
 
@@ -80,13 +80,13 @@ It uses role-specific hourly rates and includes an option for adding bonuses.
 The Payroll Feature integrates with the employee database. It extracts employee information, including roles and other relevant data for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
 
 ##### Timesheet Integration
-Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enables precise salary computations.
+Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enables precise salary computations. Finally, **data persistence** allows the user to save the calculated salary to the timesheet. 
 
 ##### Data Validation
 To maintain the integrity of calculations and prevent erroneous inputs, the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 
 ##### Database Flexibility
-The payroll feature offers the versatility to read employee and timesheet data from either a MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality.
+The payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality. **Note:** MYSQL Database is regularly updated with the creation of new employees and employees' corresponding timesheets. CSV is designed as a backup database with information on existing employees and does not currently support update features. 
 
 #### GUI Functionality
 The graphical interface (GUI) of the Payroll Feature is accessed through the manager portal.

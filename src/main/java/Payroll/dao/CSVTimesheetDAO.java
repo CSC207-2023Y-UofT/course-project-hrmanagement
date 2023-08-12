@@ -35,7 +35,7 @@ public class CSVTimesheetDAO implements TimesheetDAO {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 5) {
+                if (parts.length == 6) {
                     String employeeId = parts[0].trim();
                     String lastName = parts[1].trim();
                     String firstName = parts[2].trim();

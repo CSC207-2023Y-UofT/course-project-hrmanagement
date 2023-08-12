@@ -117,6 +117,8 @@ ___
 
 ### Time-Off Feature
 
+(Time-off request dates must be given in dd/mm/yy format to be appropriately entered into the database and read)
+
 ___
 
 ### Schedule Feature

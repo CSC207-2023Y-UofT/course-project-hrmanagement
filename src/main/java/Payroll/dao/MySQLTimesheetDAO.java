@@ -1,5 +1,6 @@
 package Payroll.dao;
 
+import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
 
 import java.sql.*;
@@ -47,9 +48,10 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
                     String firstName = resultSet.getString("FIRSTNAME");
                     String startDate = resultSet.getString("STARTDATE");
                     String endDate = resultSet.getString("ENDDATE");
+                    double salary  = resultSet.getDouble("SALARY");
 
                     // create new timesheet entity
-                    createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate);
+                    createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate, salary);
                 }
 
                 return timesheetMap;
@@ -60,7 +62,13 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         return new HashMap<>();
     }
 
-    static void createTimesheetEntity(Map<String, TimesheetEntity> timesheetMap, String employeeId, String lastName, String firstName, String startDate, String endDate) {
+    static void createTimesheetEntity(Map<String, TimesheetEntity> timesheetMap,
+                                      String employeeId,
+                                      String lastName,
+                                      String firstName,
+                                      String startDate,
+                                      String endDate,
+                                      double salary) {
         TimesheetEntity timesheet = new TimesheetEntity();
         timesheet.setEmployeeId(employeeId);
         timesheet.setFirstName(firstName);
@@ -68,9 +76,99 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
 
         timesheet.setStartDate(startDate);
         timesheet.setEndDate(endDate);
+        timesheet.setSalary(salary);
 
         String employeeName = firstName + " " + lastName;
         timesheetMap.put(employeeName, timesheet);
     }
+
+    @Override
+    public void addTimesheet(TimesheetEntity timesheet) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO timesheets (EMPLOYEEID, LASTNAME, FIRSTNAME, STARTDATE, ENDDATE, SALARY) VALUES (?, ?, ?, ?, ?, ?)")) {
+            statement.setInt(1, Integer.parseInt(timesheet.getEmployeeId()));
+            statement.setString(2, timesheet.getLastName());
+            statement.setString(3, timesheet.getFirstName());
+            statement.setString(4, timesheet.getStartDate());
+            statement.setString(5, timesheet.getEndDate());
+            statement.setDouble(6, timesheet.getSalary());
+            statement.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateTimesheet(TimesheetEntity timesheet) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+             PreparedStatement statement = connection.prepareStatement(
+                     "UPDATE timesheets SET LASTNAME = ?, " +
+                             "FIRSTNAME = ?, " +
+                             "STARTDATE = ?, " +
+                             "ENDDATE = ?, " +
+                             "SALARY = ? " +
+                             "WHERE EMPLOYEEID = ?")) {
+            statement.setString(1, timesheet.getLastName());
+            statement.setString(2, timesheet.getFirstName());
+            statement.setString(3, timesheet.getStartDate());
+            statement.setString(4, timesheet.getEndDate());
+            statement.setDouble(5, timesheet.getSalary());
+            statement.setString(6, timesheet.getEmployeeId());
+            statement.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public TimesheetEntity getTimesheetById(String employeeId) {
+        TimesheetEntity timesheet = null;
+
+        int iEmployeeId = new Integer(employeeId).intValue();
+
+        try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM timesheets WHERE EMPLOYEEID = ?")) {
+            statement.setInt(1, iEmployeeId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    timesheet = new TimesheetEntity((
+                            Integer.valueOf(resultSet.getInt("EMPLOYEEID")).toString()),
+                            resultSet.getString("FIRSTNAME"),
+                            resultSet.getString("LASTNAME"),
+                            resultSet.getString("STARTDATE"),
+                            resultSet.getString("ENDDATE"),
+                            resultSet.getDouble("SALARY"));
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+
+        return timesheet;
+    }
+
+
+    @Override
+    public void saveTimesheet(TimesheetEntity timesheet) {
+
+        String employeeId = timesheet.getEmployeeId();
+        TimesheetEntity existingTimesheet = getTimesheetById(employeeId);
+
+        if (existingTimesheet == null) {
+            addTimesheet(timesheet);
+        }
+        else {
+            updateTimesheet(timesheet);
+        }
+
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package Payroll.ui;
 
 import Payroll.PayrollConstant;
+import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
 import Payroll.usecase.DataValidator;
 
@@ -31,14 +32,32 @@ public class TimesheetWindow {
 
     /**
      * Create time sheet window
-     * @param employeeName employee's name
+     * @param employee  employee entity
      * @return an array containing start date, end date, hours per day, bonus
      */
-    public String[] showInputDialog(String employeeName) {
+    public String[] showInputDialog(EmployeeEntity employee) {
         JPanel panel = new JPanel(new GridLayout(6, 2));
 
+        String firstName = employee.getFirstName();
+        String lastName = employee.getLastName();
+        String employeeName = firstName + "," + lastName;
+
         // Set start date.
+        TimesheetEntity timesheet  = (TimesheetEntity)(timesheetMap.get(employeeName));
+        if (timesheet == null)
+        {
+            timesheet = new TimesheetEntity();
+            timesheet.setEmployeeId(employee.getEmployeeId());
+            timesheet.setFirstName(firstName);
+            timesheet.setLastName(lastName);
+            timesheet.setStartDate("2023-07-01");
+            timesheet.setEndDate("2023-07-31");
+
+            timesheetMap.put(employeeName, timesheet);
+        }
+
         String strStartDate = timesheetMap.get(employeeName).getStartDate();
+
         SpinnerDateModel startDateSpinnerDateModel;
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,6 +72,7 @@ public class TimesheetWindow {
 
         // Set end date.
         String strEndDate = timesheetMap.get(employeeName).getEndDate();
+
         SpinnerDateModel endDateSpinnerDateModel;
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

@@ -1,6 +1,5 @@
 package Payroll.ui;
 
-import Payroll.dao.DataAccessStrategy;
 import Payroll.dao.TimesheetDAO;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
@@ -12,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.sql.Time;
 import java.util.Map;
 
 /**
@@ -180,8 +178,9 @@ public class PayrollGUI extends JFrame {
                 timesheet.setEndDate(endDate);
                 timesheet.setSalary(salary);
 
-                // Save timesheet data to database.
+                // Save timesheet data to database and update internal timesheet map.
                 timesheetDAO.saveTimesheet(timesheet);
+                timesheetMap.put(employName, timesheet);
 
                 String salaryMessage =
                         "Employee ID: " + employeeId + "\n"
@@ -190,6 +189,8 @@ public class PayrollGUI extends JFrame {
                                 + "Start Date: " + startDate + "\n"
                                 + "End Date: " + endDate + "\n"
                                 + "Salary: " + "$" + salary + "\n"
+                                + "\n"
+                                + "Timesheet data saved!" + "\n"
                                 + "\n";
 
                 // Display the salary calculation result in a message dialog

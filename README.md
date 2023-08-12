@@ -97,13 +97,13 @@ The graphical interface (GUI) of the Payroll Feature is accessed through the man
 ![Payroll Calculator Menu](./images/payroll_gui.png)
 
 **Timesheet Adjustment**: Once an employee is selected, the interface allows adjustments to timesheet details such as start date, end date, hours per day, and bonus amount.
-Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
+The interface also displays the employee's previous calculated salary amount. Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
 
-![Timesheet GUI](./images/timesheetgui.png)
+![Timesheet GUI](./images/timesheet_gui.png)
 
-**Payroll Information**: After calculation, the GUI presents a comprehensive payroll information list for the selected employee. This information includes base salary, worked hours, bonus, and the final computed salary.
+**Payroll Information**: After calculation, the GUI presents a comprehensive payroll information list for the selected employee. This information includes base salary, worked hours, bonus, and the final computed salary. The employee's new timesheet information is saved to the database. 
 
-![Salary result](./images/salary_result_gui.png)
+![Salary result](./images/salary_calculation_result.png)
 
 **Data Validation Error Messages**: If the user selects or inputs invalid data, error message panels inform the user and guide them toward correcting the inputs.
 

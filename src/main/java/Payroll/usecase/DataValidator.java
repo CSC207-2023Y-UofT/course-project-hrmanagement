@@ -1,5 +1,7 @@
 package Payroll.usecase;
 
+import Payroll.PayrollConstant;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,7 +17,7 @@ public class DataValidator {
      * @return boolean true if data is valid
      */
     public static boolean isValidDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
         dateFormat.setLenient(false);
         try {
             dateFormat.parse(dateStr);
@@ -32,7 +34,7 @@ public class DataValidator {
      * @return Data object if parsing successful, null if parsing fails
      */
     public static Date parseDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
         dateFormat.setLenient(false);
         try {
             return dateFormat.parse(dateStr);

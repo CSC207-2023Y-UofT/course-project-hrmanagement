@@ -75,7 +75,7 @@ public class PayrollCalculator {
      * @return number of days
      */
     private double calculateTotalDays(String startDateStr, String endDateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
         try {
             Date startDate = dateFormat.parse(startDateStr);
             Date endDate = dateFormat.parse(endDateStr);

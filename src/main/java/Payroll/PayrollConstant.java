@@ -34,8 +34,8 @@ public interface PayrollConstant {
 
     // The default start and end date should be based on current system date.
     // It is hard-coded in here for simplicity.
-    String DEFAULT_START_DATE = "2023-7-01";
-    String DEFAULT_END_DATE = "2023-07-31";
+    String DEFAULT_START_DATE = "2023/07/01";
+    String DEFAULT_END_DATE = "2023/07/31";
     Double DEFAULT_SALARY = 0.0;
 
 }

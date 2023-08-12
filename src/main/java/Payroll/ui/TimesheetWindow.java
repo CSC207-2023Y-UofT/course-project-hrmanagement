@@ -36,11 +36,11 @@ public class TimesheetWindow {
      * @return an array containing start date, end date, hours per day, bonus
      */
     public String[] showInputDialog(EmployeeEntity employee) {
-        JPanel panel = new JPanel(new GridLayout(6, 2));
+        JPanel panel = new JPanel(new GridLayout(7, 2));
 
         String firstName = employee.getFirstName();
         String lastName = employee.getLastName();
-        String employeeName = firstName + "," + lastName;
+        String employeeName = firstName + " " + lastName;
 
         // Set start date.
         TimesheetEntity timesheet  = (TimesheetEntity)(timesheetMap.get(employeeName));
@@ -50,17 +50,19 @@ public class TimesheetWindow {
             timesheet.setEmployeeId(employee.getEmployeeId());
             timesheet.setFirstName(firstName);
             timesheet.setLastName(lastName);
-            timesheet.setStartDate("2023-07-01");
-            timesheet.setEndDate("2023-07-31");
+            timesheet.setStartDate(PayrollConstant.DEFAULT_START_DATE);
+            timesheet.setEndDate(PayrollConstant.DEFAULT_END_DATE);
+            timesheet.setSalary(PayrollConstant.DEFAULT_SALARY);
 
             timesheetMap.put(employeeName, timesheet);
         }
 
+        double previousSalary = timesheetMap.get(employeeName).getSalary();
         String strStartDate = timesheetMap.get(employeeName).getStartDate();
 
         SpinnerDateModel startDateSpinnerDateModel;
         try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
             Date startDate = dateFormat.parse(strStartDate);
             // Create a new SpinnerDateModel with the parsed date
             startDateSpinnerDateModel = new SpinnerDateModel(startDate, null, null, java.util.Calendar.DAY_OF_MONTH);
@@ -75,7 +77,7 @@ public class TimesheetWindow {
 
         SpinnerDateModel endDateSpinnerDateModel;
         try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
             Date endDate = dateFormat.parse(strEndDate);
             // Create a new SpinnerDateModel with the parsed date
             endDateSpinnerDateModel = new SpinnerDateModel(endDate, null, null, java.util.Calendar.DAY_OF_MONTH);
@@ -92,13 +94,13 @@ public class TimesheetWindow {
         JLabel startDateLabel = new JLabel("Start Date:");
         startDateLabel.setFont(startDateLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
         JSpinner startDateSpinner = new JSpinner(startDateSpinnerDateModel);
-        JSpinner.DateEditor startDateEditor = new JSpinner.DateEditor(startDateSpinner, "MM/dd/yyyy");
+        JSpinner.DateEditor startDateEditor = new JSpinner.DateEditor(startDateSpinner, PayrollConstant.SIMPLE_DATE_FORMAT);
         startDateSpinner.setEditor(startDateEditor);
 
         JLabel endDateLabel = new JLabel("End Date:");
         endDateLabel.setFont(endDateLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
         JSpinner endDateSpinner = new JSpinner(endDateSpinnerDateModel);
-        JSpinner.DateEditor endDateEditor = new JSpinner.DateEditor(endDateSpinner, "MM/dd/yyyy");
+        JSpinner.DateEditor endDateEditor = new JSpinner.DateEditor(endDateSpinner, PayrollConstant.SIMPLE_DATE_FORMAT);
         endDateSpinner.setEditor(endDateEditor);
 
         JLabel hoursPerDayLabel = new JLabel("Hours Per Day:");
@@ -113,6 +115,11 @@ public class TimesheetWindow {
         bonusField.setFont(bonusLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
         bonusField.setText(String.valueOf(PayrollConstant.DefaultBonus));
 
+        JLabel previousSalaryLabel = new JLabel("Previous Salary: ");
+        previousSalaryLabel.setFont(previousSalaryLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
+        JLabel previousSalaryValueLabel = new JLabel("$" + Double.toString(previousSalary));
+
+
         JLabel blankLabel = new JLabel("");
 
         panel.add(employeeNameLabel);
@@ -126,6 +133,8 @@ public class TimesheetWindow {
         panel.add(hoursPerDayField);
         panel.add(bonusLabel);
         panel.add(bonusField);
+        panel.add(previousSalaryLabel);
+        panel.add(previousSalaryValueLabel);
         panel.add(blankLabel);
 
         // Set the preferred width and height for the input dialog
@@ -137,7 +146,7 @@ public class TimesheetWindow {
                     "Timesheet", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
             if (result == JOptionPane.OK_OPTION) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat(PayrollConstant.SIMPLE_DATE_FORMAT);
                 String startDateStr = dateFormat.format(startDateSpinner.getValue());
                 String endDateStr = dateFormat.format(endDateSpinner.getValue());
                 String hoursPerDay = hoursPerDayField.getText();
@@ -146,7 +155,7 @@ public class TimesheetWindow {
                 // Perform date validation
                 if (!DataValidator.isValidDate(startDateStr) || !DataValidator.isValidDate(endDateStr)) {
                     JOptionPane.showMessageDialog(parentComponent,
-                            "Invalid date format. Please use the format MM/dd/yyyy.",
+                            "Invalid date format. Please use the format " + PayrollConstant.SIMPLE_DATE_FORMAT + ".",
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }

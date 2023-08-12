@@ -31,7 +31,7 @@ public class PayrollGUITest {
             TimesheetDAO timesheetDAO;
 
 
-            if (PayrollConstant.READ_DATA_FROM_DB) { // determines which data access strategy to use
+            if (PayrollConstant.READ_DATA_FROM_MYSQL) { // determines which data access strategy to use
                 dataAccessStrategy = new MySQLStrategy(jdbcUrl, username, password);
                 timesheetDAO = new MySQLTimesheetDAO(jdbcUrl, username, password);
             } else {

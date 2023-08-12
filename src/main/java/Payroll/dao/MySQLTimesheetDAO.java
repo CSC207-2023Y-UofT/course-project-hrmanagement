@@ -62,6 +62,17 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         return new HashMap<>();
     }
 
+    /**
+     * Creates a TimesheetEntity object based on the provided data and adds it to the timesheet map.
+     *
+     * @param timesheetMap The map to which the timesheet entity will be added.
+     * @param employeeId   The ID of the employee associated with the timesheet.
+     * @param lastName     The last name of the employee.
+     * @param firstName    The first name of the employee.
+     * @param startDate    The start date of the timesheet.
+     * @param endDate      The end date of the timesheet.
+     * @param salary       The salary associated with the timesheet.
+     */
     static void createTimesheetEntity(Map<String, TimesheetEntity> timesheetMap,
                                       String employeeId,
                                       String lastName,
@@ -82,6 +93,10 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         timesheetMap.put(employeeName, timesheet);
     }
 
+    /**
+     * Adds a timesheet record to the MySQL database.
+     * @param timesheet The TimesheetEntity object containing the timesheet information to be added.
+     */
     @Override
     public void addTimesheet(TimesheetEntity timesheet) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -101,6 +116,11 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         }
     }
 
+    /**
+     * Updates a timesheet record in the MySQL database.
+     * Called when timesheet already exists
+     * @param timesheet The TimesheetEntity object containing the updated timesheet information.
+     */
     @Override
     public void updateTimesheet(TimesheetEntity timesheet) {
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -125,6 +145,11 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         }
     }
 
+    /**
+     * Retrieves a timesheet record from the MySQL database based on the employee ID.
+     * @param employeeId The ID of the employee associated with the timesheet to retrieve.
+     * @return The TimesheetEntity object representing the retrieved timesheet, or null if not found
+     */
     @Override
     public TimesheetEntity getTimesheetById(String employeeId) {
         TimesheetEntity timesheet = null;
@@ -154,7 +179,11 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         return timesheet;
     }
 
-
+    /**
+     * Saves a timesheet record to the MySQL database. If a timesheet with the same employee ID exists,
+     * it updates the existing record; otherwise, it adds a new record.
+     * @param timesheet The TimesheetEntity object containing the timesheet information to be saved.
+     */
     @Override
     public void saveTimesheet(TimesheetEntity timesheet) {
 
@@ -167,8 +196,6 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         else {
             updateTimesheet(timesheet);
         }
-
     }
-
 
 }

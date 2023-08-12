@@ -27,11 +27,15 @@ public class PayrollMain {
             PayrollCalculator payrollCalculator = PayrollCalculator.getInstance();
 
             DataAccessStrategy dataAccessStrategy;
+            TimesheetDAO timesheetDAO;
+
 
             if (PayrollConstant.READ_DATA_FROM_DB) { // determines which data access strategy to use
                 dataAccessStrategy = new MySQLStrategy(jdbcUrl, username, password);
+                timesheetDAO = new MySQLTimesheetDAO(jdbcUrl, username, password);
             } else {
                 dataAccessStrategy = new CSVStrategy(csv_employee_filepath, csv_timesheet_filepath);
+                timesheetDAO = new CSVTimesheetDAO(csv_timesheet_filepath);
             }
 
             // load employee and timesheet data
@@ -43,7 +47,7 @@ public class PayrollMain {
             payrollGUI.setPayrollCalculator(payrollCalculator);
 
             // Display the payroll GUI.
-            payrollGUI.run();
+            payrollGUI.run(timesheetDAO);
             payrollGUI.setVisible(true);
         });
     }

@@ -10,6 +10,19 @@ public class TimesheetEntity {
     private String lastName;
     private String startDate;
     private String endDate;
+    private double salary;
+
+    public TimesheetEntity() {
+    }
+
+    public TimesheetEntity(String employeeId, String firstName, String lastName, String startDate, String endDate, double salary) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.salary = salary;
+    }
 
     // Constructors, getters, and setters for EmployeeEntity attributes
     public String getEmployeeId() {
@@ -50,5 +63,13 @@ public class TimesheetEntity {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }

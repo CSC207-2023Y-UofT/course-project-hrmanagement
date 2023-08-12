@@ -1,5 +1,8 @@
 package Payroll.ui;
 
+import Payroll.dao.DataAccessStrategy;
+import Payroll.dao.TimesheetDAO;
+import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
 import Payroll.usecase.PayrollCalculator;
 
@@ -9,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.sql.Time;
 import java.util.Map;
 
 /**
@@ -40,7 +44,7 @@ public class PayrollGUI extends JFrame {
     /**
      * Initialize and configure the JFrame with all of its components
      */
-    public void run() {
+    public void run(TimesheetDAO timesheetDAO) {
 
         // Set Frame properties
         setTitle("Payroll Calculator");
@@ -149,23 +153,42 @@ public class PayrollGUI extends JFrame {
                 String role = (String) employeeTable.getValueAt(selectedRow, 6);
                 String employName = firstName + " " + lastName;
 
+                EmployeeEntity selectedEmployee = new EmployeeEntity();
+                selectedEmployee.setEmployeeId(employeeId);
+                selectedEmployee.setFirstName(firstName);
+                selectedEmployee.setLastName(lastName);
+                selectedEmployee.setRole(role);
+
                 TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
-                String[] worksheetData = timesheetWindow.showInputDialog(employName);
+                String[] timesheetData = timesheetWindow.showInputDialog(selectedEmployee);
 
                 // if cancel button is clicked.
-                if (worksheetData == null)
+                if (timesheetData == null)
                     return;
 
                 // Perform the salary calculation based on the additional data
                 //String role = (String) employeeTable.getValueAt(selectedRow, 6);
-                double salary = payrollCalculator.calculateSalary(role, worksheetData);
+                double salary = payrollCalculator.calculateSalary(role, timesheetData);
+                String startDate = timesheetData[0];
+                String endDate = timesheetData[1];
+
+                TimesheetEntity timesheet = new TimesheetEntity();
+                timesheet.setEmployeeId(employeeId);
+                timesheet.setLastName(lastName);
+                timesheet.setFirstName(firstName);
+                timesheet.setStartDate(startDate);
+                timesheet.setEndDate(endDate);
+                timesheet.setSalary(salary);
+
+                // Save timesheet data to database.
+                timesheetDAO.saveTimesheet(timesheet);
 
                 String salaryMessage =
                         "Employee ID: " + employeeId + "\n"
                                 + "Name: " + firstName + " " + lastName + "\n"
                                 + "Role: " + role + "\n"
-                                + "Start Date: " + worksheetData[0] + "\n"
-                                + "End Date: " + worksheetData[1] + "\n"
+                                + "Start Date: " + startDate + "\n"
+                                + "End Date: " + endDate + "\n"
                                 + "Salary: " + "$" + salary + "\n"
                                 + "\n";
 

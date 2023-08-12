@@ -41,8 +41,11 @@ public class CSVTimesheetDAO implements TimesheetDAO {
                     String firstName = parts[2].trim();
                     String startDate = parts[3].trim();
                     String endDate = parts[4].trim();
+                    String salary = parts[5].trim();
 
-                    MySQLTimesheetDAO.createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate);
+                    double dSalary = new Double(salary);
+
+                    MySQLTimesheetDAO.createTimesheetEntity(timesheetMap, employeeId, lastName, firstName, startDate, endDate, dSalary);
                 } else {
                     System.err.println("Invalid CSV format: " + line);
                 }
@@ -52,5 +55,25 @@ public class CSVTimesheetDAO implements TimesheetDAO {
         }
 
         return timesheetMap;
+    }
+
+    @Override
+    public void addTimesheet(TimesheetEntity timesheet) {
+        return;
+    }
+
+    @Override
+    public TimesheetEntity getTimesheetById(String employeeId) {
+        return null;
+    }
+
+    @Override
+    public void updateTimesheet(TimesheetEntity timesheet) {
+
+    }
+
+    @Override
+    public void saveTimesheet(TimesheetEntity timesheet) {
+
     }
 }

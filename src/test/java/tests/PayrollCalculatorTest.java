@@ -15,6 +15,12 @@ import java.lang.reflect.Method;
  */
 public class PayrollCalculatorTest {
 
+    String testStartDate = "2023/07/01";
+    String testEndDate = "2023/07/31";
+    String testHoursPerDay = "7.5";
+    String testBonus = "100.0";
+
+
     private PayrollCalculator payrollCalculator;
 
     /**
@@ -31,8 +37,8 @@ public class PayrollCalculatorTest {
     @Test
     public void testCalculateSalaryForManager() {
         String role = "Manager";
-        String[] timesheetData = {"07/01/2023", "07/31/2023", "8", "500"};
-        double expectedSalary = 8 * 31 * PayrollConstant.MANAGER_HOURLY_RATE + 500;
+        String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
+        double expectedSalary = 7.5 * 31 * PayrollConstant.MANAGER_HOURLY_RATE + 100;
         double actualSalary = invokeCalculateSalary(role, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
@@ -43,8 +49,8 @@ public class PayrollCalculatorTest {
     @Test
     public void testCalculateSalaryForEmployee() {
         String role = "Employee";
-        String[] timesheetData = {"07/01/2023", "07/31/2023", "8", "300"};
-        double expectedSalary = 8 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE + 300;
+        String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
+        double expectedSalary = 7.5 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE + 100;
         double actualSalary = invokeCalculateSalary(role, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
@@ -55,8 +61,8 @@ public class PayrollCalculatorTest {
     @Test
     public void testCalculateSalaryForUnknownRole() {
         String role = "UnknownRole";
-        String[] timesheetData = {"07/01/2023", "07/31/2023", "8", "0"};
-        double expectedSalary = 8 * 31 * PayrollConstant.MINIMUM_HOURLY_RATE;
+        String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
+        double expectedSalary = 7.5 * 31 * PayrollConstant.MINIMUM_HOURLY_RATE + 100;
         double actualSalary = invokeCalculateSalary(role, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
@@ -67,8 +73,8 @@ public class PayrollCalculatorTest {
     @Test
     public void testCalculateSalaryForZeroBonus() {
         String role = "Employee";
-        String[] timesheetData = {"07/01/2023", "07/31/2023", "8", "0"};
-        double expectedSalary = 8 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE;
+        String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, "0"};
+        double expectedSalary = 7.5 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE;
         double actualSalary = invokeCalculateSalary(role, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
@@ -78,10 +84,8 @@ public class PayrollCalculatorTest {
      */
     @Test
     public void testCalculateTotalDays() {
-        String startDateStr = "07/01/2023";
-        String endDateStr = "07/31/2023";
         double expectedTotalDays = 31;
-        double actualTotalDays = invokeCalculateTotalDays(startDateStr, endDateStr);
+        double actualTotalDays = invokeCalculateTotalDays(testStartDate, testEndDate);
         assertEquals(expectedTotalDays, actualTotalDays, 0.001);
     }
 

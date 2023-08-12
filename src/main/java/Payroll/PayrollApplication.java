@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.Map;
 
 /**
- * The main entry point of the Payroll application.
+ * The main entry point of the Payroll feature.
  * This class initializes the graphical user interface (GUI), loads employee and timesheet data,
  * and displays the payroll calculator GUI for the user to interact with.
  */

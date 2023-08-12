@@ -6,6 +6,8 @@ import java.util.Map;
 
 /**
  * Implementation of DataAccessStrategy for loading data from CSV files.
+ * Note that CSV Files are designed as backup data for running payroll feature, not automatically updated
+ * Data persistence is implemented in MYSQL database
  */
 public class CSVStrategy implements DataAccessStrategy {
 

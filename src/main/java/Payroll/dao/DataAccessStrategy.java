@@ -6,6 +6,8 @@ import java.util.Map;
 
 /**
  * Interface representing a data access strategy. Defines methods to load employee data and timesheet data.
+ * Note data persistence is implemented for MYSQL database
+ * CSV Files are designed as backup data for running payroll feature, not automatically updated
  */
 public interface DataAccessStrategy {
 

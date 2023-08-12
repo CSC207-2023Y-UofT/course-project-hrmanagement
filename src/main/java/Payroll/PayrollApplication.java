@@ -9,11 +9,11 @@ import javax.swing.*;
 import java.util.Map;
 
 /**
- * The main entry point of the Payroll application.
+ * The main entry point of the Payroll feature.
  * This class initializes the graphical user interface (GUI), loads employee and timesheet data,
  * and displays the payroll calculator GUI for the user to interact with.
  */
-public class PayrollMain {
+public class PayrollApplication {
     public static String jdbcUrl = PayrollConstant.db_jdbcUrl;
     public static String username = PayrollConstant.db_username;
     public static String password = PayrollConstant.db_password;
@@ -21,7 +21,7 @@ public class PayrollMain {
     public static String csv_employee_filepath = PayrollConstant.strPathToEmployeeFile;
     public static String csv_timesheet_filepath = PayrollConstant.strPathToTimesheetFile;
 
-    public static void main(String[] args) {
+    public void start() {
         SwingUtilities.invokeLater(() -> {
             PayrollGUI payrollGUI = new PayrollGUI();
             PayrollCalculator payrollCalculator = PayrollCalculator.getInstance();
@@ -29,8 +29,7 @@ public class PayrollMain {
             DataAccessStrategy dataAccessStrategy;
             TimesheetDAO timesheetDAO;
 
-
-            if (PayrollConstant.READ_DATA_FROM_DB) { // determines which data access strategy to use
+            if (PayrollConstant.READ_DATA_FROM_MYSQL) { // determines which data access strategy to use
                 dataAccessStrategy = new MySQLStrategy(jdbcUrl, username, password);
                 timesheetDAO = new MySQLTimesheetDAO(jdbcUrl, username, password);
             } else {

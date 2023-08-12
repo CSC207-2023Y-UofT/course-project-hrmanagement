@@ -66,7 +66,7 @@ ___
 
 ### Payroll Feature
 
-The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. As well, the feature allows managers to save employees' salary calculations to their corresponding timesheets. 
+The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. As well, the feature saves employees' salary calculation result to their corresponding timesheets. 
 
 #### Key Functionalities
 

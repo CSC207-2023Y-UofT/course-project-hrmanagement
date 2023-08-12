@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * Implementation of DataAccessStrategy for loading data from a MySQL database.
+ * MYSQL database includes data persistence for employee and timesheet
  */
 public class MySQLStrategy implements DataAccessStrategy {
 

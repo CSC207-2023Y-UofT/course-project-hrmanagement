@@ -52,7 +52,9 @@ public class EmployeeSignInBox implements ActionListener{
         try{
             // Call the controller to check employee login
             employeeLoginController.checkLogin(employeeID, password);
-            JOptionPane.showMessageDialog(null, "Login Successful!");
+//            JOptionPane.showMessageDialog(null, "Login Successful!");
+            new EmployeePortalBox().createEmployeePortalBox();
+            frame.getJFrame().dispose();
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

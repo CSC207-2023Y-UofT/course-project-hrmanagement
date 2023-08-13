@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import Payroll.entity.EmployeeEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Payroll.PayrollConstant;
@@ -19,8 +21,6 @@ public class PayrollCalculatorTest {
     String testEndDate = "2023/07/31";
     String testHoursPerDay = "7.5";
     String testBonus = "100.0";
-
-
     private PayrollCalculator payrollCalculator;
 
     /**
@@ -35,11 +35,11 @@ public class PayrollCalculatorTest {
      * Test the calculateSalary method for a Manager role.
      */
     @Test
-    public void testCalculateSalaryForManager() {
-        String role = "Manager";
+    public void testCalculateSalaryForManager2() {
         String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
-        double expectedSalary = 7.5 * 31 * PayrollConstant.MANAGER_HOURLY_RATE + 100;
-        double actualSalary = invokeCalculateSalary(role, timesheetData);
+        EmployeeEntity employee = new EmployeeEntity("1", "Johnson", "Bob", "123 King St.", "123456789", PayrollConstant.ROLE_MANAGER);
+        double expectedSalary = (7.5 * invokeCalculateTotalDays(testStartDate, testEndDate) * PayrollConstant.MANAGER_HOURLY_RATE) + Double.parseDouble(testBonus);
+        double actualSalary = payrollCalculator.calculateSalary(employee, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
@@ -47,11 +47,12 @@ public class PayrollCalculatorTest {
      * Test the calculateSalary method for an Employee role.
      */
     @Test
-    public void testCalculateSalaryForEmployee() {
-        String role = "Employee";
+    public void testCalculateSalaryForEmployee2() {
         String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
-        double expectedSalary = 7.5 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE + 100;
-        double actualSalary = invokeCalculateSalary(role, timesheetData);
+        EmployeeEntity employee = new EmployeeEntity("2", "Smith", "John",
+                "111 Maple Rd.", "777373737", PayrollConstant.ROLE_EMPLOYEE);
+        double expectedSalary = (7.5 * invokeCalculateTotalDays(testStartDate, testEndDate) * PayrollConstant.EMPLOYEE_HOURLY_RATE) + Double.parseDouble(testBonus);
+        double actualSalary = payrollCalculator.calculateSalary(employee, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
@@ -60,10 +61,10 @@ public class PayrollCalculatorTest {
      */
     @Test
     public void testCalculateSalaryForUnknownRole() {
-        String role = "UnknownRole";
         String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, testBonus};
-        double expectedSalary = 7.5 * 31 * PayrollConstant.MINIMUM_HOURLY_RATE + 100;
-        double actualSalary = invokeCalculateSalary(role, timesheetData);
+        EmployeeEntity employee = new EmployeeEntity("3", "Doe", "Jane", "123 Elm St.", "5551234567", "UnknownRole");
+        double expectedSalary = (7.5 * invokeCalculateTotalDays(testStartDate, testEndDate) * PayrollConstant.MINIMUM_HOURLY_RATE) + Double.parseDouble(testBonus);
+        double actualSalary = payrollCalculator.calculateSalary(employee, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
@@ -72,10 +73,10 @@ public class PayrollCalculatorTest {
      */
     @Test
     public void testCalculateSalaryForZeroBonus() {
-        String role = "Employee";
         String[] timesheetData = {testStartDate, testEndDate, testHoursPerDay, "0"};
-        double expectedSalary = 7.5 * 31 * PayrollConstant.EMPLOYEE_HOURLY_RATE;
-        double actualSalary = invokeCalculateSalary(role, timesheetData);
+        EmployeeEntity employee = new EmployeeEntity("4", "Brown", "Sandra", "456 Oak St.", "8889990000", PayrollConstant.ROLE_EMPLOYEE);
+        double expectedSalary = (7.5 * invokeCalculateTotalDays(testStartDate, testEndDate) * PayrollConstant.EMPLOYEE_HOURLY_RATE);
+        double actualSalary = payrollCalculator.calculateSalary(employee, timesheetData);
         assertEquals(expectedSalary, actualSalary, 0.001);
     }
 
@@ -90,26 +91,8 @@ public class PayrollCalculatorTest {
     }
 
     /**
-     * Helper method to invoke the protected calculateSalary method using reflection.
-     * @param role The employee's role.
-     * @param timesheetData The timesheet data.
-     * @return The calculated salary.
-     */
-    private double invokeCalculateSalary(String role, String[] timesheetData) {
-        try {
-            Method method = PayrollCalculator.class.getDeclaredMethod("calculateSalary", String.class, String[].class);
-            method.setAccessible(true);
-            return (double) method.invoke(payrollCalculator, role, timesheetData);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-            return 0.0;
-        }
-    }
-
-    /**
      * Helper method to invoke the private calculateTotalDays method using reflection.
      * This method is used to test the private calculateTotalDays method within the PayrollCalculator class.
-     *
      * @param startDateStr The start date in the format "MM/dd/yyyy".
      * @param endDateStr The end date in the format "MM/dd/yyyy".
      * @return The calculated total days between the start and end dates.
@@ -124,4 +107,5 @@ public class PayrollCalculatorTest {
             return 0.0;
         }
     }
+
 }

@@ -11,6 +11,7 @@ public interface EmployeeDAO
 {
     Object[][] loadEmployeesTo2DArray();
 
+    // The following methods are to be implemented.
     EmployeeEntity getEmployeeById(int id);
     List<EmployeeEntity> getAllEmployees();
     void addEmployee(EmployeeEntity employee);

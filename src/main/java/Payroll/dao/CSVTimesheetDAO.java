@@ -59,7 +59,6 @@ public class CSVTimesheetDAO implements TimesheetDAO {
 
     @Override
     public void addTimesheet(TimesheetEntity timesheet) {
-        return;
     }
 
     @Override

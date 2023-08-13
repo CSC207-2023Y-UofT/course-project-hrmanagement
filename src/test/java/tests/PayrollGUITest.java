@@ -12,6 +12,7 @@ import java.util.Map;
 /**
  * Allow manual payroll gui testing by directly accessing the payroll main menu
  * Main goal is to ensure payroll gui runs correctly and behaves as expected given user input
+ * test by manual user input for corresponding gui
  */
 public class PayrollGUITest {
 
@@ -29,7 +30,6 @@ public class PayrollGUITest {
 
             DataAccessStrategy dataAccessStrategy;
             TimesheetDAO timesheetDAO;
-
 
             if (PayrollConstant.READ_DATA_FROM_MYSQL) { // determines which data access strategy to use
                 dataAccessStrategy = new MySQLStrategy(jdbcUrl, username, password);

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import Schedule.*;
 import TimeOff.ManagerTimeOff;
+import TimeOff.TimeOffGUI;
 
 /**
  * The ManagerPortalox class allows a user to choose to view schedules, timeoff requests or payroll.
@@ -82,7 +83,7 @@ public class ManagerPortalBox {
         viewTimeOffRequests.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ManagerTimeOff().CreateManagerTimeOff();
+                new TimeOffGUI().CreateTimeOffGUI("Manager");
             }
         });
 

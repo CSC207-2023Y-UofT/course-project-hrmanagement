@@ -5,6 +5,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * The History class creates a history panel showcasing some of the latest time off requests.
+ * This serves as a way for employees to plan their requests in advance and work out logistics
+ * around pre existing time off requests and approvals.
+ */
+
 public class History {
 
     public String CreateHistory(){

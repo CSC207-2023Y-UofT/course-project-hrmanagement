@@ -7,10 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The EmployeeTimeOff class allows a user to choose to request Time Off.
- * It creates a JFrame displaying four text fields for their name, id and time off start and end dates.
- * The user can click on the request button to submit the request.
- * The JFrame displays a label showing the latest time off requests.
+ * The EmployeeTimeOff class provides Employee specific additional features to the baseline GUI.
+ * This includes a button for submitting a Time Off Request but not ones for approving or denying one.
  */
 
 public class EmployeeTimeOff {

@@ -2,6 +2,11 @@ package TimeOff;
 
 import javax.swing.*;
 
+/**
+ * The ModifyTimeOff class provides a baseline handler to manage all the various use cases provided by the Time Off
+ * request system and manages the usage of core functionality.
+ */
+
 public class ModifyTimeOff {
 
     public void Modify(String str, JFrame frame, String name, String id, String start, String end){

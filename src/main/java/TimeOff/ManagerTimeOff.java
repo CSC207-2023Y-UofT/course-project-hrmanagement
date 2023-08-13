@@ -1,16 +1,13 @@
 package TimeOff;
 
 import UI.*;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The ManagerTimeOff class allows a user to choose to approve or deny Time Off requests.
- * It creates a JFrame displaying four text fields for the name, id and time off start and end dates.
- * The user can click enter the information and click the approve or button to update the request.
- * The JFrame displays a label showing the latest time off requests.
+ * The ManagerTimeOff class provides Manager specific additional features to the baseline GUI.
+ * This includes buttons for approval and denial of Time Off Requests but notably not one for requesting.
  */
 
 public class ManagerTimeOff {

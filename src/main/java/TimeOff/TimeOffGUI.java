@@ -2,6 +2,13 @@ package TimeOff;
 
 import UI.*;
 
+/**
+ * The TimeOffGUI class provides the basic user interface structure for the Time Off Request system.
+ * This includes the JFrame, Panel, a Back button to exit and return to the respective Employee or Manager Portal Hub
+ * as well as Labels and TextFields for inputting Time Off Request data followed by calls to supplement the design
+ * with employee or manager specific features respectively.
+ */
+
 public class TimeOffGUI {
     MyJFrame frame;
     Panel panel;

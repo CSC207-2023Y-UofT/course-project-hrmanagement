@@ -1,5 +1,10 @@
 package TimeOff;
 
+/**
+ * The TimeOffEntity class is a baseline object that represents a particular Time Off Request.
+ * The entity contains data on who requested it, their id, the start date, end date and status of the request.
+ */
+
 public class TimeOffEntity {
     public String name;
     public String id;

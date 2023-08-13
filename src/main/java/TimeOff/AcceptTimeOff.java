@@ -6,6 +6,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * The AcceptTimeOff class provides a way to search for a request in the database whose details match the given
+ * Time Off Request. Note that this is possible only as the entity is representative of a collection of information.
+ * The request's status is then changed to being approved.
+ */
+
 public class AcceptTimeOff {
     String[][] database;
 

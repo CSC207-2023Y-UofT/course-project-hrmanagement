@@ -3,6 +3,7 @@ package Payroll.ui;
 import Payroll.PayrollConstant;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
+import Payroll.helper.EmployeeHelper;
 import Payroll.usecase.DataValidator;
 
 import javax.swing.*;
@@ -40,10 +41,10 @@ public class TimesheetWindow {
 
         String firstName = employee.getFirstName();
         String lastName = employee.getLastName();
-        String employeeName = firstName + " " + lastName;
+        String employeeName = EmployeeHelper.getEmployeeName(firstName, lastName);
 
         // Set start date.
-        TimesheetEntity timesheet  = (TimesheetEntity)(timesheetMap.get(employeeName));
+        TimesheetEntity timesheet  = timesheetMap.get(employeeName);
         if (timesheet == null)
         {
             timesheet = new TimesheetEntity();
@@ -117,7 +118,7 @@ public class TimesheetWindow {
 
         JLabel previousSalaryLabel = new JLabel("Previous Salary: ");
         previousSalaryLabel.setFont(previousSalaryLabel.getFont().deriveFont(Font.PLAIN, 13)); // Increase the font size
-        JLabel previousSalaryValueLabel = new JLabel("$" + Double.toString(previousSalary));
+        JLabel previousSalaryValueLabel = new JLabel("$" + previousSalary);
 
 
         JLabel blankLabel = new JLabel("");

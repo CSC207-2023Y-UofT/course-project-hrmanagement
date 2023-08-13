@@ -12,8 +12,8 @@ import java.util.Map;
  */
 public class CSVStrategy implements DataAccessStrategy {
 
-    private String csvEmployeePath;
-    private String csvTimesheetPath;
+    private final String csvEmployeePath;
+    private final String csvTimesheetPath;
 
 
     /**

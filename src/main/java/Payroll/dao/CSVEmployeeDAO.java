@@ -1,6 +1,7 @@
 package Payroll.dao;
 
 import Payroll.entity.EmployeeEntity;
+import Payroll.helper.EmployeeHelper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -84,7 +85,7 @@ public class CSVEmployeeDAO implements EmployeeDAO {
                     employee.setPhoneNumber(phoneNumber);
                     employee.setRole(role);
 
-                    String employeeName = firstName + " " + lastName;
+                    String employeeName = EmployeeHelper.getEmployeeName(employee);
                     employeeMap.put(employeeName, employee);
                 } else {
                     System.err.println("Invalid CSV format: " + line);

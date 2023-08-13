@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class MySQLStrategy implements DataAccessStrategy {
 
-    private String jdbcUrl;
+    private final String jdbcUrl;
     private String username;
     private String password;
 

@@ -3,7 +3,7 @@ package Payroll.ui;
 import Payroll.PayrollConstant;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
-import Payroll.helper.EmployeeHelper;
+import Payroll.usecase.EmployeeHelper;
 import Payroll.usecase.DataValidator;
 
 import javax.swing.*;

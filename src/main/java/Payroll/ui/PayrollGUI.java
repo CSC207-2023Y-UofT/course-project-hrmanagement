@@ -3,8 +3,8 @@ package Payroll.ui;
 import Payroll.dao.TimesheetDAO;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
-import Payroll.helper.EmployeeHelper;
-import Payroll.helper.TimesheetHelper;
+import Payroll.usecase.EmployeeHelper;
+import Payroll.usecase.TimesheetHelper;
 import Payroll.usecase.PayrollCalculator;
 
 import javax.swing.*;

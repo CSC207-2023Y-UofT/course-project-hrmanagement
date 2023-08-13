@@ -104,7 +104,7 @@ public class EmployeeSignIn extends JFrame {
 
 
                     if(result.next()) {
-                        new EmployeePortal().setVisible(true);
+//                        new EmployeePortal().setVisible(true);
                         dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Wrong Username or Password.");

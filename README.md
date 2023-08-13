@@ -33,7 +33,7 @@ The following steps will guide you setting up the repo to run locally.
    git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git
    ```
 2. Open the cloned HR Management project folder in IntelliJ
-3. Go to ![database_setup.md](database_setup.md) and follow the instructions to set up MYSQL database and configure connection details
+4. Go to [Database Setup](database_setup.md) and follow the instructions to set up MYSQL database and configure connection details
 12. Open the Gradle side panel. Under ./Tasks/build, run the 'build' command
 13. Run the program from HRManagement class
 
@@ -83,7 +83,7 @@ The payroll feature streamlines salary calculation, employee data management, an
 #### Key Functionalities
 
 - **Salary Calculation**: this feature calculates employee salary based on the number of days and hours worked. It uses role-specific hourly rates and includes an option for adding bonuses.
-- **Employee Data Management**: the Payroll Feature integrates with the employee database, extracting relevant employee information salary calculation process.
+- **Employee Data Management**: the Payroll Feature integrates with the employee database, and extracts relevant information for all existing and new employees for the salary calculation process.
 - **Timesheet Integration**: users have the flexibility to fine-tune timesheet information -- start and end dates, hours per day, and bonuses. Once the salary is calculated, it is automatically saved/updated to the timesheet database. 
 - **Data Validation**: the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 - **Database Flexibility**: the payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. 
@@ -115,6 +115,8 @@ The interface also displays the employee's previously calculated salary amount. 
 ![Invalid bonus gui](./images/invalid_bonus_gui.png)
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
+[Payroll Demo](https://drive.google.com/file/d/1U3aP4xqz-Jdbn5f58FD-zv1Pss6saiWT/view?usp=sharing) <br>
+<br>
 This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
 ___
 

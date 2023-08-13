@@ -33,7 +33,7 @@ The following steps will guide you setting up the repo to run locally.
    git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git
    ```
 2. Open the cloned HR Management project folder in IntelliJ
-3. Go to database_setup.md and follow the instructions to set up MYSQL database and configure connection details
+3. Go to ![database_setup.md](database_setup.md) and follow the instructions to set up MYSQL database and configure connection details
 12. Open the Gradle side panel. Under ./Tasks/build, run the 'build' command
 13. Run the program from HRManagement class
 

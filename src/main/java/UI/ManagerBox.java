@@ -54,7 +54,6 @@ public class ManagerBox implements ActionListener {
         }
 //        back = new Button();
 //        back.createButtonWithIcon(frame.getJFrame(), "< Back to Selection", 1, 200, 200, 20);
-
     }
 }
 

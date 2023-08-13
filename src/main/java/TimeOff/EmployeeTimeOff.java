@@ -102,8 +102,11 @@ public class EmployeeTimeOff {
             public void actionPerformed(ActionEvent e) {
                 try {
                     FileWriter out = new FileWriter("data/Database.csv", true);
-                    out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
-                            + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");
+                    out.write(nametext.getTextField().getText() + "," + idtext.getTextField().getText() + ","
+                            + starting.getTextField().getText() + "," + ending.getTextField().getText() + ",Pending" + "\n");
+
+                   /* out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
+                            + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");*/
                     out.close();
                     new EmployeeTimeOff().CreateEmployeeTimeOff();
                     frame.getJFrame().dispose();

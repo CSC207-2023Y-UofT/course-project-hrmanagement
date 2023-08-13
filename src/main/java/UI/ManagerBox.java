@@ -1,4 +1,5 @@
 package UI;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,16 +44,16 @@ public class ManagerBox implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        /*int managerID = Integer.parseInt(this.userNameText.getTextField().getText());
-        String passText = new String(passwordText.getPasswordFieldField().getPassword());
-*/
-        ManagerPortalBox managerPortalBox = new ManagerPortalBox();
-        managerPortalBox.createManagerPortalBox();
-        /*// goes to Database Layer to check if managerID and passText matches to one in the Database
-        Manager manager = new Manager(managerID, passText);
-        ManagerLoginCheck.checkLogin(manager);*/
-        back = new Button();
-        back.createButtonWithIcon(frame.getJFrame(), "< Back to Selection", 1, 200, 200, 20);
+        int managerID = Integer.parseInt(this.userNameText.getTextField().getText());
+        String password = new String(passwordText.getPasswordFieldField().getPassword());
+        if (managerID == 1 && password.equals("manager")){
+            ManagerPortalBox managerPortalBox = new ManagerPortalBox();
+            managerPortalBox.createManagerPortalBox();
+        }else{
+            JOptionPane.showMessageDialog(null, "Incorrect ManagerID or password. Try again!");
+        }
+//        back = new Button();
+//        back.createButtonWithIcon(frame.getJFrame(), "< Back to Selection", 1, 200, 200, 20);
 
     }
 }

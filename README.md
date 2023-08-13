@@ -39,11 +39,24 @@ The following steps will guide you setting up the repo to run locally.
 
 ___
 
-## Usage
-1. Launch the application.
-2. Select user role: either manager or employee
-3. In the manager portal, managers can approve or deny time-off requests, calculate payroll, and view schedules.
-4. In the employee portal, employees can log in, sign up, and request time-off. 
+## Usage or Functionality
+1. Launch the application, opens "Choose you Position".   
+   (_Note_: If you don't see both options, 'Manager' and 'Employee', try to resize the box.)
+2. Select user position: either Manager or Employee.
+3. In the **'Manager'** portal;
+   - Manager has fixed userID and password:  
+     _userID_: 1  
+     _password_: manager
+   - Manager has following 3 main functionalities:  
+     i) _View Schedule  
+     ii) View Time-off Requests  
+     iii) Calculate Payroll_
+4. In the **Employee** portal, employees can;
+   - SignUp
+   - Login  
+     (_Note_: If you don't want to signUp, you can use this demo employeeID and login to test the program;   
+     _employeeID_: 203, _password_: Samreen)  
+     i) Request time-off 
 ___
 
 ## Features

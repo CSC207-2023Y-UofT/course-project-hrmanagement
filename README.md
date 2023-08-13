@@ -27,10 +27,16 @@ ___
 ___
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git`
-2. Import the project in your preferred Java IDE.
-3. Set up MySQL database and configure connection details.
-4. Run the program from your IDE.
+The following steps will guide you setting up the repo to run locally. 
+1. Clone the repository to your machine:
+   ```
+   git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git
+   ```
+2. Open the cloned HR Management project folder in IntelliJ
+3. Go to database_setup.md and follow the instructions to set up MYSQL database and configure connection details
+12. Open the Gradle side panel. Under ./Tasks/build, run the 'build' command
+13. Run the program from HRManagement class
+
 ___
 
 ## Usage
@@ -66,7 +72,7 @@ ___
 
 ### Payroll Feature
 
-The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. As well, the feature saves employees' salary calculation result to their corresponding timesheets. 
+The payroll feature streamlines salary calculation, employee data management, and timesheet integration. It provides a user-friendly graphical interface for efficient interaction and computation of salaries for both employees and managers. Additionally, the feature integrates with the employee database and includes newly created employees in the payroll system. Finally, the feature saves each employee's salary calculation results to their respective timesheets, creating a comprehensive record of earnings. 
 
 #### Key Functionalities
 

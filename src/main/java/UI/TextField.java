@@ -2,7 +2,7 @@ package UI;
 import javax.swing.*;
 
 public class TextField {
-    JTextField textField;
+    public JTextField textField;
 
     /**
      * Retrieves the JTextField instance managed by this class.

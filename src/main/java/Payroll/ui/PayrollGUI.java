@@ -3,6 +3,8 @@ package Payroll.ui;
 import Payroll.dao.TimesheetDAO;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
+import Payroll.usecase.EmployeeHelper;
+import Payroll.usecase.TimesheetHelper;
 import Payroll.usecase.PayrollCalculator;
 
 import javax.swing.*;
@@ -23,18 +25,6 @@ public class PayrollGUI extends JFrame {
     PayrollCalculator payrollCalculator;
     Object[][] employees;
     Map<String, TimesheetEntity> timesheetMap;
-
-    public void setPayrollCalculator(PayrollCalculator payrollCalculator) {
-        this.payrollCalculator = payrollCalculator;
-    }
-
-    public void setEmployees(Object[][] employees) {
-        this.employees = employees;
-    }
-
-    public void setTimesheetMap(Map<String, TimesheetEntity> timesheetMap) {
-        this.timesheetMap = timesheetMap;
-    }
 
     public PayrollGUI() {
     }
@@ -144,60 +134,29 @@ public class PayrollGUI extends JFrame {
         calculateButton.addActionListener(e -> {
             int selectedRow = getSelectedEmployeeRow();
             if (selectedRow != -1) {
-                // Show an input dialog to get additional data from the user
-                String employeeId = (String) employeeTable.getValueAt(selectedRow, 1);
-                String lastName = (String) employeeTable.getValueAt(selectedRow, 2);
-                String firstName = (String) employeeTable.getValueAt(selectedRow, 3);
-                String role = (String) employeeTable.getValueAt(selectedRow, 6);
-                String employName = firstName + " " + lastName;
+                // 1. build an employee entity for the selected employee.
+                EmployeeEntity selectedEmployee = EmployeeHelper.buildEmployeeEntity(employeeTable, selectedRow);
 
-                EmployeeEntity selectedEmployee = new EmployeeEntity();
-                selectedEmployee.setEmployeeId(employeeId);
-                selectedEmployee.setFirstName(firstName);
-                selectedEmployee.setLastName(lastName);
-                selectedEmployee.setRole(role);
-
+                // 2. Show an input dialog to get additional data from the user
                 TimesheetWindow timesheetWindow = new TimesheetWindow(PayrollGUI.this, timesheetMap);
                 String[] timesheetData = timesheetWindow.showInputDialog(selectedEmployee);
 
-                // if cancel button is clicked.
+                // 3. If cancel button is clicked, the return value is empty.
                 if (timesheetData == null)
                     return;
 
-                // Perform the salary calculation based on the additional data
-                //String role = (String) employeeTable.getValueAt(selectedRow, 6);
-                double salary = payrollCalculator.calculateSalary(role, timesheetData);
-                String startDate = timesheetData[0];
-                String endDate = timesheetData[1];
+                // 4. Calculate the employee's salary using the role and timesheet data.
+                double salary = payrollCalculator.calculateSalary(selectedEmployee, timesheetData);
 
-                TimesheetEntity timesheet = new TimesheetEntity();
-                timesheet.setEmployeeId(employeeId);
-                timesheet.setLastName(lastName);
-                timesheet.setFirstName(firstName);
-                timesheet.setStartDate(startDate);
-                timesheet.setEndDate(endDate);
-                timesheet.setSalary(salary);
+                // 5. Build a timesheet entity using the employee and payroll data.
+                TimesheetEntity timesheet = TimesheetHelper.createTimesheetEntity(selectedEmployee, timesheetData, salary);
 
-                // Save timesheet data to database and update internal timesheet map.
+                // Save the timesheet entity to database and update internal map of timesheets.
+                String employName = EmployeeHelper.getEmployeeName(selectedEmployee);
                 timesheetDAO.saveTimesheet(timesheet);
                 timesheetMap.put(employName, timesheet);
 
-                String salaryMessage =
-                        "Employee ID: " + employeeId + "\n"
-                                + "Name: " + firstName + " " + lastName + "\n"
-                                + "Role: " + role + "\n"
-                                + "Start Date: " + startDate + "\n"
-                                + "End Date: " + endDate + "\n"
-                                + "Salary: " + "$" + salary + "\n"
-                                + "\n"
-                                + "Timesheet data saved!" + "\n"
-                                + "\n";
-
-                // Display the salary calculation result in a message dialog
-                JOptionPane.showMessageDialog(PayrollGUI.this,
-                        salaryMessage,
-                        "Salary Calculation Result",
-                        JOptionPane.INFORMATION_MESSAGE);
+                displayPayrollInfo(selectedEmployee, timesheet);
             } else {
                 JOptionPane.showMessageDialog(PayrollGUI.this,
                         "Please select an employee first.",
@@ -222,6 +181,31 @@ public class PayrollGUI extends JFrame {
     }
 
     /**
+     * The setter for payroll calculator.
+     * @param payrollCalculator an instance of Payroll calculator
+     */
+    public void setPayrollCalculator(PayrollCalculator payrollCalculator) {
+        this.payrollCalculator = payrollCalculator;
+    }
+
+    /**
+     * The setter for all the employees.
+     * @param employees a two dimensional array of String.
+     */
+    public void setEmployees(Object[][] employees) {
+        this.employees = employees;
+    }
+
+    /**
+     * The setter for timesheets.
+     * @param timesheetMap a map of timesheet entity.
+     */
+    public void setTimesheetMap(Map<String, TimesheetEntity> timesheetMap) {
+        this.timesheetMap = timesheetMap;
+    }
+
+
+    /**
      * Determines which row (which employee) is currently selected in table
      * @return row index
      */
@@ -233,5 +217,34 @@ public class PayrollGUI extends JFrame {
             }
         }
         return -1;
+    }
+
+    private void displayPayrollInfo(EmployeeEntity selectedEmployee, TimesheetEntity timesheet){
+        String employeeId = timesheet.getEmployeeId();
+        String firstName = timesheet.getFirstName();
+        String lastName = timesheet.getLastName();
+        String startDate = timesheet.getStartDate();
+        String endDate = timesheet.getEndDate();
+        double salary = timesheet.getSalary();
+        String role = selectedEmployee.getRole();
+        String employeeName = EmployeeHelper.getEmployeeName(firstName, lastName);
+
+        String salaryMessage =
+                "Employee ID: " + employeeId + "\n"
+                        + "Name: " + employeeName + "\n"
+                        + "Role: " + role + "\n"
+                        + "Start Date: " + startDate + "\n"
+                        + "End Date: " + endDate + "\n"
+                        + "Salary: " + "$" + salary + "\n"
+                        + "\n"
+                        + "Timesheet data saved!" + "\n"
+                        + "\n";
+
+        // Display the salary calculation result in a message dialog
+        JOptionPane.showMessageDialog(PayrollGUI.this,
+                salaryMessage,
+                "Salary Calculation Result",
+                JOptionPane.INFORMATION_MESSAGE);
+
     }
 }

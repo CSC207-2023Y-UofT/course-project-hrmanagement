@@ -1,6 +1,7 @@
 package Payroll.dao;
 
 import Payroll.entity.TimesheetEntity;
+import Payroll.usecase.EmployeeHelper;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -88,7 +89,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
         timesheet.setEndDate(endDate);
         timesheet.setSalary(salary);
 
-        String employeeName = firstName + " " + lastName;
+        String employeeName = EmployeeHelper.getEmployeeName(firstName, lastName);
         timesheetMap.put(employeeName, timesheet);
     }
 
@@ -153,7 +154,7 @@ public class MySQLTimesheetDAO implements TimesheetDAO {
     public TimesheetEntity getTimesheetById(String employeeId) {
         TimesheetEntity timesheet = null;
 
-        int iEmployeeId = new Integer(employeeId).intValue();
+        int iEmployeeId = Integer.parseInt(employeeId);
 
         try (Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM timesheets WHERE EMPLOYEEID = ?")) {

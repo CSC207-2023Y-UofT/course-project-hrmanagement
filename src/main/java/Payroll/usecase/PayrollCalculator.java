@@ -3,6 +3,7 @@ package Payroll.usecase;
 // Use Case layer
 
 import Payroll.PayrollConstant;
+import Payroll.entity.EmployeeEntity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,11 +35,14 @@ public class PayrollCalculator {
 
     /**
      * Salary calculation, (hoursPerDay * days * rate) + bonus
-     * @param role employee or manager
+     * @param selectedEmployee the selected employee entity
      * @param timesheetData array of timesheet data
      * @return total salary
      */
-    public double calculateSalary(String role, String[] timesheetData) {
+    public double calculateSalary(EmployeeEntity selectedEmployee, String[] timesheetData) {
+
+        String role = selectedEmployee.getRole();
+
         // Implement the salary calculation logic based on the role and additional data
         // For simplicity, we'll use some fixed values for demonstration purposes.
         double baseSalary = 0;         // Because it is hourly based salary.

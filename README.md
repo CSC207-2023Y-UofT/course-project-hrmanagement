@@ -61,26 +61,19 @@ ___
 
 ## Features
 ___
-### User Login Feature
+### Manager Login
+- Manager has a fixed ID and password;  
+  _userID_: 1  
+  _password_: manager
+- If the userID and password does not match, it displays an error message.
+- Demo:
+  ![managerlogin_view.png](./images/managerlogin_view.png)
 
-The Login Feature is designed to allow a manager or employee to log in to their respective portals. This is the initial portal that will send people to where they need to go.
-
-#### Key Functionalities
-
-The key functionalities include:
-
-##### Username/Password Validation
-
-The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password are valid, allowing them to pass onto the system.
-
-##### Employee Sign-Up
-
-In the employee portal, the user is once again given two choices; they can either sign in or sign-up. The employee user is then allowed to input all information required to begin as a new employee.
-
-##### GUI Function
-
-There are different portals in the GUI login. Selection between managers and employees, and selection between sign in and sign-up.
-
+### Employee SignUp and Login
+- Employees have an option to signUp, details are stored in database, they can then login using the same employeeID and password that they used to signUp.
+- When Employee tries to signUp with same id that has already been registered, or enters password that is less than 5 characters, appropriate error message is shown.
+- Demo:  
+  ![employeePortal-view.png](images%2FemployeePortal-view.png)
 ___
 
 ### Payroll Feature

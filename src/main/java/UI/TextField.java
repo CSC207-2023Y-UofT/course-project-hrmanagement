@@ -3,7 +3,7 @@ package UI;
 import javax.swing.*;
 
 public class TextField {
-    JTextField textField;
+    public JTextField textField;
 
     /**
      * Returns class variable textField

@@ -1,4 +1,6 @@
-package UI;
+package TimeOff;
+
+import UI.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,7 +72,7 @@ public class ManagerTimeOff {
         ending.createTextField(frame.getJFrame(), 175,200,90,20);
 
         hist = new Label();
-        File data = new File("data/Database.txt");
+        File data = new File("data/Database.csv");
         StringBuilder s = new StringBuilder("<html>");
         try {
             BufferedReader in = new BufferedReader(new FileReader(data));
@@ -125,10 +127,10 @@ public class ManagerTimeOff {
                         counter++;
                     }
                     in.close();
-                    FileWriter out = new FileWriter("data/Database.txt");
+                    FileWriter out = new FileWriter("data/Database.csv");
                     out.write("");
                     out.close();
-                    out = new FileWriter("data/Database.txt", true);
+                    out = new FileWriter("data/Database.csv", true);
                     int var = 0;
                     while (var < counter){
                         out.write(database[var][0] + "," + database[var][1] + "," + database[var][2]
@@ -172,10 +174,10 @@ public class ManagerTimeOff {
                         counter++;
                     }
                     in.close();
-                    FileWriter out = new FileWriter("data/Database.txt");
+                    FileWriter out = new FileWriter("data/Database.csv");
                     out.write("");
                     out.close();
-                    out = new FileWriter("data/Database.txt", true);
+                    out = new FileWriter("data/Database.csv", true);
                     int var = 0;
                     while (var < counter){
                         out.write(database[var][0] + "," + database[var][1] + "," + database[var][2]

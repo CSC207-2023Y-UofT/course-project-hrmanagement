@@ -1,6 +1,5 @@
 package Payroll.dao;
 
-import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
 
 import java.util.Map;

@@ -30,4 +30,12 @@ public interface PayrollConstant {
     // only MYSQL database supports data persistence
     // CSV is designed as a backup database just to demonstrate the functionalities of payroll feature
 
+    String SIMPLE_DATE_FORMAT = "yyyy/MM/dd";
+
+    // The default start and end date should be based on current system date.
+    // It is hard-coded in here for simplicity.
+    String DEFAULT_START_DATE = "2023/07/01";
+    String DEFAULT_END_DATE = "2023/07/31";
+    Double DEFAULT_SALARY = 0.0;
+
 }

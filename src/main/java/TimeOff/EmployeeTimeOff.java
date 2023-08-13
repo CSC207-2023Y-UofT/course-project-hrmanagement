@@ -1,4 +1,6 @@
-package UI;
+package TimeOff;
+
+import UI.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,7 +70,7 @@ public class EmployeeTimeOff {
         ending.createTextField(frame.getJFrame(), 175,200,90,20);
 
         hist = new Label();
-        File data = new File("data/Database.txt");
+        File data = new File("data/Database.csv");
         StringBuilder s = new StringBuilder("<html>");
         try {
             BufferedReader in = new BufferedReader(new FileReader(data));
@@ -99,7 +101,7 @@ public class EmployeeTimeOff {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileWriter out = new FileWriter("data/Database.txt", true);
+                    FileWriter out = new FileWriter("data/Database.csv", true);
                     out.write(nametext.textField.getText() + "," + idtext.textField.getText() + ","
                             + starting.textField.getText() + "," + ending.textField.getText() + ",Pending" + "\n");
                     out.close();

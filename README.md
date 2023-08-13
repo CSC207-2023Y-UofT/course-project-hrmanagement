@@ -33,41 +33,47 @@ The following steps will guide you setting up the repo to run locally.
    git clone https://github.com/CSC207-2023Y-UofT/course-project-hrmanagement.git
    ```
 2. Open the cloned HR Management project folder in IntelliJ
-3. Go to ![database_setup.md](database_setup.md) and follow the instructions to set up MYSQL database and configure connection details
+4. Go to [Database Setup](database_setup.md) and follow the instructions to set up MYSQL database and configure connection details
 12. Open the Gradle side panel. Under ./Tasks/build, run the 'build' command
 13. Run the program from HRManagement class
 
 ___
 
-## Usage
-1. Launch the application.
-2. Select user role: either manager or employee
-3. In the manager portal, managers can approve or deny time-off requests, calculate payroll, and view schedules.
-4. In the employee portal, employees can log in, sign up, and request time-off. 
+## Usage or Functionality
+1. Launch the application, opens "Choose you Position".   
+   (_Note_: If you don't see both options, 'Manager' and 'Employee', try to resize the box.)
+2. Select user position: either Manager or Employee.
+3. In the **'Manager'** portal;
+   - Manager has fixed userID and password:  
+     _userID_: 1  
+     _password_: manager
+   - Manager has following 3 main functionalities:  
+     i) _View Schedule  
+     ii) View Time-off Requests  
+     iii) Calculate Payroll_
+4. In the **Employee** portal, employees can;
+   - SignUp
+   - Login  
+     (_Note_: If you don't want to signUp, you can use this demo employeeID and login to test the program;   
+     _employeeID_: 203, _password_: Samreen)  
+     i) Request time-off 
 ___
 
 ## Features
 ___
-### User Login Feature
+### Manager Login
+- Manager has a fixed ID and password;  
+  _userID_: 1  
+  _password_: manager
+- If the userID and password does not match, it displays an error message.
+- Demo:
+  ![managerlogin_view.png](./images/managerlogin_view.png)
 
-The Login Feature is designed to allow a manager or employee to log in to their respective portals. This is the initial portal that will send people to where they need to go.
-
-#### Key Functionalities
-
-The key functionalities include:
-
-##### Username/Password Validation
-
-The functionality of this feature is not only to send each person to their proper portals, but to also check if their user and password are valid, allowing them to pass onto the system.
-
-##### Employee Sign-Up
-
-In the employee portal, the user is once again given two choices; they can either sign in or sign-up. The employee user is then allowed to input all information required to begin as a new employee.
-
-##### GUI Function
-
-There are different portals in the GUI login. Selection between managers and employees, and selection between sign in and sign-up.
-
+### Employee SignUp and Login
+- Employees have an option to signUp, details are stored in database, they can then login using the same employeeID and password that they used to signUp.
+- When Employee tries to signUp with same id that has already been registered, or enters password that is less than 5 characters, appropriate error message is shown.
+- Demo:  
+  ![employeePortal-view.png](images%2FemployeePortal-view.png)
 ___
 
 ### Payroll Feature
@@ -77,7 +83,7 @@ The payroll feature streamlines salary calculation, employee data management, an
 #### Key Functionalities
 
 - **Salary Calculation**: this feature calculates employee salary based on the number of days and hours worked. It uses role-specific hourly rates and includes an option for adding bonuses.
-- **Employee Data Management**: the Payroll Feature integrates with the employee database, extracting relevant employee information salary calculation process.
+- **Employee Data Management**: the Payroll Feature integrates with the employee database, and extracts relevant information for all existing and new employees for the salary calculation process.
 - **Timesheet Integration**: users have the flexibility to fine-tune timesheet information -- start and end dates, hours per day, and bonuses. Once the salary is calculated, it is automatically saved/updated to the timesheet database. 
 - **Data Validation**: the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
 - **Database Flexibility**: the payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. 
@@ -109,6 +115,8 @@ The interface also displays the employee's previously calculated salary amount. 
 ![Invalid bonus gui](./images/invalid_bonus_gui.png)
 ![Invalid hours gui](./images/invalid_hours_gui.png)
 
+[Payroll Demo](https://drive.google.com/file/d/1U3aP4xqz-Jdbn5f58FD-zv1Pss6saiWT/view?usp=sharing) <br>
+<br>
 This combination of functionalities allows users to efficiently manage payroll calculations for employees and managers, backed by accurate data and an intuitive interface.
 ___
 
@@ -127,7 +135,8 @@ ___
 ## Design Patterns
 
 In payroll, several design patterns are implemented: 
-- **Strategy Design Pattern**: Two concrete classes, `MySQLDataAccess` and `CSVDataAccess`, implement the `DataAccessStrategy` interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability. 
+- **Strategy Design Pattern**: Two concrete classes, `MySQLDataAccess` and `CSVDataAccess`, implement the `DataAccessStrategy` interface. These strategies encapsulate the details of loading employee and timesheet data from their respective sources. The strategy pattern ensures the data access logic is separate from the core logic. It also allows for easy switching between data sources and better modularity and extendability.
+- **Dependency Injection Pattern**: the `PayrollGUI` class receives an instance of the `TimesheetDAO` interface through its constructor, decoupling the PayrollGUI class from the specific implementation of the timesheet data access. This enables easy switching between the two different data access methods in the concrete implementation, `MySQLTimesheetDAO` and `CSVTimesheetDAO`. 
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
 - **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.
-- **Model-View-Controller (MVC) Pattern**: The `PayrollGUI` design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
+

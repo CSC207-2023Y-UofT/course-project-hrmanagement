@@ -54,9 +54,9 @@ To create the database and tables in MYSQL necessary to run HR Management System
    ```
    INSERT INTO employees (EMPLOYEEID, LASTNAME, FIRSTNAME, ADDRESS, PHONENUMBER, PASSWORD, ROLE)
    VALUES
-   ('1', 'Johnson', 'Bob', '123 King St.', '123456789', 'password', 'Manager')
-   ('2', 'Smith', 'John', '111 Maple Rd.', '777373737', 'password2', 'Employee')
-   ('3', 'Williams', 'Jane', '234 Gamble Rd.', '111122333', 'password3', 'Employee')
+   ('1', 'Johnson', 'Bob', '123 King St.', '123456789', 'manager', 'Manager'),
+   ('2', 'Smith', 'John', '111 Maple Rd.', '777373737', 'password2', 'Employee'),
+   ('3', 'Williams', 'Jane', '234 Gamble Rd.', '111122333', 'password3', 'Employee'),
    ('4', 'Hill', 'Sandra', '888 Queen St.', '8888282828', 'password4', 'Employee');
    ```
    
@@ -64,9 +64,9 @@ To create the database and tables in MYSQL necessary to run HR Management System
     ```
     INSERT INTO timesheets (EMPLOYEEID, LASTNAME, FIRSTNAME, STARTDATE, ENDDATE, SALARY)
     VALUES
-    ('1', 'Johnson', 'Bob', '2023/07/01', '2023/07/31', 11000)
-    ('2', 'Smith', 'John', '2023/07/01', '2023/07/31', 9300)
-    ('3', 'Williams', 'Jane', '2023/07/01', '2023/07/31', 9300)
+    ('1', 'Johnson', 'Bob', '2023/07/01', '2023/07/31', 11000),
+    ('2', 'Smith', 'John', '2023/07/01', '2023/07/31', 9300),
+    ('3', 'Williams', 'Jane', '2023/07/01', '2023/07/31', 9300),
     ('4', 'Hill', 'Sandra', '2023/07/01', '2023/07/31', 9300);
     ```
-9. Return to ![README.md](README.md#installation) to finish the remainder of the installation process
+9. Return to [README installation](README.md#installation) to finish the remainder of the installation process

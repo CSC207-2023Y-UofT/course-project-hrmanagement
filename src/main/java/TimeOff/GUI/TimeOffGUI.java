@@ -1,4 +1,4 @@
-package TimeOff;
+package TimeOff.GUI;
 
 import UI.*;
 

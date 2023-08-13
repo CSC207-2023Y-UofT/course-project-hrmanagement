@@ -1,4 +1,4 @@
-package TimeOff;
+package TimeOff.Entities;
 
 /**
  * The TimeOffEntity class is a baseline object that represents a particular Time Off Request.

@@ -1,4 +1,7 @@
-package TimeOff;
+package TimeOff.DataAccess;
+
+import TimeOff.GUI.TimeOffGUI;
+import TimeOff.Entities.TimeOffEntity;
 
 import javax.swing.*;
 import java.io.FileWriter;

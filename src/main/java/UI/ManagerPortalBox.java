@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import Schedule.*;
-import TimeOff.TimeOffGUI;
+import TimeOff.GUI.TimeOffGUI;
 
 /**
  * The ManagerPortalox class allows a user to choose to view schedules, timeoff requests or payroll.

@@ -1,4 +1,4 @@
-package TimeOff;
+package TimeOff.GUI;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,9 @@
-package TimeOff;
+package TimeOff.UseCases;
+
+import TimeOff.DataAccess.AcceptTimeOff;
+import TimeOff.DataAccess.RejectTimeOff;
+import TimeOff.DataAccess.RequestTimeOff;
+import TimeOff.Entities.TimeOffEntity;
 
 import javax.swing.*;
 

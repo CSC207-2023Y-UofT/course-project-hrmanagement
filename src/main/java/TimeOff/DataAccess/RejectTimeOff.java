@@ -1,4 +1,7 @@
-package TimeOff;
+package TimeOff.DataAccess;
+
+import TimeOff.GUI.TimeOffGUI;
+import TimeOff.Entities.TimeOffEntity;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -7,15 +10,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * The AcceptTimeOff class provides a way to search for a request in the database whose details match the given
+ * The RejectTimeOff class provides a way to search for a request in the database whose details match the given
  * Time Off Request. Note that this is possible only as the entity is representative of a collection of information.
- * The request's status is then changed to being approved.
+ * The request's status is then changed to being denied.
  */
 
-public class AcceptTimeOff {
+public class RejectTimeOff {
     String[][] database;
 
-    public void Approve(JFrame frame, TimeOffEntity request){
+    public void Deny(JFrame frame, TimeOffEntity request){
         try {
             BufferedReader in = new BufferedReader(new FileReader("data/Database.csv"));
             int count = 0;
@@ -35,7 +38,7 @@ public class AcceptTimeOff {
                         && database[counter][1].equals(request.id)
                         && database[counter][2].equals(request.start)
                         && database[counter][3].equals(request.end)){
-                    database[counter][4] = "Approved";
+                    database[counter][4] = "Denied";
                 }
                 temp = in.readLine();
                 counter++;

@@ -1,5 +1,6 @@
-package TimeOff;
+package TimeOff.GUI;
 
+import TimeOff.UseCases.ModifyTimeOff;
 import UI.*;
 
 import javax.swing.*;

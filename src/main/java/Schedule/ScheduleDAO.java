@@ -1,7 +1,7 @@
 package Schedule;
 
-import Payroll.dao.CSVTimesheetDAO;
-import Payroll.dao.TimesheetDAO;
+import Payroll.PayrollConstant;
+import Payroll.dao.*;
 import Payroll.entity.TimesheetEntity;
 
 import java.io.BufferedReader;
@@ -62,9 +62,15 @@ public class ScheduleDAO {
 
         Map<List<String>, List<LocalDate>> employeeDates = new HashMap<>();
 
-//        String filePath = "./data/Timesheets.csv";
-        TimesheetDAO timesheetDAO = new CSVTimesheetDAO(filepath);
-        Map<String, TimesheetEntity> timesheetMap = timesheetDAO.loadTimesheetToMap();
+        DataAccessStrategy dataAccessStrategy = new MySQLStrategy(PayrollConstant.db_jdbcUrl,
+                PayrollConstant.db_username, PayrollConstant.db_password);
+        Map<String, TimesheetEntity> timesheetMap = dataAccessStrategy.loadTimesheetData();
+
+        if (timesheetMap.isEmpty()) {
+            String filePath = "./data/Timesheets.csv";
+            TimesheetDAO timesheetDAO = new CSVTimesheetDAO(filepath);
+            timesheetMap = timesheetDAO.loadTimesheetToMap();
+        }
 
         for (HashMap.Entry<String, TimesheetEntity> set : timesheetMap.entrySet()){
             String employeeId  = set.getValue().getEmployeeId();

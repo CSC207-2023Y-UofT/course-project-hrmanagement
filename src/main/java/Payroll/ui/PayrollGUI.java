@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * Swing-based GUI for payroll feature
- * Interacts with PayrollCalculator and DAO classes to display employee & timesheet data
+ * Interacts with PayrollCalculator and DAO classes to display employee and timesheet data
  */
 public class PayrollGUI extends JFrame {
     private JTable employeeTable;

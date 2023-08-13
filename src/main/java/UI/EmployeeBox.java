@@ -1,6 +1,5 @@
 package UI;
 
-import GUILogin.EmployeeForm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,7 +47,7 @@ public class EmployeeBox {
         signUp.getButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new EmployeeForm().setVisible(true);
+//                new EmployeeForm().setVisible(true);
             }
         });
 

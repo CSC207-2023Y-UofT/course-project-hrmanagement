@@ -42,7 +42,7 @@ ___
 ## Usage
 1. Launch the application.
 2. Select user role: either manager or employee
-3. In the manager portal, managers can approve time-off requests, calculate payroll, and view schedules.
+3. In the manager portal, managers can approve or deny time-off requests, calculate payroll, and view schedules.
 4. In the employee portal, employees can log in, sign up, and request time-off. 
 ___
 

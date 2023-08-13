@@ -69,4 +69,4 @@ To create the database and tables in MYSQL necessary to run HR Management System
     ('3', 'Williams', 'Jane', '2023/07/01', '2023/07/31', 9300)
     ('4', 'Hill', 'Sandra', '2023/07/01', '2023/07/31', 9300);
     ```
-9. Return to README.md to finish the remainder of the installation process
+9. Return to ![README.md](README.md#installation) to finish the remainder of the installation process

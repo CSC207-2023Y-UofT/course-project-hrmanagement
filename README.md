@@ -76,24 +76,13 @@ The payroll feature streamlines salary calculation, employee data management, an
 
 #### Key Functionalities
 
-The key functionalities of the payroll feature include:
+- **Salary Calculation**: this feature calculates employee salary based on the number of days and hours worked. It uses role-specific hourly rates and includes an option for adding bonuses.
+- **Employee Data Management**: the Payroll Feature integrates with the employee database, extracting relevant employee information salary calculation process.
+- **Timesheet Integration**: users have the flexibility to fine-tune timesheet information -- start and end dates, hours per day, and bonuses. Once the salary is calculated, it is automatically saved/updated to the timesheet database. 
+- **Data Validation**: the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
+- **Database Flexibility**: the payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. 
 
-##### Salary Calculation
-The core functionality of payroll is to calculate salaries for employees and managers. This feature calculates employee salary based on the number of days and hours worked. 
-It uses role-specific hourly rates and includes an option for adding bonuses. 
-
-##### Employee Data Management
-The Payroll Feature integrates with the employee database. It extracts employee information, including roles and other relevant data for the salary calculation process. This integration minimizes data entry efforts and enhances accuracy.
-
-##### Timesheet Integration
-Users have the flexibility to fine-tune timesheet information to match the actual hours worked by employees. The system allows adjustments to start and end dates, hours per day, and bonuses. The customizable timesheet GUI enables precise salary computations. Finally, **data persistence** allows the user to save the calculated salary to the timesheet. 
-
-##### Data Validation
-To maintain the integrity of calculations and prevent erroneous inputs, the payroll feature verifies the correctness of input data, including date formats and numeric values. If any discrepancies or errors are detected, informative error messages guide users toward correcting the inputs.
-
-##### Database Flexibility
-The payroll feature offers the versatility to read employee and timesheet data from either MySQL database or CSV files. 
-This flexibility enables the system to adapt to diverse data sources, enhancing its compatibility and practicality. **Note:** MYSQL Database is designed as the main database and is regularly updated with the creation of new employees and employees' corresponding timesheets. 
+**Note:** MYSQL Database is designed as the main database and is regularly updated with the creation of new employees and employees' corresponding timesheets. 
 CSV is designed as a backup database with information on existing employees and does not currently support update features. All updates are done through MYSQL. 
 
 #### GUI Functionality
@@ -105,11 +94,11 @@ The graphical interface (GUI) of the Payroll Feature is accessed through the man
 ![Payroll Calculator Menu](./images/payroll_gui.png)
 
 **Timesheet Adjustment**: Once an employee is selected, the interface allows adjustments to timesheet details such as start date, end date, hours per day, and bonus amount.
-The interface also displays the employee's previous calculated salary amount. Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
+The interface also displays the employee's previously calculated salary amount. Upon making necessary adjustments, users can initiate salary calculations by clicking the "Calculate" button.
 
 ![Timesheet GUI](./images/timesheet_gui.png)
 
-**Payroll Information**: After calculation, the GUI presents a comprehensive payroll information list for the selected employee. This information includes base salary, worked hours, bonus, and the final computed salary. The employee's new timesheet information is saved to the database. 
+**Payroll Information**: After calculation, the GUI presents a comprehensive payroll information list for the selected employee, and the employee's updated timesheet information and salary is saved to the database. 
 
 ![Salary result](./images/salary_calculation_result.png)
 

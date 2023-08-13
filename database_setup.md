@@ -2,7 +2,7 @@
 
 To create the database and tables in MYSQL necessary to run HR Management System locally, please follow these steps: 
 1. Install MYSQL on your system (if not already installed)
-2. On IntelliJ, Ensure the following attributes are used to create the data source.
+2. On IntelliJ, open the Database sidebar, create New from MYSQL data source, and ensure the following attributes are used to create the data source:
 
    - Host: ```localhost``` <br>
    - Port: ```3306``` <br>

@@ -1,9 +1,8 @@
 package UI;
 
-import TimeOff.EmployeeTimeOff;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import TimeOff.EmployeeTimeOff;
 
 /**
  * The EmployeePortalBox class allows a user to choose to enter availability or request time off.

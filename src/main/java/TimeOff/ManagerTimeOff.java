@@ -117,10 +117,10 @@ public class ManagerTimeOff {
                     temp = in.readLine();
                     while (counter < count){
                         database[counter] = temp.split(",");
-                        if (database[counter][0].equals(nametext.textField.getText())
-                                && database[counter][1].equals(idtext.textField.getText())
-                                && database[counter][2].equals(starting.textField.getText())
-                                && database[counter][3].equals(ending.textField.getText())){
+                        if (database[counter][0].equals(nametext.getTextField().getText())
+                                && database[counter][1].equals(idtext.getTextField().getText())
+                                && database[counter][2].equals(starting.getTextField().getText())
+                                && database[counter][3].equals(ending.getTextField().getText())){
                             database[counter][4] = "Approved";
                         }
                         temp = in.readLine();
@@ -164,10 +164,10 @@ public class ManagerTimeOff {
                     temp = in.readLine();
                     while (counter < count){
                         database[counter] = temp.split(",");
-                        if (database[counter][0].equals(nametext.textField.getText())
-                                && database[counter][1].equals(idtext.textField.getText())
-                                && database[counter][2].equals(starting.textField.getText())
-                                && database[counter][3].equals(ending.textField.getText())){
+                        if (database[counter][0].equals(nametext.getTextField().getText())
+                                && database[counter][1].equals(idtext.getTextField().getText())
+                                && database[counter][2].equals(starting.getTextField().getText())
+                                && database[counter][3].equals(ending.getTextField().getText())){
                             database[counter][4] = "Denied";
                         }
                         temp = in.readLine();

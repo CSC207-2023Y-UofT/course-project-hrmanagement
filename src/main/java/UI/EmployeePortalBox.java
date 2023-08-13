@@ -32,20 +32,9 @@ public class EmployeePortalBox {
         panel = new Panel();
         panel.createPanel(20, 30, 20, 30, "GridLayout", 0, 1, 10, 10, frame.getJFrame());
 
-        // create button for signup
-        chooseAvailability = new Button();
-        chooseAvailability.createButtonWithIcon(frame.getJFrame(), "Choose Availability", 50, 50, 200, 50);
-
         // create button for login
         requestTimeOff = new Button();
         requestTimeOff.createButtonWithIcon(frame.getJFrame(), "Request TimeOff", 50, 120, 200, 50);
-
-        // action when Choose Availability button is clicked
-        chooseAvailability.getButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
 
         // action when Request Time Off button is clicked
         requestTimeOff.getButton().addActionListener(new ActionListener() {

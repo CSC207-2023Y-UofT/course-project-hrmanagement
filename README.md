@@ -39,18 +39,41 @@ The following steps will guide you setting up the repo to run locally.
 
 ___
 
-## Usage
-1. Launch the application.
-2. Select user role: either manager or employee
-3. In the manager portal, managers can approve or deny time-off requests, calculate payroll, and view schedules.
-4. In the employee portal, employees can log in, sign up, and request time-off. 
+## Usage or Functionality 
+1. Launch the application, opens "Choose you Position".   
+      (_Note_: If you don't see both options, 'Manager' and 'Employee', try to resize the box.)
+2. Select user position: either Manager or Employee.
+3. In the **'Manager'** portal;  
+   - Manager has fixed userID and password:  
+      _userID_: 1  
+      _password_: manager
+   - Manager has following 3 main functionalities:  
+         i) _View Schedule  
+         ii) View Time-off Requests  
+         iii) Calculate Payroll_
+4. In the **Employee** portal, employees can;  
+   - SignUp  
+   - Login  
+     (_Note_: If you don't want to signUp, you can use this demo employeeID and login to test the program;   
+     _employeeID_: 203, _password_: Samreen)  
+     i) Request time-off
 ___
 
 ## Features
 ___
-### User Login Feature
+### Manager Login
+- Manager has a fixed ID and password;  
+_userID_: 1  
+_password_: manager  
+- If the userID and password does not match, it displays an error message.
+- Demo:
+![managerlogin_view.png](./images/managerlogin_view.png)
 
-The Login Feature is designed to allow a manager or employee to log in to their respective portals. This is the initial portal that will send people to where they need to go.
+### Employee SignUp and Login  
+- Employees have an option to signUp, details are stored in database, they can then login using the same employeeID and password that they used to signUp.  
+- When Employee tries to signUp with same id that has already been registered, or enters password that is less than 5 characters, appropriate error message is shown.
+- Demo:  
+![employeePortal-view.png](images%2FemployeePortal-view.png)
 
 #### Key Functionalities
 
@@ -131,3 +154,5 @@ In payroll, several design patterns are implemented:
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
 - **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.
 - **Model-View-Controller (MVC) Pattern**: The `PayrollGUI` design follows the MVC pattern, facilitating a clear separation of concerns between data representation (Model), user interface (View), and user interactions (Controller).
+
+## Design Patterns

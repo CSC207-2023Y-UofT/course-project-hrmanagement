@@ -127,18 +127,23 @@ The Time Off Feature provides a method of asynchronous communication for Time Of
 #### Functionality Explanation & Demonstration
 - **Asynchronous Employee Request Submission**
   ![Initial Window](./images/TimeOffEmployee.png)
+  <br>
   A typical usage scenario will begin with the employee initially requesting some time off.
   ![Request 1](./images/TimeOffEmployee1.png)
   ![Request 2](./images/TimeOffEmployee2.png)
+  <br>
   Here we can see the employee submit two requests, after which the employee can exit the program and proceed with business as usual.
 - **Asynchronous Manager Request Viewing**
   ![View Latest Requests](./images/TimeOffManager3.png)
+  <br>
   The manager along with all employees will be able to view the latest time off requests for planning purposes.
   ![Approval](./images/TimeOffManager4.png)
   ![Denial](./images/TimeOffManager5.png)
+  <br>
   Here we can see the manager approve the first request and deny the second. The manager can exit the program.
 - **Asynchronous Employee Update Showcase**
   ![Updated Status](./images/TimeOffEmployee.png)
+  <br>
   Here we can see the employee able to view the results of their submitted requests and their updated status.
 Note that Time Off request dates must be given in dd/mm/yy format to be appropriately integrated with the Schedule Feature. Failure to do so will result in loss of functionality.
 
@@ -158,3 +163,8 @@ In payroll, several design patterns are implemented:
 - **Singleton Pattern**: The `PayrollCalculator` class follows the Singleton pattern, ensuring a single instance is shared across the application to improve memory usage and performance.
 - **Data Access Object Pattern**: The concrete classes `CSVEmployeeDAO`, `MySQLEmployeeDAO`, `CSVTimesheetDAO`, and `MySQLTimesheetDAO` implement the respective `EmployeeDAO` and `TimesheetDAO` interfaces. The DAO pattern encapsulates data operations within the DAO classes and decouples the application logic from the details of data storage.
 
+In timeoff, design patterns are additionally implemented:
+- **Strategy Design Pattern**: The Modify Use Case class implements the strategy design pattern by allowing all request, approval and denial processes to be handled in a single location via selecting an appropriate algorithm on the fly, with each button causing a call to a different class that will handle adding a request or modifying its status to either approved or denied.
+- **Iterator Design Pattern**: The History GUI class is an implementation of the iterator design pattern, being called by the implementing main time off gui to iterate through the database containing past time off requests and allowing it to showcase the latest ones without having any explicit knowledge or understanding of the underlying representation or data structures.
+- **Template Method Design Pattern**: The TimeOffGUI class implements the template method design pattern, being a template of the graphical user interface for the time off system, providing a baseline set of objects that all viewers will have. The template is then supplemented and fully fleshed out by the EmployeeTimeOff and ManagerTimeOff classes who add the finishing touches that are specific to employee and managers respectively.
+- **Observer Design Pattern**: The TimeOffGUI, EmployeeTimeOff, ManagerTimeOff and History also implement the observer design pattern, with the TimeOffGUI allowing all users to observe the latest previous time off request submissions and their statuses. The employee and manager specific classes also refresh the GUI once a request has been submitted or had its status updated, allowing for users to observe the most recent data as well as see their actions change the resulting view.

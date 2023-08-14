@@ -122,7 +122,25 @@ ___
 
 ### Time-Off Feature
 
-(Time-off request dates must be given in dd/mm/yy format to be appropriately entered into the database and read)
+The Time Off Feature provides a method of asynchronous communication for Time Off Requests between employees and managers. It includes a simple, easy to use graphical user interface and provides value to the end user by the various benefits brought on by having requests in a centralized location rather than having multiple bilateral communication channels open. This begins with employees being able to simply input their name, id, desired start and end dates and then allows manager to give an approved or denied status which employees can then see. Additionally, all parties can view a history of the latest time off requests and their statuses, allowing for employees to pre plan their requests in the case of a certain date range being already booked or requested.
+
+#### Functionality Explanation & Demonstration
+- **Asynchronous Employee Request Submission**
+  ![Initial Window](./images/TimeOffEmployee.png)
+  A typical usage scenario will begin with the employee initially requesting some time off.
+  ![Request 1](./images/TimeOffEmployee1.png)
+  ![Request 2](./images/TimeOffEmployee2.png)
+  Here we can see the employee submit two requests, after which the employee can exit the program and proceed with business as usual.
+- **Asynchronous Manager Request Viewing**
+  ![View Latest Requests](./images/TimeOffManager3.png)
+  The manager along with all employees will be able to view the latest time off requests for planning purposes.
+  ![Approval](./images/TimeOffManager4.png)
+  ![Denial](./images/TimeOffManager5.png)
+  Here we can see the manager approve the first request and deny the second. The manager can exit the program.
+- **Asynchronous Employee Update Showcase**
+  ![Updated Status](./images/TimeOffEmployee.png)
+  Here we can see the employee able to view the results of their submitted requests and their updated status.
+Note that Time Off request dates must be given in dd/mm/yy format to be appropriately integrated with the Schedule Feature. Failure to do so will result in loss of functionality.
 
 ___
 

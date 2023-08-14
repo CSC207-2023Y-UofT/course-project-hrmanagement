@@ -126,6 +126,7 @@ The Time Off Feature provides a method of asynchronous communication for Time Of
 
 #### Functionality Explanation & Demonstration
 - **Asynchronous Employee Request Submission**
+  <br>
   ![Initial Window](./images/TimeOffEmployee.png)
   <br>
   A typical usage scenario will begin with the employee initially requesting some time off.
@@ -134,6 +135,7 @@ The Time Off Feature provides a method of asynchronous communication for Time Of
   <br>
   Here we can see the employee submit two requests, after which the employee can exit the program and proceed with business as usual.
 - **Asynchronous Manager Request Viewing**
+  <br>
   ![View Latest Requests](./images/TimeOffManager3.png)
   <br>
   The manager along with all employees will be able to view the latest time off requests for planning purposes.
@@ -142,6 +144,7 @@ The Time Off Feature provides a method of asynchronous communication for Time Of
   <br>
   Here we can see the manager approve the first request and deny the second. The manager can exit the program.
 - **Asynchronous Employee Update Showcase**
+  <br>
   ![Updated Status](./images/TimeOffEmployee.png)
   <br>
   Here we can see the employee able to view the results of their submitted requests and their updated status.

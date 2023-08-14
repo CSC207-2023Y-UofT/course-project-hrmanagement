@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class History {
 
-    public String CreateHistory(){
-        File data = new File("data/Database.csv");
+    public String CreateHistory(String db){
+        File data = new File(db);
         StringBuilder s = new StringBuilder("<html>");
         try {
             BufferedReader in = new BufferedReader(new FileReader(data));

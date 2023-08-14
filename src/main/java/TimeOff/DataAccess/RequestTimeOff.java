@@ -15,9 +15,9 @@ import java.io.IOException;
 
 public class RequestTimeOff {
 
-    public void Submit(JFrame frame, TimeOffEntity request){
+    public void Submit(JFrame frame, TimeOffEntity request, String db){
         try {
-            FileWriter out = new FileWriter("data/Database.csv", true);
+            FileWriter out = new FileWriter(db, true);
             out.write(request + "\n");
             out.close();
             new TimeOffGUI().CreateTimeOffGUI("Employee");

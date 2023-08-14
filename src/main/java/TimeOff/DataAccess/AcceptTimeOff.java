@@ -18,9 +18,9 @@ import java.io.IOException;
 public class AcceptTimeOff {
     String[][] database;
 
-    public void Approve(JFrame frame, TimeOffEntity request){
+    public void Approve(JFrame frame, TimeOffEntity request, String db){
         try {
-            BufferedReader in = new BufferedReader(new FileReader("data/Database.csv"));
+            BufferedReader in = new BufferedReader(new FileReader(db));
             int count = 0;
             String temp = in.readLine();
             while (temp != null){
@@ -29,7 +29,7 @@ public class AcceptTimeOff {
             }
             in.close();
             database = new String[count][5];
-            in = new BufferedReader(new FileReader("data/Database.csv"));
+            in = new BufferedReader(new FileReader(db));
             int counter = 0;
             temp = in.readLine();
             while (counter < count){
@@ -44,10 +44,10 @@ public class AcceptTimeOff {
                 counter++;
             }
             in.close();
-            FileWriter out = new FileWriter("data/Database.csv");
+            FileWriter out = new FileWriter(db);
             out.write("");
             out.close();
-            out = new FileWriter("data/Database.csv", true);
+            out = new FileWriter(db, true);
             int var = 0;
             while (var < counter){
                 out.write(database[var][0] + "," + database[var][1] + "," + database[var][2]

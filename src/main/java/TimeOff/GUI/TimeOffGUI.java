@@ -59,7 +59,8 @@ public class TimeOffGUI {
         ending.createTextField(frame.getJFrame(), 175, 200, 90, 20);
 
         hist = new Label();
-        hist.createLabel(30,20,240,160, frame.getJFrame(), new History().CreateHistory());
+        String db = "data/Database.csv";
+        hist.createLabel(30,20,240,160, frame.getJFrame(), new History().CreateHistory(db));
 
         if (type.equals("Employee")) {
             new EmployeeTimeOff().CreateEmployeeTimeOff(frame.getJFrame(), nametext, idtext, starting, ending);

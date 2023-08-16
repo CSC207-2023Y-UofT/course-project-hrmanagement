@@ -11,7 +11,6 @@ public class EmployeeEntity {
     private String address;
     private String phoneNumber;
     private String role;
-    private String pass;
 
     // Constructors, getters, and setters for EmployeeEntity attributes
     public EmployeeEntity() {}
@@ -73,11 +72,4 @@ public class EmployeeEntity {
         this.role = role;
     }
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
 }

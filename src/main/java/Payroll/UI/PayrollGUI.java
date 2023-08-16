@@ -151,7 +151,7 @@ public class PayrollGUI extends JFrame {
                 // 5. Build a timesheet entity using the employee and payroll data.
                 TimesheetEntity timesheet = TimesheetHelper.createTimesheetEntity(selectedEmployee, timesheetData, salary);
 
-                // Save the timesheet entity to database and update internal map of timesheets.
+                // Save the timesheet entity to database and update internal map of timesheet.
                 String employName = EmployeeHelper.getEmployeeName(selectedEmployee);
                 timesheetDAO.saveTimesheet(timesheet);
                 timesheetMap.put(employName, timesheet);
@@ -190,14 +190,14 @@ public class PayrollGUI extends JFrame {
 
     /**
      * The setter for all the employees.
-     * @param employees a two dimensional array of String.
+     * @param employees a two-dimensional array of String.
      */
     public void setEmployees(Object[][] employees) {
         this.employees = employees;
     }
 
     /**
-     * The setter for timesheets.
+     * The setter for timesheet.
      * @param timesheetMap a map of timesheet entity.
      */
     public void setTimesheetMap(Map<String, TimesheetEntity> timesheetMap) {

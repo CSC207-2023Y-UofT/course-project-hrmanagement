@@ -1,4 +1,4 @@
-package Payroll.dao;
+package Payroll.Dao;
 
 import Payroll.entity.EmployeeEntity;
 import Payroll.usecase.EmployeeHelper;

@@ -1,7 +1,7 @@
 package tests;
 
 import Payroll.PayrollConstant;
-import Payroll.dao.*;
+import Payroll.Dao.*;
 import Payroll.entity.TimesheetEntity;
 import Payroll.ui.PayrollGUI;
 import Payroll.usecase.PayrollCalculator;

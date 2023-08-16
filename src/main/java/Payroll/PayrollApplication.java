@@ -1,7 +1,7 @@
 package Payroll;
 
 import Payroll.entity.TimesheetEntity;
-import Payroll.dao.*;
+import Payroll.Dao.*;
 import Payroll.ui.PayrollGUI;
 import Payroll.usecase.PayrollCalculator;
 

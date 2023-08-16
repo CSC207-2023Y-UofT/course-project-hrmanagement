@@ -1,6 +1,6 @@
 package Payroll.ui;
 
-import Payroll.dao.TimesheetDAO;
+import Payroll.Dao.TimesheetDAO;
 import Payroll.entity.EmployeeEntity;
 import Payroll.entity.TimesheetEntity;
 import Payroll.usecase.EmployeeHelper;

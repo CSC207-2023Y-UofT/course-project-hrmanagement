@@ -71,7 +71,7 @@ ___
 
 ### Employee SignUp and Login
 - Employees have an option to signUp, details are stored in database, they can then login using the same employeeID and password that they used to signUp.
-- When Employee tries to signUp with same id that has already been registered, or enters password that is less than 5 characters, appropriate error message is shown.
+- When Employee tries to signUp with same id that has already been registered, or enters password that is less than 5 characters or doesn't contain atleast one uppercase letter, appropriate error message is shown.
 - Demo:  
   ![employeePortal-view.png](images%2FemployeePortal-view.png)
 ___

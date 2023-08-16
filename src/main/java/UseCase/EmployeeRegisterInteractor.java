@@ -25,7 +25,7 @@ public class EmployeeRegisterInteractor implements EmployeeRegisterInputBoundary
         Employee employee = employeeFactory.create(requestModel.getEmployeeID(), requestModel.getLastName(), requestModel.getFirstName(),
                 requestModel.getAddress(), requestModel.getPhoneNumber(), requestModel.getPassText());
         if (!employee.passwordIsValid()) {
-            return employeePresenter.prepareFailView("User password must have more than 5 characters.");
+            return employeePresenter.prepareFailView("User password must have more than 5 characters and contain at least one uppercase letter.");
         }
 
         EmployeeRegisterDBRequestModel employeeDBRequestModel = new EmployeeRegisterDBRequestModel(employee.getEmployeeID(), employee.getLastName(),

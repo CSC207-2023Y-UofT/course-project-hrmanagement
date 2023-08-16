@@ -1,4 +1,5 @@
 package Entities;
+import java.util.regex.*;
 
 public class CommonEmployee implements Employee{
     private final int employeeID;
@@ -7,7 +8,7 @@ public class CommonEmployee implements Employee{
     private String address;
     private String phoneNumber;
     private final String pass;
-
+    private final Pattern upperCaseLetters = Pattern.compile("[A-Z]");
     /**
      * Constructs a CommonEmployee object with the provided attributes.
      * @param employeeID The ID for the employee.
@@ -40,7 +41,8 @@ public class CommonEmployee implements Employee{
      */
     @Override
     public boolean passwordIsValid() {
-        return pass != null && pass.length() > 5;
+        Matcher uppercaseMatcher = upperCaseLetters.matcher(pass);
+        return pass.length() > 5 && uppercaseMatcher.find();
     }
 
     //getters and setters

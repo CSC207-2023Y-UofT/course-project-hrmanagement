@@ -1,7 +1,7 @@
-package Payroll.usecase;
+package Payroll.UseCase;
 
-import Payroll.entity.EmployeeEntity;
-import Payroll.entity.TimesheetEntity;
+import Payroll.Entity.EmployeeEntity;
+import Payroll.Entity.TimesheetEntity;
 
 /**
  * Helper class for creating TimesheetEntity objects based on employee and timesheet data.

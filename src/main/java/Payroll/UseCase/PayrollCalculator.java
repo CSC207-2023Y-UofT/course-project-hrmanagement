@@ -1,9 +1,9 @@
-package Payroll.usecase;
+package Payroll.UseCase;
 
 // Use Case layer
 
 import Payroll.PayrollConstant;
-import Payroll.entity.EmployeeEntity;
+import Payroll.Entity.EmployeeEntity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

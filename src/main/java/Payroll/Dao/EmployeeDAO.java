@@ -1,6 +1,6 @@
 package Payroll.Dao;
 
-import Payroll.entity.EmployeeEntity;
+import Payroll.Entity.EmployeeEntity;
 
 import java.util.List;
 

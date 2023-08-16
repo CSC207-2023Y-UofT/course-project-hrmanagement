@@ -2,11 +2,11 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Payroll.entity.EmployeeEntity;
+import Payroll.Entity.EmployeeEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Payroll.PayrollConstant;
-import Payroll.usecase.PayrollCalculator;
+import Payroll.UseCase.PayrollCalculator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 

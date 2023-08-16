@@ -1,10 +1,10 @@
-package Payroll.ui;
+package Payroll.UI;
 
 import Payroll.PayrollConstant;
-import Payroll.entity.EmployeeEntity;
-import Payroll.entity.TimesheetEntity;
-import Payroll.usecase.EmployeeHelper;
-import Payroll.usecase.DataValidator;
+import Payroll.Entity.EmployeeEntity;
+import Payroll.Entity.TimesheetEntity;
+import Payroll.UseCase.EmployeeHelper;
+import Payroll.UseCase.DataValidator;
 
 import javax.swing.*;
 import java.awt.*;

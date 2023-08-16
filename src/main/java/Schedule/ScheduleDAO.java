@@ -2,7 +2,7 @@ package Schedule;
 
 import Payroll.PayrollConstant;
 import Payroll.Dao.*;
-import Payroll.entity.TimesheetEntity;
+import Payroll.Entity.TimesheetEntity;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,11 +1,11 @@
-package Payroll.ui;
+package Payroll.UI;
 
 import Payroll.Dao.TimesheetDAO;
-import Payroll.entity.EmployeeEntity;
-import Payroll.entity.TimesheetEntity;
-import Payroll.usecase.EmployeeHelper;
-import Payroll.usecase.TimesheetHelper;
-import Payroll.usecase.PayrollCalculator;
+import Payroll.Entity.EmployeeEntity;
+import Payroll.Entity.TimesheetEntity;
+import Payroll.UseCase.EmployeeHelper;
+import Payroll.UseCase.TimesheetHelper;
+import Payroll.UseCase.PayrollCalculator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

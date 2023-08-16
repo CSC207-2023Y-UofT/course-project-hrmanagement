@@ -1,6 +1,6 @@
 package tests;
 
-import Payroll.usecase.DataValidator;
+import Payroll.UseCase.DataValidator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

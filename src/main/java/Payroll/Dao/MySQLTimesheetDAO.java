@@ -1,7 +1,7 @@
 package Payroll.Dao;
 
-import Payroll.entity.TimesheetEntity;
-import Payroll.usecase.EmployeeHelper;
+import Payroll.Entity.TimesheetEntity;
+import Payroll.UseCase.EmployeeHelper;
 
 import java.sql.*;
 import java.util.HashMap;

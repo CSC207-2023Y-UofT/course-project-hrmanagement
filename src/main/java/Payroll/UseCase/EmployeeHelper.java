@@ -1,6 +1,6 @@
-package Payroll.usecase;
+package Payroll.UseCase;
 
-import Payroll.entity.EmployeeEntity;
+import Payroll.Entity.EmployeeEntity;
 
 import javax.swing.*;
 

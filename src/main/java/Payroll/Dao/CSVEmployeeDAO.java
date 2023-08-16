@@ -1,7 +1,7 @@
 package Payroll.Dao;
 
-import Payroll.entity.EmployeeEntity;
-import Payroll.usecase.EmployeeHelper;
+import Payroll.Entity.EmployeeEntity;
+import Payroll.UseCase.EmployeeHelper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

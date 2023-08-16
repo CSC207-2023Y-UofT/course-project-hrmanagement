@@ -1,9 +1,9 @@
 package Payroll;
 
-import Payroll.entity.TimesheetEntity;
+import Payroll.Entity.TimesheetEntity;
 import Payroll.Dao.*;
-import Payroll.ui.PayrollGUI;
-import Payroll.usecase.PayrollCalculator;
+import Payroll.UI.PayrollGUI;
+import Payroll.UseCase.PayrollCalculator;
 
 import javax.swing.*;
 import java.util.Map;

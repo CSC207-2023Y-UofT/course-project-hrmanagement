@@ -1,4 +1,4 @@
-package Payroll.usecase;
+package Payroll.UseCase;
 
 import Payroll.PayrollConstant;
 

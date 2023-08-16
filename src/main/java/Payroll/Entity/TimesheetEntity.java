@@ -1,4 +1,4 @@
-package Payroll.entity;
+package Payroll.Entity;
 
 /**
  * Timesheet business object.
